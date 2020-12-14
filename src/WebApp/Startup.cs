@@ -1,6 +1,17 @@
+using Core.Converters;
+using Core.DTO;
+using Core.Entities;
+using Core.Identity;
+using Core.Interfaces;
+using Core.Services;
+using Infrastructure.Data;
+using Infrastructure.Identity;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +34,37 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationContext>(options =>
+                 options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
+
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(
+                opts =>
+                {
+                    opts.Password.RequiredLength = 6;   // минимальная длина
+                    opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
+                    opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
+                    opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
+                    opts.Password.RequireDigit = false; // требуются ли цифры
+                })
+                .AddEntityFrameworkStores<IdentityContext>();
+
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+
+            services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IBookService, BookService>();
+            services.AddTransient<IFeedBackService, FeedBackService>();
+            services.AddTransient<IReviewService, ReviewService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IOrderService, OrderService>();
+
+            services.AddTransient<IConverter<Genre, GenreDTO>, ConverterGenre>();
+            services.AddTransient<IConverter<Book, BookDTO>, ConverterBook>();
+            services.AddTransient<IConverter<FeedBack, FeedBackDTO>, ConverterFeedBack>();
+            services.AddTransient<IConverter<Review, ReviewDTO>, ConverterIReview>();
+
             services.AddControllersWithViews();
         }
 

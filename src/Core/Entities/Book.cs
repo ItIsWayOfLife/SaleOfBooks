@@ -1,4 +1,6 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Core.Entities
 {
     public class Book 
@@ -7,6 +9,8 @@ namespace Core.Entities
         public string Name { get; set; }
         public string Info { get; set; }
         public string Code { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string Path { get; set; }
         public string Author { get; set; }

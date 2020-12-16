@@ -9,7 +9,8 @@ namespace Infrastructure.Identity
         public IdentityContext(DbContextOptions<IdentityContext> options)
            : base(options)
         {
-            Database.EnsureCreated();
+         //  Database.EnsureDeleted();   
+           Database.EnsureCreated();  
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Core.Converters
                 IsDisplay = modelDTO.IsDisplay,
                 IsFavorite = modelDTO.IsFavorite,
                 IsNew = modelDTO.IsNew,
-                Path = (modelDTO.Path).Replace(PathConstants.pathBooks, ""),
+                Path = (modelDTO.Path).Replace(PathConstants.PARH_BOOKS, ""),
                 Price = modelDTO.Price,
                 PublishingHouse = modelDTO.PublishingHouse,
                 YearPublishing = modelDTO.YearPublishing
@@ -53,7 +53,7 @@ namespace Core.Converters
 
             foreach (var bookDTO in bookDTOs)
             {
-                bookDTO.Path = PathConstants.pathBooks + bookDTO.Path;
+                bookDTO.Path = PathConstants.PARH_BOOKS + bookDTO.Path;
                 bookDTO.Genre = _genreService.GetGenre(bookDTO.GenreId).Name;
             }
 
@@ -70,7 +70,7 @@ namespace Core.Converters
                 YearPublishing = model.YearPublishing,
                 PublishingHouse = model.PublishingHouse,
                 Price = model.Price,
-                Path = PathConstants.pathBooks  +model.Path,
+                Path = PathConstants.PARH_BOOKS + model.Path,
                 IsNew = model.IsNew,
                 Code = model.Code,
                 Genre = _genreService.GetGenre(model.GenreId).Name,

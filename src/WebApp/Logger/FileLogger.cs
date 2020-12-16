@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Web.Logger
+namespace WebApp.Logger
 {
     public class FileLogger : ILogger
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Web.Logger
+namespace WebApp.Logger
 {
     public class FileLoggerProvider : ILoggerProvider
     {

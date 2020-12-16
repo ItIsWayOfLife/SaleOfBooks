@@ -1,0 +1,58 @@
+﻿@model WebApp.Models.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+<div class="center">
+    <h1>Регистрация</h1>
+    <br />
+    <div>
+        <form method="post" autocomplete="off" asp-controller="Account" asp-action="Register">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label class="lb_" asp-for="Firstname"></label>
+                <span class="text-danger" asp-validation-for="Firstname"></span><br />
+                <input asp-for="Firstname" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Lastname"></label>
+                <span class="text-danger" asp-validation-for="Lastname"></span><br />
+                <input asp-for="Lastname" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Patronomic"></label>
+                <span class="text-danger" asp-validation-for="Patronomic"></span><br />
+                <input asp-for="Patronomic" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Email"></label>
+                <span class="text-danger" asp-validation-for="Email"></span><br />
+                <input asp-for="Email" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Password"></label>
+                <span class="text-danger" asp-validation-for="Password"></span><br />
+                <input asp-for="Password" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="PasswordConfirm"></label>
+                <span class="text-danger" asp-validation-for="PasswordConfirm"></span><br />
+                <input asp-for="PasswordConfirm" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Address"></label>
+                <span class="text-danger" asp-validation-for="Address"></span><br />
+                <input asp-for="Address" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Postcode"></label>
+                <span class="text-danger" asp-validation-for="Postcode"></span><br />
+                <input asp-for="Postcode" class="input_text" />
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="Зарегистрироваться" class="btn_" />
+            </div>
+        </form>
+    </div>
+</div>

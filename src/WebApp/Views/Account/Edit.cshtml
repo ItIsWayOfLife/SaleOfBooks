@@ -1,0 +1,52 @@
+﻿@model WebApp.Models.Account.ProfileViewModel
+
+@{
+    ViewBag.Title = "Profile change";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="center">
+        <h1>Profile change</h1>
+        <br />
+
+        <form method="post" autocomplete="off" asp-action="Edit" asp-controller="Account">
+            <input type="hidden" asp-for="Id" />
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label class="lb_" asp-for="Firstname"></label>
+                <span class="text-danger" asp-validation-for="Firstname"></span><br />
+                <input type="text" asp-for="Firstname" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Lastname"></label>
+                <span class="text-danger" asp-validation-for="Lastname"></span><br />
+                <input type="text" asp-for="Lastname" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Patronomic"></label>
+                <span class="text-danger" asp-validation-for="Patronomic"></span><br />
+                <input type="text" asp-for="Patronomic" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Email"></label>
+                <span class="text-danger" asp-validation-for="Email"></span><br />
+                <input type="text" asp-for="Email" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Address"></label>
+                <span class="text-danger" asp-validation-for="Address"></span><br />
+                <input asp-for="Address" class="input_text" />
+            </div>
+            <div>
+                <label class="lb_" asp-for="Postcode"></label>
+                <span class="text-danger" asp-validation-for="Postcode"></span><br />
+                <input asp-for="Postcode" class="input_text" />
+            </div><br />
+            <div>
+                <input type="submit" value="Edit" class="btn_" />
+            </div>
+        </form>
+    </div>
+}

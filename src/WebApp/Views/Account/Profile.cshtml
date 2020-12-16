@@ -1,0 +1,35 @@
+﻿@model WebApp.Models.Account.ProfileViewModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<h1 class="center">Profile</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <br />
+    <div style="float: left">
+        <img style="height: 400px; width: 300px;" src="@Model.Path" alt="@Model.Lastname" />
+    </div>
+    <div style="float: left; margin-left: 50px; font-size: 20px;">
+        <p>First Name: @Model.Firstname</p>
+        <p>Second Name: @Model.Lastname</p>
+        <p>Millde Name: @Model.Patronomic</p>
+        <p>Email: @Model.Email</p>
+        <p>Address: @Model.Address</p>
+        <p>Postcode: @Model.Postcode</p>
+
+        <form method="post" asp-action="ChangePath" enctype="multipart/form-data">
+            <a class="btn btn-sm btn-success" asp-controller="Account" asp-action="Edit">Edit</a><br />
+            <a class="btn btn-sm btn-success" asp-controller="Account" asp-action="ChangePassword">Change Password</a><br />
+            <span style="font-size: 14px;">Change photo</span><input style="font-size: 10px; margin-top: 5px; margin-left: 3px;" type="file" name="uploadedFile" /><br>
+            <input name="path_" type="hidden" asp-for="Path" />
+            <div>
+                <input type="submit" value="Edit" class="btn_" />
+            </div>
+        </form>
+    </div>
+}
+
+

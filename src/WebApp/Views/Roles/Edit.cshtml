@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model WebApp.Models.Roles.ChangeRoleViewModel
+
+@{
+    ViewData["Title"] = "change of rights";
+}
+<div class="center">
+    <h1>Change of rights @Model.UserEmail</h1>
+    <br />
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" name="userId" value="@Model.UserId" />
+        <div class="inputRole">
+            @foreach (IdentityRole role in Model.AllRoles)
+            {
+                <input type="checkbox" name="roles" value="@role.Name"
+                       @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+                }
+        </div>
+        <button type="submit" class="btn_">Save</button>
+    </form>
+</div>

@@ -189,7 +189,7 @@ namespace Web.Controllers.Identity
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(WebApp.Models.Users.ChangePasswordViewModel model)
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             try
             {
@@ -227,7 +227,5 @@ namespace Web.Controllers.Identity
 
             return View(model);
         }
-
-
     }
 }

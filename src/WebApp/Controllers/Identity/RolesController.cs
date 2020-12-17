@@ -19,7 +19,8 @@ namespace WebApp.Controllers.Identity
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RolesController> _logger;
 
-        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager,
+        public RolesController(RoleManager<IdentityRole> roleManager,
+            UserManager<ApplicationUser> userManager,
             ILogger<RolesController> logger)
         {
             _roleManager = roleManager;

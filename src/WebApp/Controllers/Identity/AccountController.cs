@@ -300,7 +300,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return NotFound();
+                    return BadRequest("Bad request");
                 }
 
                 string path;

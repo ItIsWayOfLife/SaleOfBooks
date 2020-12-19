@@ -128,6 +128,7 @@ namespace Web.Controllers.Identity
                 Address = user.Address,
                 Postcode = user.Postcode
             };
+
             return View(model);
         }
 

@@ -8,7 +8,7 @@
     <td>@Model.Postcode</td>
     <td>
         <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
-            <a class="btn btn-sm btn-primary spa_" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+            <a class="btn btn-sm btn-primary spa_" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
             <a class="btn btn-sm btn-success spa_" asp-controller="Users" asp-action="ChangePassword" asp-route-id="@Model.Id">Change password</a>
             <a class="btn btn-sm btn-secondary spa_" asp-controller="Roles" asp-action="Edit" asp-route-userid="@Model.Id">Role management</a>
             <button class="btn btn-sm btn-danger spa_" type="submit">

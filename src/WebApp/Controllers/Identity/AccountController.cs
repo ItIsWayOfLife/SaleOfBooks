@@ -309,7 +309,7 @@ namespace WebApp.Controllers.Identity
                 if (uploadedFile != null)
                 {
                     path = uploadedFile.FileName;
-                    //save the file to a folder files /provider/ in the catalog wwwroot
+                    // save the file to a folder files /provider/ in the catalog wwwroot
                     using (var fileStream = new FileStream(_appEnvironment.WebRootPath + PathConstants.PARH_USERS + path, FileMode.Create))
                     {
                         await uploadedFile.CopyToAsync(fileStream);

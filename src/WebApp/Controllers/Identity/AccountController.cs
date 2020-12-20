@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebApp.Models;
 using WebApp.Models.Account;
 
 namespace WebApp.Controllers.Identity
@@ -137,7 +138,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return BadRequest("Bad request");
+                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
                 }
 
                 ProfileViewModel userView = new ProfileViewModel()
@@ -171,7 +172,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return BadRequest("Bad request");
+                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
                 }
 
                 ProfileViewModel userView = new ProfileViewModel()
@@ -247,7 +248,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return BadRequest("Bad request");
+                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
                 }
 
                 ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
@@ -302,7 +303,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return BadRequest("Bad request");
+                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
                 }
 
                 string path;

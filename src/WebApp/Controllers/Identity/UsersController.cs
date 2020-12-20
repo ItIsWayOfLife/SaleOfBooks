@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebApp.Models;
 using WebApp.Models.Users;
 
 
@@ -94,6 +95,7 @@ namespace Web.Controllers.Identity
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
@@ -106,6 +108,7 @@ namespace Web.Controllers.Identity
                     }
                 }
             }
+
             return View(model);
         }
 
@@ -114,10 +117,12 @@ namespace Web.Controllers.Identity
         {
 
             ApplicationUser user = await _userManager.FindByIdAsync(id);
+
             if (user == null)
             {
-                return NotFound();
+                return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
             }
+
             EditUserViewModel model = new EditUserViewModel
             {
                 Id = user.Id,
@@ -138,6 +143,7 @@ namespace Web.Controllers.Identity
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await _userManager.FindByIdAsync(model.Id);
+
                 if (user != null)
                 {
                     user.Email = model.Email;
@@ -162,6 +168,7 @@ namespace Web.Controllers.Identity
                     }
                 }
             }
+
             return View(model);
         }
 
@@ -169,10 +176,12 @@ namespace Web.Controllers.Identity
         public async Task<ActionResult> Delete(string id)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(id);
+
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
             }
+
             return RedirectToAction("Index");
         }
 
@@ -181,11 +190,14 @@ namespace Web.Controllers.Identity
         {
 
             var user = await _userManager.FindByIdAsync(id);
+
             if (user == null)
             {
-                return NotFound();
+                return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
             }
+
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
+
             return View(model);
         }
 
@@ -197,6 +209,7 @@ namespace Web.Controllers.Identity
                 if (ModelState.IsValid)
                 {
                     var user = await _userManager.FindByIdAsync(model.Id);
+
                     if (user != null)
                     {
                         IdentityResult result =

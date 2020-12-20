@@ -53,8 +53,7 @@ namespace WebApp.Controllers.Identity
                 return View(model);
             }
 
-            return RedirectToAction("Error", "Home", new ErrorViewModel() {  RequestId = "400"});
-          //  return BadRequest("Bad request");
+            return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
         }
 
         [HttpPost]
@@ -84,7 +83,7 @@ namespace WebApp.Controllers.Identity
                 return RedirectToAction("Index", "Users");
             }
 
-            return BadRequest("Bad request");
+            return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
         }
     }
 }

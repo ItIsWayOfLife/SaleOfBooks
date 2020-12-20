@@ -62,7 +62,9 @@ namespace WebApp.Controllers.Identity
                     // setting cookies
                     await _signInManager.SignInAsync(user, false);
 
-                    return RedirectToAction("Index", "Home");
+                    //  return RedirectToAction("Index", "Home");
+
+                    return RedirectToAction("RegistrationSuccessful", new { name  = user.Email});
                 }
                 else
                 {
@@ -334,6 +336,13 @@ namespace WebApp.Controllers.Identity
             }
             
             return RedirectToAction("Profile");
+        }
+
+        public IActionResult RegistrationSuccessful(string name)
+        {
+            ViewBag.Name = name;
+
+            return View();
         }
     }
 }

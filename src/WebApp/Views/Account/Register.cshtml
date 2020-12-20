@@ -3,56 +3,71 @@
 @{
     ViewData["Title"] = "Registration";
 }
-<div class="center">
-    <h1>Registration</h1>
-    <br />
-    <div>
-        <form method="post" autocomplete="off" asp-controller="Account" asp-action="Register">
-            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-            <div>
-                <label class="lb_" asp-for="Firstname"></label>
-                <span class="text-danger" asp-validation-for="Firstname"></span><br />
-                <input asp-for="Firstname" class="input_text" />
+
+<div class="row mtLogReg">
+    <div class="col-6 m-auto">
+        <div class="card m-auto">
+            <div class="card-header">
+                Register
             </div>
-            <div>
-                <label class="lb_" asp-for="Lastname"></label>
-                <span class="text-danger" asp-validation-for="Lastname"></span><br />
-                <input asp-for="Lastname" class="input_text" />
+            <div class="card-body">
+                <form method="post" autocomplete="off" asp-controller="Account" asp-action="Register">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Firstname"></label>
+                        <span class="text-danger" asp-validation-for="Firstname"></span><br />
+                        <input type="text" class="form-control" asp-for="Firstname" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Lastname"></label>
+                        <span class="text-danger" asp-validation-for="Lastname"></span><br />
+                        <input type="text" class="form-control" asp-for="Lastname"/>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Patronomic"></label>
+                        <span class="text-danger" asp-validation-for="Patronomic"></span><br />
+                        <input type="text" class="form-control" asp-for="Patronomic"/>
+                    </div>
+                     
+                    <div class="form-group col-12">
+                        <label asp-for="Email"></label>
+                        <span class="text-danger" asp-validation-for="Email"></span><br />
+                        <input type="email" class="form-control" asp-for="Email"/>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Password"></label>
+                        <span class="text-danger" asp-validation-for="Password"></span><br />
+                        <input type="password" class="form-control" asp-for="Password"/>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="PasswordConfirm"></label>
+                        <span class="text-danger" asp-validation-for="PasswordConfirm"></span><br />
+                        <input type="password" class="form-control" asp-for="PasswordConfirm"/>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Address"></label>
+                        <span class="text-danger" asp-validation-for="Address"></span><br />
+                        <input type="text" class="form-control" asp-for="Address" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="Postcode"></label>
+                        <span class="text-danger" asp-validation-for="Postcode"></span><br />
+                        <input type="text" class="form-control" asp-for="Postcode" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                </form>
             </div>
-            <div>
-                <label class="lb_" asp-for="Patronomic"></label>
-                <span class="text-danger" asp-validation-for="Patronomic"></span><br />
-                <input asp-for="Patronomic" class="input_text" />
-            </div>
-            <div>
-                <label class="lb_" asp-for="Email"></label>
-                <span class="text-danger" asp-validation-for="Email"></span><br />
-                <input asp-for="Email" class="input_text" />
-            </div>
-            <div>
-                <label class="lb_" asp-for="Password"></label>
-                <span class="text-danger" asp-validation-for="Password"></span><br />
-                <input asp-for="Password" class="input_text" />
-            </div>
-            <div>
-                <label class="lb_" asp-for="PasswordConfirm"></label>
-                <span class="text-danger" asp-validation-for="PasswordConfirm"></span><br />
-                <input asp-for="PasswordConfirm" class="input_text" />
-            </div>
-            <div>
-                <label class="lb_" asp-for="Address"></label>
-                <span class="text-danger" asp-validation-for="Address"></span><br />
-                <input asp-for="Address" class="input_text" />
-            </div>
-            <div>
-                <label class="lb_" asp-for="Postcode"></label>
-                <span class="text-danger" asp-validation-for="Postcode"></span><br />
-                <input asp-for="Postcode" class="input_text" />
-            </div>
-            <br />
-            <div>
-                <input type="submit" value="Register" class="btn_" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>

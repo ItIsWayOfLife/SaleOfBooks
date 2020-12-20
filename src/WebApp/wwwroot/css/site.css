@@ -70,6 +70,10 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.ml-20p{
+    margin-left: 20%;
+}
+
 .btnLogout {
     outline: none;
     border: none;
@@ -92,8 +96,8 @@ body {
     margin-top: 8%;
 }
 
-/* Registration Successful */
 
+/* Registration Successful */
 #card {
     position: relative;
     width: 320px;

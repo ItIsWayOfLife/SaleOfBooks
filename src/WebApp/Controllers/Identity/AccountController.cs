@@ -298,7 +298,7 @@ namespace WebApp.Controllers.Identity
             {
                 ApplicationUser user = null;
 
-                string currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == currentUserId);
 
                 if (user == null)

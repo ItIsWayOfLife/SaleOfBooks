@@ -4,33 +4,58 @@
     ViewBag.Title = "Profile";
 }
 
-<h1 class="text-center">Profile</h1>
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="ml-20p">
-        <br />
-        <div style="float: left">
-            <img style="height: 270px; width: 250px;" src="@Model.Path" alt="@Model.Email" />
-            <form class="mt-3" method="post" asp-action="ChangePath" enctype="multipart/form-data">
-                <div>Change photo</div>
-                <input class="mt-2" type="file" name="uploadedFile" /><br>
-                <input name="path_" type="hidden" asp-for="Path" /><br />
-                <div>
-                    <input type="submit" value="Edit image" class="btn btn-sm btn-success" />
+<div class="row mb-5">
+
+    <div class="col-8 shadow-lg p-0 bg-white" style="font-size: 1.2em;">
+        <div class="card">
+            <div class="card-header">
+                <h3>Profile</h3>
+            </div>
+            <div class="card-body">
+
+                <div class="container">
+                    <p><span class="profileInfo">First Name: </span>@Model.Firstname</p>
+                    <p><span class="profileInfo">Second Name:</span> @Model.Lastname</p>
+                    <p><span class="profileInfo">Millde Name: </span>@Model.Patronomic</p>
+                    <p><span class="profileInfo">Email: </span>@Model.Email</p>
+                    <p><span class="profileInfo">Address: </span>@Model.Address</p>
+                    <p><span class="profileInfo">Postcode: </span>@Model.Postcode</p>
+                    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Edit">Edit</a>
+                    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
                 </div>
-            </form>
-        </div>
-        <div style="float: left;">
-            <p>First Name: @Model.Firstname</p>
-            <p>Second Name: @Model.Lastname</p>
-            <p>Millde Name: @Model.Patronomic</p>
-            <p>Email: @Model.Email</p>
-            <p>Address: @Model.Address</p>
-            <p>Postcode: @Model.Postcode</p>
-            <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Edit">Edit</a>
-            <a class="btn btn-sm btn-primary ml-3" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
+
+            </div>
         </div>
     </div>
-}
 
+    <div class="col-4">
+        <div class="shadow-lg p-3 bg-white">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" style="height: 300px; width: 100%;" src="@Model.Path" alt="@Model.Email" />
 
+                    <form class="mt-3 ml-2" method="post" asp-action="ChangePath" enctype="multipart/form-data">
+                        <div>
+                            <h4>Change photo</h4>
+                        </div>
+
+                        <label class="text-secondary" id="lbUpProfile" for="upload-photo">Browse... (upload-photo)</label>
+                        <input type="file" name="uploadedFile" id="upload-photo" hidden />
+
+                        <input name="path_" type="hidden" asp-for="Path" /><br />
+                        <div class="mb-2">
+                            <input type="submit" value="Edit image" class="btn btn-sm btn-success" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const selectedFile = document.getElementById('upload-photo').files[0];
+
+    console.log(selectedFile);
+</script>

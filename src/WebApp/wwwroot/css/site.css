@@ -70,7 +70,21 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.ml-20p{
+#lbUpProfile {
+    cursor: pointer;
+}
+
+#upload-photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.profileInfo {
+    font-weight: 500;
+}
+
+.ml-20p {
     margin-left: 20%;
 }
 

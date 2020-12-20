@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebApp.Models;
 using WebApp.Models.Roles;
 
 namespace WebApp.Controllers.Identity
@@ -52,7 +53,8 @@ namespace WebApp.Controllers.Identity
                 return View(model);
             }
 
-            return BadRequest("Bad request");
+            return RedirectToAction("Error", "Home", new ErrorViewModel() {  RequestId = "400"});
+          //  return BadRequest("Bad request");
         }
 
         [HttpPost]

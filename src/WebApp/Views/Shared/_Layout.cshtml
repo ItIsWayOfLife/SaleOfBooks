@@ -10,16 +10,23 @@
 <body>
     <header>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-success">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <img style="width: 50px; height: 50px;" title="Sale of Books" alt="Sale of Books" src="~/files/Martz90-Circle-Books.ico">
             </a>
             <a class="navbar-brand" href="/">Sale of Books</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" href="">Buy <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Rent</a>
+                    </li>
                 </ul>
                 <nav>
                     <ul class="navbar-nav mr-auto">
@@ -28,40 +35,40 @@
                         {
                             <li class="nav-item ">
                                 <form method="post" asp-controller="Account" asp-action="Logout">
-                                    <input class="nav-link bg-success btOut" type="submit" value="Logout" />
+                                    <input class="nav-link bg-dark btnLogout" type="submit" value="Logout" />
                                 </form>
                             </li>
                             <li class="nav-item">
-                                @if (Context.Request.Path.ToString().Contains("Profil"))
+                                @if (Context.Request.Path.ToString().ToLower().Contains("profil"))
                                 {
-                                <a class="nav-link active right" asp-controller="Account" asp-action="Profile">Profile</a>
+                                    <a class="nav-link active right" asp-controller="Account" asp-action="Profile">Profile</a>
                                 }
                                 else
                                 {
-                            <a class="nav-link right" asp-controller="Account" asp-action="Profile">Profile</a>
+                                    <a class="nav-link right" asp-controller="Account" asp-action="Profile">Profile</a>
                                 }
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                @if (Context.Request.Path.ToString().Contains("Login"))
+                                @if (Context.Request.Path.ToString().ToLower().Contains("login"))
                                 {
-                                <a class="nav-link active right" asp-controller="Account" asp-action="Login">Login</a>
+                                    <a class="nav-link active right" asp-controller="Account" asp-action="Login">Login</a>
                                 }
                                 else
                                 {
-                            <a class="nav-link right" asp-controller="Account" asp-action="Login">Login</a>
+                                    <a class="nav-link right" asp-controller="Account" asp-action="Login">Login</a>
                                 }
                             </li>
                             <li class="nav-item" style="float:right;">
-                                @if (Context.Request.Path.ToString().Contains("Register"))
+                                @if (Context.Request.Path.ToString().ToLower().Contains("register"))
                                 {
-                                <a class="nav-link active right" asp-controller="Account" asp-action="Register">Registration</a>
+                                    <a class="nav-link active right" asp-controller="Account" asp-action="Register">Registration</a>
                                 }
                                 else
                                 {
-                            <a class="nav-link" asp-controller="Account" asp-action="Register">Registration</a>
+                                    <a class="nav-link" asp-controller="Account" asp-action="Register">Registration</a>
                                 }
                             </li>
                         }
@@ -79,8 +86,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+            <a class="linkPrivacy" asp-controller="Home" asp-action="Privacy"> &copy; 2021 - Sale of Books - Privacy</a>  
+</div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

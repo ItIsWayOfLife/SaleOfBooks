@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
@@ -141,6 +142,11 @@ namespace WebApp.Controllers.Identity
                     return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
                 }
 
+                if (user.Path == "" || user.Path == null)
+                {
+                    user.Path = PathConstants.PAPH_DEFAULT_PROFILE;
+                }
+
                 ProfileViewModel userView = new ProfileViewModel()
                 {
                     Firstname = user.Firstname,
@@ -149,7 +155,7 @@ namespace WebApp.Controllers.Identity
                     Email = user.Email,
                     Postcode = user.Postcode,
                     Address = user.Address,
-                    Path = PathConstants.PARH_USERS + user.Path
+                    Path = PathConstants.PAPH_USERS + user.Path
                 };
 
                 return View(userView);
@@ -313,7 +319,7 @@ namespace WebApp.Controllers.Identity
                 {
                     path = uploadedFile.FileName;
                     // save the file to a folder files /provider/ in the catalog wwwroot
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + PathConstants.PARH_USERS + path, FileMode.Create))
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + PathConstants.PAPH_USERS + path, FileMode.Create))
                     {
                         await uploadedFile.CopyToAsync(fileStream);
                     }

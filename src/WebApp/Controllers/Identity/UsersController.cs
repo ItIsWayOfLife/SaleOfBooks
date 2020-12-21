@@ -120,7 +120,7 @@ namespace Web.Controllers.Identity
 
             if (user == null)
             {
-                return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                return RedirectToAction("Error", "Home", new { requestId = "400" });
             }
 
             EditUserViewModel model = new EditUserViewModel
@@ -193,7 +193,7 @@ namespace Web.Controllers.Identity
 
             if (user == null)
             {
-                return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                return RedirectToAction("Error", "Home", new { requestId = "400" });
             }
 
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
@@ -216,7 +216,7 @@ namespace Web.Controllers.Identity
                             await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
                         if (result.Succeeded)
                         {
-                            string currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                            string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
                             return RedirectToAction("Index");
                         }

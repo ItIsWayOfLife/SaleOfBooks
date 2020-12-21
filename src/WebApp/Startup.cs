@@ -74,6 +74,8 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+           // env.EnvironmentName = "Production";
+
             //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
             //var logger = loggerFactory.CreateLogger("FileLogger");
 
@@ -85,8 +87,10 @@ namespace WebApp
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseHsts();              
             }
+
+            app.UseStatusCodePagesWithRedirects("/Home/Error?requestId={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

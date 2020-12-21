@@ -139,7 +139,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
 
                 if (user.Path == "" || user.Path == null)
@@ -178,7 +178,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
 
                 ProfileViewModel userView = new ProfileViewModel()
@@ -254,7 +254,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
 
                 ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
@@ -309,7 +309,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    return RedirectToAction("Error", "Home", new ErrorViewModel { RequestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
 
                 string path;

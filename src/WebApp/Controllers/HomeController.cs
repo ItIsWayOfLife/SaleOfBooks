@@ -29,9 +29,9 @@ namespace WebApp.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error(ErrorViewModel errorViewModel)
+        public IActionResult Error(string requestId)
         {
-            return View(errorViewModel);
+            return View(new ErrorViewModel() {  RequestId = requestId });
         }
     }
 }

@@ -6,9 +6,11 @@ namespace WebApp.Models.Account
     {
         public string Id { get; set; }
 
+        [Required(ErrorMessage = "Enter First Name")]
         [Display(Name = "First Name")]
         public string Firstname { get; set; }
 
+        [Required(ErrorMessage = "Enter Second Name")]
         [Display(Name = "Second Name")]
         public string Lastname { get; set; }
 
@@ -23,7 +25,7 @@ namespace WebApp.Models.Account
         [Display(Name = "Address")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Enter postal code")]
+        [Required(ErrorMessage = "Enter postcode")]
         [Display(Name = "Postcode")]
         public string Postcode { get; set; }
         public string Path { get; set; }

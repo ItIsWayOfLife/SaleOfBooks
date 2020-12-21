@@ -34,7 +34,7 @@ namespace WebApp.Models.Account
         [Display(Name = "Address")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Enter postal code")]
+        [Required(ErrorMessage = "Enter postcode")]
         [Display(Name = "Postcode")]
         public string Postcode { get; set; }
     }

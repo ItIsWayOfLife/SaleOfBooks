@@ -298,7 +298,7 @@ namespace WebApp.Controllers.Identity
             return View(model);
         }
 
-        public async Task<IActionResult> ChangePath(IFormFile uploadedFile, [FromForm] string path_)
+        public async Task<IActionResult> ChangePath(IFormFile uploadedFile)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -326,7 +326,7 @@ namespace WebApp.Controllers.Identity
                 }
                 else
                 {
-                    path = path_;
+                    path = "";
                 }
 
                 user.Path = path;

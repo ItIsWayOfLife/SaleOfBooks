@@ -27,7 +27,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -301,3 +301,12 @@ error-box {
 #lbUpProfile:hover {
     color: darkblue;
 }
+
+.wrText {
+    word-wrap: break-word;
+}
+
+#searchSelectionString{
+    height: 1.8em;
+}
+

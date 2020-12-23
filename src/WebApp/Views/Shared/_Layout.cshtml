@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -25,7 +26,7 @@
                         <a class="nav-link" routerLinkActive="active" href="">Buy <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Rent</a>
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">Users</a>
                     </li>
                 </ul>
                 <nav>

@@ -24,9 +24,8 @@ namespace Web.Controllers.Identity
         }
 
         [HttpGet]
-        public ActionResult Index(string searchSelectionString, string name)
+        public IActionResult Index(string searchSelectionString, string seacrhString = "")
         {
-
             var listUsers = _userManager.Users;
             var listViewUsers = new List<UserViewModel>();
 
@@ -45,29 +44,29 @@ namespace Web.Controllers.Identity
 
             List<string> searchSelection = new List<string>() { "Search by", "Id", "Email", "Full name" };
 
-            if (name == null)
-                name = "";
+            if (seacrhString == null)
+            {
+                seacrhString = "";
+            }
 
             if (searchSelectionString == searchSelection[1])
             {
-                listViewUsers = listViewUsers.Where(e => e.Id.ToLower().Contains(name.ToLower())).ToList();
+                listViewUsers = listViewUsers.Where(e => e.Id.ToLower().Contains(seacrhString.ToLower())).ToList();
             }
-
-            if (searchSelectionString == searchSelection[2])
+            else if (searchSelectionString == searchSelection[2])
             {
-                listViewUsers = listViewUsers.Where(e => e.Email.ToLower().Contains(name.ToLower())).ToList();
+                listViewUsers = listViewUsers.Where(e => e.Email.ToLower().Contains(seacrhString.ToLower())).ToList();
             }
-
-            if (searchSelectionString == searchSelection[3])
+            else if (searchSelectionString == searchSelection[3])
             {
-                listViewUsers = listViewUsers.Where(e => e.FLP.ToLower().Contains(name.ToLower())).ToList();
+                listViewUsers = listViewUsers.Where(e => e.FLP.ToLower().Contains(seacrhString.ToLower())).ToList();
             }
 
             return View(new UserFilterListViewModel()
             {
                 ListUsers = new ListUserViewModel { Users = listViewUsers },
                 SearchSelection = new SelectList(searchSelection),
-                SeacrhString = name,
+                SeacrhString = seacrhString,
                 SearchSelectionString = searchSelectionString
             });
         }

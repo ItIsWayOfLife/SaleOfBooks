@@ -21,7 +21,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Helper;
+using WebApp.Interfaces;
 using WebApp.Logger;
+using WebApp.Services;
 
 namespace WebApp
 {
@@ -67,6 +70,10 @@ namespace WebApp
             services.AddTransient<IConverter<Book, BookDTO>, ConverterBook>();
             services.AddTransient<IConverter<FeedBack, FeedBackDTO>, ConverterFeedBack>();
             services.AddTransient<IConverter<Review, ReviewDTO>, ConverterIReview>();
+
+            services.AddTransient<IUserHelper, UserHelper>();
+
+            services.AddTransient<ILoggerService, LoggerService>();
 
             services.AddControllersWithViews();
         }

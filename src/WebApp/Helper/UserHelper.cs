@@ -6,7 +6,7 @@ using WebApp.Interfaces;
 
 namespace WebApp.Helper
 {
-    internal class UserHelper : IUserHelper
+    public class UserHelper : IUserHelper
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -49,6 +49,22 @@ namespace WebApp.Helper
             }
 
             return user.Id;
+        }
+
+        public bool CheckUserExists(string id)
+        {
+            ApplicationUser user = null;
+            user = _userManager.Users.FirstOrDefault(p => p.Id == id);
+
+            return user == null ? false : true;
+        }
+
+        public ApplicationUser GetUserById(string id)
+        {
+            ApplicationUser user = null;
+            user = _userManager.Users.FirstOrDefault(p => p.Id == id);
+
+            return user;
         }
     }
 }

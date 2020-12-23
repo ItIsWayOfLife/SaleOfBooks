@@ -4,19 +4,36 @@
 @{
     ViewData["Title"] = "change of rights";
 }
-<div class="center">
-    <h1>Change of rights @Model.UserEmail</h1>
-    <br />
-    <form asp-action="Edit" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <input type="hidden" name="userId" value="@Model.UserId" />
-        <div class="inputRole">
-            @foreach (IdentityRole role in Model.AllRoles)
-            {
-                <input type="checkbox" name="roles" value="@role.Name"
-                       @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
-                }
+
+<div class="row">
+    <div class="col-6 m-auto">
+        <div class="card m-auto">
+            <div class="card-header">
+                <h3>CChange of rights @Model.UserEmail</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" autocomplete="off" asp-action="Edit" asp-controller="Roles">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <input type="hidden" name="userId" value="@Model.UserId" />
+
+                    <div class="form-group col-12">
+                        @foreach (IdentityRole role in Model.AllRoles)
+                        {
+                        <div class="form-control">
+                            <label for="@role.Name">@role.Name</label>
+                            <input id="@role.Name" type="checkbox" name="roles" value="@role.Name"
+                                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                        </div>
+                            }
+                    </div>
+
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">Change</button>
+                        <a asp-controller="Users" asp-action="Index" class="btn btn-warning">Back</a>
+                    </div>
+
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn_">Save</button>
-    </form>
+    </div>
 </div>

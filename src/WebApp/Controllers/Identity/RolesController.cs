@@ -1,4 +1,5 @@
-﻿using Core.Identity;
+﻿using Core.Constants;
+using Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebApp.Interfaces;
 using WebApp.Models;
 using WebApp.Models.Roles;
 
@@ -18,22 +20,22 @@ namespace WebApp.Controllers.Identity
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<RolesController> _logger;
+        private readonly ILoggerService _loggerService;
+
+        private const string CONTROLLER_NAME = "roles";
 
         public RolesController(RoleManager<IdentityRole> roleManager,
             UserManager<ApplicationUser> userManager,
-            ILogger<RolesController> logger)
+            ILoggerService loggerService)
         {
             _roleManager = roleManager;
             _userManager = userManager;
-            _logger = logger;
+            _loggerService = loggerService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(string userId)
         {
-            _logger.LogInformation($"{DateTime.Now.ToString()}: Processing request Roles/Edit");
-
             // get users
             var user = await _userManager.FindByIdAsync(userId);
 
@@ -49,6 +51,9 @@ namespace WebApp.Controllers.Identity
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };
+
+                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
 
                 return View(model);
             }
@@ -78,9 +83,14 @@ namespace WebApp.Controllers.Identity
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
                 string currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                _logger.LogInformation($"{DateTime.Now.ToString()}: User {currentUserId} changed role for user {userId}");
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, $"edit roles user {user.Id}", currentUserId);
 
                 return RedirectToAction("Index", "Users");
+            }
+            else
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
             }
 
             return RedirectToAction("Error", "Home", new { requestId = "400" });

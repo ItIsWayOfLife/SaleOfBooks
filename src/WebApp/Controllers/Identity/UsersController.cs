@@ -1,4 +1,5 @@
-﻿using Core.Identity;
+﻿using Core.Constants;
+using Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using WebApp.Models;
+using WebApp.Interfaces;
 using WebApp.Models.Users;
 
 
@@ -17,10 +18,18 @@ namespace Web.Controllers.Identity
     public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILoggerService _loggerService;
+        private readonly IUserHelper _userHelper;
 
-        public UsersController(UserManager<ApplicationUser> userManager)
+        private const string CONTROLLER_NAME = "users";
+
+        public UsersController(UserManager<ApplicationUser> userManager,
+              ILoggerService loggerService,
+              IUserHelper userHelper)
         {
             _userManager = userManager;
+            _loggerService = loggerService;
+            _userHelper = userHelper;
         }
 
         [HttpGet]
@@ -62,6 +71,8 @@ namespace Web.Controllers.Identity
                 listViewUsers = listViewUsers.Where(e => e.FLP.ToLower().Contains(seacrhString.ToLower())).ToList();
             }
 
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
             return View(new UserFilterListViewModel()
             {
                 ListUsers = new ListUserViewModel { Users = listViewUsers },
@@ -74,6 +85,8 @@ namespace Web.Controllers.Identity
         [HttpGet]
         public IActionResult Create()
         {
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_GET, "create", GetCurrentUserId());
+
             return View();
         }
 
@@ -97,12 +110,16 @@ namespace Web.Controllers.Identity
 
                 if (result.Succeeded)
                 {
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create user {_userHelper.GetIdUserByEmail(model.Email)} successful", GetCurrentUserId());
+
                     return RedirectToAction("Index");
                 }
                 else
                 {
                     foreach (var error in result.Errors)
                     {
+                        _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"code:{error.Code}|description:{error.Description}", GetCurrentUserId());
+
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
@@ -119,6 +136,8 @@ namespace Web.Controllers.Identity
 
             if (user == null)
             {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
+
                 return RedirectToAction("Error", "Home", new { requestId = "400" });
             }
 
@@ -132,6 +151,8 @@ namespace Web.Controllers.Identity
                 Address = user.Address,
                 Postcode = user.Postcode
             };
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, $"edit user {id}", GetCurrentUserId());
 
             return View(model);
         }
@@ -154,19 +175,31 @@ namespace Web.Controllers.Identity
                     user.Postcode = model.Postcode;
 
                     var result = await _userManager.UpdateAsync(user);
+
                     if (result.Succeeded)
                     {
+                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit user {model.Id} successful", GetCurrentUserId());
+
                         return RedirectToAction("Index");
                     }
                     else
                     {
                         foreach (var error in result.Errors)
                         {
+                            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"code:{error.Code}|description:{error.Description}", GetCurrentUserId());
+
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
                     }
                 }
+                else
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
+
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                }
             }
+
 
             return View(model);
         }
@@ -179,9 +212,18 @@ namespace Web.Controllers.Identity
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE, LoggerConstants.TYPE_POST, $"delete user {id} successful", GetCurrentUserId());
+
+                    return RedirectToAction("Index");
+                }
             }
 
-            return RedirectToAction("Index");
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
+
+            return RedirectToAction("Error", "Home", new { requestId = "400" });
         }
 
         [HttpGet]
@@ -197,48 +239,52 @@ namespace Web.Controllers.Identity
 
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
 
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_GET, $"change password user {user.Id}", GetCurrentUserId());
+
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var user = await _userManager.FindByIdAsync(model.Id);
+
+                if (user != null)
                 {
-                    var user = await _userManager.FindByIdAsync(model.Id);
+                    IdentityResult result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
 
-                    if (user != null)
+                    if (result.Succeeded)
                     {
-                        IdentityResult result =
-                            await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
-                        if (result.Succeeded)
-                        {
-                            string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_POST, $"change password user {user.Id}", GetCurrentUserId());
 
-                            return RedirectToAction("Index");
-                        }
-                        else
-                        {
-                            foreach (var error in result.Errors)
-                            {
-                                ModelState.AddModelError(string.Empty, error.Description);
-                            }
-                        }
+                        return RedirectToAction("Index");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "User is not found");
+                        foreach (var error in result.Errors)
+                        {
+                            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_POST, $"code:{error.Code}|description:{error.Description}", GetCurrentUserId());
+
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
                     }
                 }
-            }
-            catch (Core.Exceptions.ValidationException ex)
-            {
-                ModelState.AddModelError(ex.Property, ex.Message);
+                else
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
+
+                    ModelState.AddModelError(string.Empty, "User is not found");
+                }
             }
 
             return View(model);
         }
-    }
+
+        private string GetCurrentUserId()
+        {
+            return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        }
+    }  
 }

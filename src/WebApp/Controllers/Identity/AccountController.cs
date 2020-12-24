@@ -250,7 +250,7 @@ namespace WebApp.Controllers.Identity
 
                 if (user == null)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
@@ -266,13 +266,13 @@ namespace WebApp.Controllers.Identity
                     Address = user.Address
                 };
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_GET, "edit", user.Id);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, "edit", user.Id);
 
                 return View(userView);
             }
             else
             {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -301,7 +301,7 @@ namespace WebApp.Controllers.Identity
 
                         if (result.Succeeded)
                         {
-                            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, "edit profile successful", user.Id);
+                            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, "edit profile successful", user.Id);
 
                             return RedirectToAction("Profile");
                         }
@@ -309,7 +309,7 @@ namespace WebApp.Controllers.Identity
                         {
                             foreach (var error in result.Errors)
                             {
-                                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, $"code:{error.Code}|description:{error.Description}", user.Id);
+                                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"code:{error.Code}|description:{error.Description}", user.Id);
 
                                 ModelState.AddModelError(string.Empty, error.Description);
                             }
@@ -317,7 +317,7 @@ namespace WebApp.Controllers.Identity
                     }
                     else
                     {
-                        _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
+                        _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
                         return RedirectToAction("Error", "Home", new { requestId = "400" });
                     }
@@ -327,7 +327,7 @@ namespace WebApp.Controllers.Identity
             }
             else
             {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
                 return RedirectToAction("Index", "Home");
             }

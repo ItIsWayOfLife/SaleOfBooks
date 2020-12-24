@@ -9,11 +9,13 @@ namespace Core.Constants
         public const string ACTIN_PROFILE = "/profile";
         public const string ACTION_CHANGEPASSWORD = "/changepassword";
         public const string ACTION_CHANGEPATH = "/changepath";
-        public const string ACTION_REGISTRATIONSUCCESSFUL = "registrationsuccessful";
+        public const string ACTION_REGISTRATIONSUCCESSFUL = "/registrationsuccessful";
 
-        public const string ACTIN_ADD = "/add";
-        public const string ACTIN_EDIT = "/edit";
-        public const string ACTIN_DELETE = "/delete";
+        public const string ACTION_INDEX = "/index";
+        public const string ACTION_ADD = "/add";
+        public const string ACTION_EDIT = "/edit";
+        public const string ACTION_DELETE = "/delete";
+        public const string ACTION_CREATE = "/create";
 
         public const string TYPE_GET = "get";
         public const string TYPE_POST = "post";

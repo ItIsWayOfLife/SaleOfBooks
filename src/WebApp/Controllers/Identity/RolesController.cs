@@ -3,14 +3,11 @@ using Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApp.Interfaces;
-using WebApp.Models;
 using WebApp.Models.Roles;
 
 namespace WebApp.Controllers.Identity
@@ -53,7 +50,7 @@ namespace WebApp.Controllers.Identity
                 };
 
                 string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
 
                 return View(model);
             }
@@ -84,13 +81,13 @@ namespace WebApp.Controllers.Identity
 
                 string currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, $"edit roles user {user.Id}", currentUserId);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user {user.Id}", currentUserId);
 
                 return RedirectToAction("Index", "Users");
             }
             else
             {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
             }
 
             return RedirectToAction("Error", "Home", new { requestId = "400" });

@@ -55,3 +55,123 @@ Application started. Press Ctrl+C to shut down.
 Hosting environment: Development
 Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
 [12/24/2020 2:04:53 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:04:59 PM]:[genre/index]:[type:get]:[info:index]:[user:anonymous]
+[12/24/2020 10:05:04 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:05:05 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:06 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:35 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:38 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:39 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:48 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:05:51 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:45 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:54 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:56 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:58 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:58 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:06:59 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:07:52 PM]:[genre/index]:[type:get]:[info:index]:[user:anonymous]
+[12/24/2020 10:07:55 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:07:56 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:07:57 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:07:58 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:07:59 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:08:01 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:14:27 PM]:[genre/index]:[type:get]:[info:index]:[user:anonymous]
+[12/24/2020 10:14:32 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:14:32 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:14:33 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:14:34 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:35 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:36 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:38 PM]:[genre/add]:[type:post]:[info:add successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:38 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:40 PM]:[genre/edit]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:42 PM]:[genre/edit]:[type:post]:[info:edit successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:42 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:43 PM]:[genre/edit]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:44 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:46 PM]:[genre/delete]:[type:post]:[info:delete successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:46 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:47 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:48 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:49 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:50 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:50 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:52 PM]:[account/edit]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:54 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:55 PM]:[account/changepassword]:[type:get]:[info:change password]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:56 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:57 PM]:[account/edit]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:14:59 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:02 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:04 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:08 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:08 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:15:10 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:11 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:12 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:25 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:15:26 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:28 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:29 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:15:30 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:15:35 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:15:36 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:15:38 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:16:59 PM]:[genre/index]:[type:get]:[info:index]:[user:anonymous]
+[12/24/2020 10:17:10 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:17:12 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:17:13 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:17:19 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:17:31 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:18:12 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:18:14 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:18:16 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:18:18 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 10:18:20 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:18:29 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 10:19:04 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:19:05 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[12/24/2020 10:19:07 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 10:19:08 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]

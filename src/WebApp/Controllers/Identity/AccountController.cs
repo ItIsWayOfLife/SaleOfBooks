@@ -42,6 +42,11 @@ namespace WebApp.Controllers.Identity
         [HttpGet]
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             _loggerService.LogInformation(CONTROLLER_NAME +LoggerConstants.ACTIN_REGISTER, LoggerConstants.TYPE_GET, "registeration", null);
 
             return View();
@@ -51,11 +56,6 @@ namespace WebApp.Controllers.Identity
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser
@@ -175,8 +175,6 @@ namespace WebApp.Controllers.Identity
 
                     return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
-
-                //    _logger.LogInformation($"[{DateTime.Now.ToString()}]:[account/logout]:[type:post]:[info:logout]:[user:{user.Id}]");
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGOUT, LoggerConstants.TYPE_POST, "logout", user.Id);
 

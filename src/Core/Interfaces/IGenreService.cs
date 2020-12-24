@@ -5,6 +5,7 @@ namespace Core.Interfaces
 {
     public interface IGenreService
     {
+        public IEnumerable<GenreDTO> GetGenresWithCountBooks();
         GenreDTO GetGenre(int? id);
         IEnumerable<GenreDTO> GetGenres();
         void Add(GenreDTO genreDTO);

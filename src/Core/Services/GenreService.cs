@@ -3,6 +3,7 @@ using Core.Entities;
 using Core.Exceptions;
 using Core.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Services
 {
@@ -64,9 +65,44 @@ namespace Core.Services
             Database.Save();
         }
 
+        public IEnumerable<GenreDTO> GetGenresWithCountBooks()
+        {
+            var listGenres = Database.Genre.GetAll().ToList();
+            var listBooks = Database.Book.GetAll().ToList();
+
+            List<GenreDTO> listGenreDto = new List<GenreDTO>();
+
+            foreach (var genre in listGenres)
+            {
+                listGenreDto.Add(new GenreDTO()
+                {
+                    CountBook = GetCountBooks(genre.Id, listBooks),
+                    Id = genre.Id,
+                    Name = genre.Name
+                });
+            }
+
+            return listGenreDto;
+        }
+
         public void Dispose()
         {
             Database.Dispose();
+        }
+
+        private int GetCountBooks(int genreId, IEnumerable<Book> books)
+        {
+            int count = 0;
+
+            foreach (var book in books.Where(p => p.IsDisplay == true))
+            {
+                if (book.GenreId == genreId)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }

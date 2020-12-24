@@ -1,0 +1,57 @@
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 1:49:34 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 1:49:37 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 1:51:23 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 1:51:34 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[12/24/2020 1:51:35 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[12/24/2020 1:51:56 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[12/24/2020 2:04:53 PM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]

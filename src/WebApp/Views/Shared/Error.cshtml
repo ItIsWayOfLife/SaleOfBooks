@@ -7,7 +7,16 @@
 <div id="wrapper" class="container-fluid">
     <div class="error-box">
         <div class="error-body text-center">
-            <h1 class="text-danger">@Model.RequestId</h1>
+
+            @if (Model.RequestId != null)
+            {
+                <h1 class="text-danger">@Model.RequestId</h1>
+            }
+            else
+            {
+                <h1 class="text-danger">500</h1>
+            }
+
             @if (@Model.RequestId == "404")
             {
                 <h3>Page Not Found !</h3>
@@ -27,7 +36,7 @@
                 <h3>
                     Sorry There Was An Error
                 </h3>
-                <br/>
+                <br />
                 <a href="/" class="btn btn-danger btn-rounded m-b-40">Back to home</a>
             }
         </div>

@@ -7,6 +7,7 @@ namespace Core.Interfaces
     {
         BookDTO GetBook(int? id);
         IEnumerable<BookDTO> GetBooks();
+        public IEnumerable<BookDTO> GetFavoriteBooks();
         void Add(BookDTO bookDTO);
         void Edit(BookDTO bookDTO);
         void Delete(int? id);

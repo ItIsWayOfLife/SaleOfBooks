@@ -12,6 +12,7 @@ namespace Core.DTO
         public string Author { get; set; }
         public string PublishingHouse { get; set; }
         public string YearPublishing { get; set; }
+        public string YearOfWriting { get; set; }
         public bool IsNew { get; set; }
         public bool IsFavorite { get; set; }
         public int GenreId { get; set; }

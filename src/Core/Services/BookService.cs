@@ -1,8 +1,10 @@
-﻿using Core.DTO;
+﻿using Core.Constants;
+using Core.DTO;
 using Core.Entities;
 using Core.Exceptions;
 using Core.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Services
 {
@@ -38,6 +40,11 @@ namespace Core.Services
             return _converterBook.ConvertModelsByDTOs(booksDTOs);
         }
 
+        public IEnumerable<BookDTO> GetFavoriteBooks()
+        {
+            return GetBooks().Where(p => p.IsFavorite == true);
+        }
+
         public void Add(BookDTO bookDTO)
         {
             Database.Book.Create(_converterBook.ConvertDTOByModel(bookDTO));
@@ -46,7 +53,26 @@ namespace Core.Services
 
         public void Edit(BookDTO bookDTO)
         {
-            Database.Book.Update(_converterBook.ConvertDTOByModel(bookDTO));
+            Book book = Database.Book.Get(bookDTO.Id);
+
+            if (book == null)
+                throw new ValidationException("Book not found", "");
+
+            book.Info = bookDTO.Info;
+            book.IsDisplay = bookDTO.IsDisplay;
+            book.IsFavorite = bookDTO.IsFavorite;
+            book.IsNew = bookDTO.IsNew;
+            book.Name = bookDTO.Name;
+            book.Path = (bookDTO.Path).Replace(PathConstants.PAPH_BOOKS, "");
+            book.Price = bookDTO.Price;
+            book.PublishingHouse = bookDTO.PublishingHouse;
+            book.YearOfWriting = bookDTO.YearOfWriting;
+            book.YearPublishing = bookDTO.YearPublishing;
+            book.Author = bookDTO.Author;
+            book.Code = bookDTO.Code;
+            book.GenreId = bookDTO.GenreId;
+            
+            Database.Book.Update(book);
             Database.Save();
         }
 

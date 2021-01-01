@@ -1,7 +1,7 @@
 ﻿@model WebApp.Models.Genre.GenreViewModel
 
 <div class="col-lg-3">
-    <a asp-controller="Book" asp-action="GetBooks" asp-route-stringGenre="@Model.Name"><h3>@Model.Name (@Model.CountBook books)</h3></a>
+    <a asp-controller="Book" asp-action="Index" asp-route-stringGenre="@Model.Name"><h3>@Model.Name (@Model.CountBook books)</h3></a>
     @if (User.IsInRole("admin"))
     {
         <div class="btn-group" rold="group">

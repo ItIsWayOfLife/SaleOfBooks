@@ -1,0 +1,103 @@
+﻿@model WebApp.Models.Book.AddBookGenreViewModel
+
+@{
+    ViewBag.Title = "Add book";
+}
+
+<div class="row">
+    <div class="col-6 m-auto">
+        <div class="card m-auto">
+            <div class="card-header">
+                <h3>Add book</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Book" asp-action="Add" enctype="multipart/form-data">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                    <div class="form-group col-12">
+                        <label for="file">Image</label>
+                        <input type="file" name="uploadedFile"  id="file"/><br>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Name"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Name"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.Name" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Info"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Info"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.Info" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Code"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Code"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.Code" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Author"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Author"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.Author" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Price"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Price"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.Price" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.PublishingHouse"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.PublishingHouse"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.PublishingHouse" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.YearOfWriting"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.YearOfWriting"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.YearOfWriting" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.YearPublishing"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.YearPublishing"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.YearPublishing" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.IsFavorite"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.IsFavorite"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.IsFavorite" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.IsDisplay"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.IsDisplay"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.IsDisplay" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.IsNew"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.IsNew"></span><br />
+                        <input class="form-control" asp-for="AddBookViewModel.IsNew" />
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="AddBookViewModel.Genre"></label>
+                        <span class="text-danger" asp-validation-for="AddBookViewModel.Genre"></span><br />
+                        <select class="form-control"  asp-items="Model.Genres" asp-for="AddBookViewModel.Genre"></select>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <a asp-controller="Book" asp-action="Index" class="btn btn-warning">Back</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

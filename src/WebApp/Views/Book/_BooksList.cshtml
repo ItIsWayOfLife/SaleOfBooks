@@ -1,0 +1,64 @@
+﻿@model WebApp.Models.Book.BookViewModel
+
+<div class="col-4">
+    <div class="shadow-lg p-3 bg-white mt-3">
+        <div class="card">
+            @if (Model.Path != null)
+            {
+                <div class="card-img-wrapper">
+                    <a asp-action="GetBookInfo" asp-controller="Book" asp-route-id="@Model.Id"> <img class="card-img-top" src="@Model.Path" alt="@Model.Name" /></a>
+                </div>
+            }
+            <div class="container">
+                <h2>Name: @Model.Name</h2>
+                @if (User.IsInRole("admin") || User.IsInRole("employee"))
+                {
+                    <h6>Id: @Model.Id </h6>
+                    <h6>Year of writing: @Model.YearOfWriting </h6>
+                    <h6>Year publishing: @Model.YearPublishing </h6>
+                    <h6>Info: @Model.Info</h6>
+                    <h6>Publishing house: @Model.PublishingHouse</h6>
+                    <h6>Info: @Model.Info</h6>
+                    <h6>
+                        Is display: @if (@Model.IsDisplay)
+                        {<span>Yes</span>}
+                        else
+                        {<span>No</span>}
+                    </h6>
+                    <h6>
+                        Is favorite: @if (@Model.IsFavorite)
+                        {<span>Yes</span>}
+                        else
+                        {<span>No</span>}
+                    </h6>
+                    <h6>
+                        IsNew:  @if (@Model.IsNew)
+                        {<span>Yes</span>}
+                        else
+                        {<span>No</span>}
+                    </h6>
+                }
+
+                <h6>Code: @Model.Code</h6>
+                <h6>Author: @Model.Author </h6>
+                <h6>Genre: @Model.Genre</h6>
+                <h6>Price: @Model.Price $</h6>
+            </div>
+            <a class="btn btn-sm btn-success" asp-action="Add" asp-controller="Cart" asp-route-bookId="@Model.Id">
+                Add to cart
+            </a>
+            @if (User.IsInRole("admin") || User.IsInRole("employee"))
+            {
+                <div style="margin: 2%;">
+                    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                        <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                        <button onclick="if (!confirm('Are you sure you want to delete this Item?')) { return false }" type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

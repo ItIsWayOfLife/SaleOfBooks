@@ -32,7 +32,8 @@ namespace Core.Converters
                 Path = (modelDTO.Path).Replace(PathConstants.PAPH_BOOKS, ""),
                 Price = modelDTO.Price,
                 PublishingHouse = modelDTO.PublishingHouse,
-                YearPublishing = modelDTO.YearPublishing
+                YearPublishing = modelDTO.YearPublishing,
+                YearOfWriting = modelDTO.YearOfWriting
             };
 
             return book;
@@ -77,7 +78,8 @@ namespace Core.Converters
                 GenreId = model.GenreId,
                 Info = model.Info,
                 IsDisplay = model.IsDisplay,
-                IsFavorite = model.IsFavorite
+                IsFavorite = model.IsFavorite,
+                YearOfWriting = model.YearOfWriting
             };
 
             return bookDTO;

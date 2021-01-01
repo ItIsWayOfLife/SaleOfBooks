@@ -73,6 +73,7 @@ namespace WebApp
             services.AddTransient<IConverter<Review, ReviewDTO>, ConverterIReview>();
 
             services.AddTransient<IUserHelper, UserHelper>();
+            services.AddTransient<IBookHelper, BookHelper>();
 
             services.AddTransient<ILoggerService, LoggerService>();
 
@@ -82,12 +83,11 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseMiddleware<ExceptionInterceptor>();
-
-            env.EnvironmentName = "Production";
 
             loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
             var logger = loggerFactory.CreateLogger("FileLogger");
+
+            env.EnvironmentName = "Production";
 
             if (env.IsDevelopment())
             {
@@ -95,12 +95,13 @@ namespace WebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+            //    app.UseHsts();
             }
-
+            app.UseExceptionHandler("/Home/Error");
             app.UseStatusCodePagesWithReExecute("/Home/Error", "?requestId={0}");
+
+            app.UseMiddleware<ExceptionInterceptor>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

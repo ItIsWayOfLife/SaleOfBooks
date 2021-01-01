@@ -1,0 +1,65 @@
+﻿@model WebApp.Models.Book.ListBookViewModel
+@addTagHelper *, WebApp
+@{
+    ViewBag.Title = "Books";
+}
+
+<form method="get">
+    <label asp-for="SortString">Sort by</label>
+    <select name="sortString" asp-items="Model.ListSort" asp-for="SortString"></select>
+    <label asp-for="StringGenre">Genre</label>
+    <select name="stringGenre" asp-items="Model.ListGenres" asp-for="StringGenre"></select>
+    <label asp-for="SearchFor">Search by</label>
+    <select name="searchFor" asp-items="Model.ListSearch" asp-for="SearchFor"></select>
+    <label asp-for="NameSearch">Search</label>
+    <input type="text" name="nameSearch" asp-for="NameSearch" />
+    <input  class="btn btn-sm btn-success" type="submit" value="Apply" />
+    <a class="btn btn-sm btn-danger" asp-action="Index">Refresh</a>
+    @if (User.IsInRole("admin") || User.IsInRole("employee"))
+    {
+        <label asp-for="IsActive">Active</label>
+        <input type="checkbox" name="isActive" asp-for="IsActive" />
+        <a class="btn btn-sm btn-primary" asp-action="Add">Add book</a>
+    }
+</form>
+
+<div class="row mt-5 mb-2">
+    @{
+        foreach (WebApp.Models.Book.BookViewModel book in Model.Books)
+        {
+            @await Html.PartialAsync("_BooksList", book)
+        }
+    }
+</div>
+
+<div class="mt-5" style="margin-left: 45%;">
+    <page-link list-book-view-model="Model" page-action="Index"></page-link>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index" style="margin-left: -15%; margin-top: -100px;"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           asp-route-sortString="@Model.SortString"
+           asp-route-stringGenre="@Model.StringGenre"
+           asp-route-searchFor="@Model.SearchFor"
+           asp-route-nameSearch="@Model.NameSearch"
+           asp-route-isActive="@Model.IsActive"
+           class="btn btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Back
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index" style="margin-left: 27%; margin-top: -100px;"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           asp-route-sortString="@Model.SortString"
+           asp-route-stringGenre="@Model.StringGenre"
+           asp-route-searchFor="@Model.SearchFor"
+           asp-route-nameSearch="@Model.NameSearch"
+           asp-route-isActive="@Model.IsActive"
+           class="btn btn-outline-dark">
+            Next
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+</div>

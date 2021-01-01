@@ -27,8 +27,10 @@ namespace WebApp.Exceptions
             }
             catch(Exception ex)
             {
+              
                 _logger.LogError($"{DateTime.Now}: Something went wrong: {ex}");
-                await HandleException(context, ex);
+
+                await _next.Invoke(context);
             }
         }
 

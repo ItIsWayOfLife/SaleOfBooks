@@ -70,7 +70,7 @@ namespace WebApp.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Create()
         {
             if (User.Identity.IsAuthenticated)
@@ -80,12 +80,12 @@ namespace WebApp.Controllers
                 _orderService.Create(currentUserId);
                 _cartService.AllDeleteBooksToCart(currentUserId);
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, "create order", GetCurrentUserId());
 
                 return RedirectToAction($"Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }

@@ -16,35 +16,23 @@ namespace Core.Services
         {
             Database = uow;
         }
-
-        private decimal FullPriceOrder(IEnumerable<OrderBooks> orderBooks)
-        {
-            decimal fullPrice = 0;
-
-            foreach (var cartBook in orderBooks)
-            {
-                fullPrice += cartBook.Count * cartBook.Book.Price;
-            }
-
-            return fullPrice;
-        }
-
+    
         public OrderDTO Create(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("Не установлен id пользователя", "");
+                throw new ValidationException("User id not set", "");
 
             var cart = Database.Cart.Find(p => p.ApplicationUserId == applicationUserId).FirstOrDefault();
 
             if (cart == null)
-                throw new ValidationException("Корзина не найдена", "");
+                throw new ValidationException("Cart not found", "");
 
             var cartBooks = Database.CartBooks.Find(p => p.CartId == cart.Id).ToList();
 
             if (cartBooks == null || cartBooks.Count() == 0)
-                throw new ValidationException("Корзина пуста", "");
+                throw new ValidationException("Cart is empty", "");
 
-            // созд заказ
+            // create order
             Order order = new Order() { ApplicationUserId = applicationUserId, DateOrder = DateTime.Now };
 
             Database.Order.Create(order);
@@ -76,7 +64,7 @@ namespace Core.Services
         public IEnumerable<OrderDTO> GetOrders(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("Не установлен id пользователя", "");
+                throw new ValidationException("User id not set", "");
 
             var orders = Database.Order.Find(p => p.ApplicationUserId == applicationUserId);
 
@@ -99,10 +87,10 @@ namespace Core.Services
         public IEnumerable<OrderBooksDTO> GetOrderBooks(string applicationUserId, int? orderId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("Не установлен id пользователя", "");
+                throw new ValidationException("User id not set", "");
 
             if (orderId == null)
-                throw new ValidationException("Заказ не выбран", "");
+                throw new ValidationException("Order not selected", "");
 
             var orderBooks = Database.OrderBooks.Find(p => p.OrderId == orderId).Where(p => p.Order.ApplicationUserId == applicationUserId);
 
@@ -125,6 +113,18 @@ namespace Core.Services
             }
 
             return orderBooksDTOs;
+        }
+
+        private decimal FullPriceOrder(IEnumerable<OrderBooks> orderBooks)
+        {
+            decimal fullPrice = 0;
+
+            foreach (var cartBook in orderBooks)
+            {
+                fullPrice += cartBook.Count * cartBook.Book.Price;
+            }
+
+            return fullPrice;
         }
     }
 }

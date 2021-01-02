@@ -22,11 +22,6 @@ namespace Core.Services
             _convertReview = convertReview;
         }
 
-      
-
-
-
-
         public ReviewDTO GetReview(int? id)
         {
             throw new NotImplementedException();

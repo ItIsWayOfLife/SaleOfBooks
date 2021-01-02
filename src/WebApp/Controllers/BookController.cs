@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using Core.Constants;
+﻿using Core.Constants;
 using Core.DTO;
-using Core.Exceptions;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,6 +37,7 @@ namespace WebApp.Controllers
 
             IEnumerable<BookDTO> booksDtos = _bookService.GetFavoriteBooks();
             var books = _bookHelper.GetBooksViewModel(booksDtos);
+
             return View(new ListBookViewModel() { Books = books });
         }
 
@@ -361,29 +358,5 @@ namespace WebApp.Controllers
 
             return View(model);
         }
-
-        // clear path and not genre
-        //private BookDTO GetBookViewModel(BookViewModel bookView)
-        //{
-        //    BookDTO bookDTO = new BookDTO()
-        //    {
-        //        Id = bookView.Id,
-        //        GenreId = bookView.GenreId,
-        //        Name = bookView.Name,
-        //        Author = bookView.Author,
-        //        Code = bookView.Code,
-        //        Info = bookView.Info,
-        //        IsFavorite = bookView.IsFavorite,
-        //        Path = bookView.Path,
-        //        Price = bookView.Price,
-        //        PublishingHouse = bookView.PublishingHouse,
-        //        YearOfWriting = bookView.YearOfWriting,
-        //        YearPublishing = bookView.PublishingHouse,
-        //        IsDisplay = bookView.IsDisplay
-        //    };
-
-        //    return bookDTO;
-        //}
-
     }
 }

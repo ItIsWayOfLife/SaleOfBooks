@@ -488,3 +488,115 @@ Hosting environment: Development
 Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
 [1/2/2021 12:34:12 AM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
 [1/2/2021 12:34:43 AM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 8:55:34 AM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 8:55:37 AM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 9:19:25 AM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+1/2/2021 9:20:09 AM: Something went wrong: Core.Exceptions.ValidationException: Не установлено id удаляемой книги из корзины
+   at Core.Services.CartService.DeleteCartBook(Nullable`1 id, String applicationUserId) in C:\Users\asus\Desktop\Work\SaleOfBooks\src\Core\Services\CartService.cs:line 96
+   at WebApp.Controllers.CartController.Delete(Nullable`1 cartBookId) in C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp\Controllers\CartController.cs:line 55
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApp.Exceptions.ExceptionInterceptor.InvokeAsync(HttpContext context) in C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp\Exceptions\ExceptionInterceptor.cs:line 26
+An unhandled exception has occurred while executing the request.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 9:31:38 AM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:38 AM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:41 AM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:42 AM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:42 AM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:46 AM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:48 AM]:[account/profile]:[type:get]:[info:profile]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:56 AM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 9:31:56 AM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp

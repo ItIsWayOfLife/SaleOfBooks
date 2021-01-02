@@ -27,27 +27,11 @@ namespace WebApp.Controllers
 
         public OrderController(IOrderService orderService,
             ICartService cartService,
-             ILoggerService loggerService)
+            ILoggerService loggerService)
         {
             _orderService = orderService;
             _cartService = cartService;
             _loggerService = loggerService;
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                string currentUserId = GetCurrentUserId();
-
-                _orderService.Create(currentUserId);
-                _cartService.AllDeleteBooksToCart(currentUserId);
-
-                return RedirectToAction($"Index");
-            }
-
-            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
@@ -76,14 +60,38 @@ namespace WebApp.Controllers
                         _ => orders.OrderBy(s => s.Id).ToList(),
                     };
 
-                    return View(orders);               
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
+                return View(orders);               
             }
+
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
-        public IActionResult GetOrderDishes(int orderId)
+        public IActionResult Create()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string currentUserId = GetCurrentUserId();
+
+                _orderService.Create(currentUserId);
+                _cartService.AllDeleteBooksToCart(currentUserId);
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
+                return RedirectToAction($"Index");
+            }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
+
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public IActionResult GetOrderBooks(int orderId)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -100,8 +108,12 @@ namespace WebApp.Controllers
 
                 ViewData["FullPrice"] = _orderService.GetOrders(currentUserId).Where(p => p.Id == orderId).FirstOrDefault().FullPrice;
 
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"get order books", GetCurrentUserId());
+
                 return View(orderDishes);
             }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }

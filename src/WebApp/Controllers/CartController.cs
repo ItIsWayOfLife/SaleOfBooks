@@ -69,7 +69,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -86,7 +86,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -103,7 +103,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -120,7 +120,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }

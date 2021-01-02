@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
 using WebApp.Models.Cart;
+using WebApp.Interfaces;
 
 namespace WebApp.Controllers
 {
@@ -14,10 +15,15 @@ namespace WebApp.Controllers
     public class CartController : Controller
     {
         private readonly ICartService _cartService;
+        private readonly ILoggerService _loggerService;
 
-        public CartController(ICartService cartService)
+        private const string CONTROLLER_NAME = "cart";
+
+        public CartController(ICartService cartService,
+            ILoggerService loggerService)
         {
             _cartService = cartService;
+            _loggerService = loggerService;
         }
 
         [HttpGet]
@@ -41,34 +47,46 @@ namespace WebApp.Controllers
 
                 ViewData["FullPrice"] = _cartService.FullPriceCart(currentUserId);
 
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
                 return View(cartDishes);
             }
+
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
-        public IActionResult Delete(int? cartBookId)
+        public IActionResult Delete(int cartBookId)
         {
             if (User.Identity.IsAuthenticated)
             {
                 _cartService.DeleteCartBook(cartBookId, GetCurrentUserId());
 
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{cartBookId}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+
                 return RedirectToAction("Index");
             }
 
-           return RedirectToAction("Login", "Account");
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
+
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
-        public IActionResult Add(int? bookId)
+        public IActionResult Add(int bookId)
         {
             if (User.Identity.IsAuthenticated)
             {
                 _cartService.AddBookToCart(bookId, GetCurrentUserId());
 
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD +$"{bookId}", LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+
                 return RedirectToAction("Index");
             }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -80,21 +98,29 @@ namespace WebApp.Controllers
             {
                 _cartService.AllDeleteBooksToCart(GetCurrentUserId());
 
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+
                 return RedirectToAction("Index");
             }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
-        public IActionResult Update(int? bookCartId, int count)
+        public IActionResult Update(int bookCartId, int count)
         {
             if (User.Identity.IsAuthenticated)
             {
                 _cartService.UpdateCountBookInCart(GetCurrentUserId(), bookCartId, count);
 
+              _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, "update successful", GetCurrentUserId());
+
                 return RedirectToAction("Index");
             }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }

@@ -62,7 +62,7 @@ namespace WebApp.Controllers
         {
             _genreService.Delete(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE, LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -77,7 +77,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Error", "Home", new { requestId = "400" });
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
 
             return View(new EditGenreViewModel() { Id = genreDTO.Id, Name = genreDTO.Name });
         }

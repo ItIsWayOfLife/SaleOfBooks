@@ -136,7 +136,7 @@ namespace Web.Controllers.Identity
 
             if (user == null)
             {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, GetCurrentUserId());
 
                 return RedirectToAction("Error", "Home", new { requestId = "400" });
             }
@@ -215,7 +215,7 @@ namespace Web.Controllers.Identity
 
                 if (result.Succeeded)
                 {
-                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE, LoggerConstants.TYPE_POST, $"delete user {id} successful", GetCurrentUserId());
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete user {id} successful", GetCurrentUserId());
 
                     return RedirectToAction("Index");
                 }
@@ -239,7 +239,7 @@ namespace Web.Controllers.Identity
 
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_GET, $"change password user {user.Id}", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD +$"/{id}", LoggerConstants.TYPE_GET, $"change password user {user.Id}", GetCurrentUserId());
 
             return View(model);
         }
@@ -284,7 +284,14 @@ namespace Web.Controllers.Identity
 
         private string GetCurrentUserId()
         {
-            return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (User.Identity.IsAuthenticated)
+            {
+                return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
+            else
+            {
+                return null;
+            }
         }
     }  
 }

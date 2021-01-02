@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApp.Interfaces;
 using WebApp.Models.Book;
@@ -20,23 +21,30 @@ namespace WebApp.Controllers
     {
         private readonly IBookService _bookService;
         private readonly IWebHostEnvironment _appEnvironment;
+        private readonly IBookHelper _bookHelper;
+        private readonly ILoggerService _loggerService;
 
-        private readonly IBookHelper _bookHelper; 
+        private const string CONTROLLER_NAME = "book";
 
-        public BookController(IBookService bookService, IWebHostEnvironment appEnvironment, IBookHelper bookHelper)
+        public BookController(IBookService bookService,
+            IWebHostEnvironment appEnvironment,
+            IBookHelper bookHelper,
+            ILoggerService loggerService)
         {
             _bookService = bookService;
             _appEnvironment = appEnvironment;
             _bookHelper = bookHelper;
+            _loggerService = loggerService;
         }
-       
+
         [AllowAnonymous]
         [HttpGet]
         public ActionResult ListFavoriteBook()
         {
-
             IEnumerable<BookDTO> booksDtos = _bookService.GetFavoriteBooks();
             var books = _bookHelper.GetBooksViewModel(booksDtos);
+
+            _loggerService.LogInformation(CONTROLLER_NAME + "/listfavoritebook", LoggerConstants.TYPE_GET, "list favorite book", GetCurrentUserId());
 
             return View(new ListBookViewModel() { Books = books });
         }
@@ -185,10 +193,10 @@ namespace WebApp.Controllers
 
             #endregion
 
-            
+
             #region Pagination
 
-            int pageSize = 12;  
+            int pageSize = 12;
 
             var count = books.Count;
             var items = books.Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -196,6 +204,8 @@ namespace WebApp.Controllers
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
 
             #endregion
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
 
             return View(new ListBookViewModel()
             {
@@ -217,20 +227,26 @@ namespace WebApp.Controllers
         {
             var bookDto = _bookService.GetBook(id);
 
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, "get book info", GetCurrentUserId());
+
             return View(_bookHelper.GetBookViewModel(bookDto));
         }
 
         [HttpPost]
         public IActionResult Delete(int id)
         {
-                _bookService.Delete(id);
+            _bookService.Delete(id);
 
-                return RedirectToAction("Index");           
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Add()
         {
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+
             return View(new AddBookGenreViewModel { Genres = new SelectList(_bookHelper.GetGenres()) });
         }
 
@@ -257,11 +273,13 @@ namespace WebApp.Controllers
                     path = "";
                 }
 
-               int? idGenre = _bookHelper.GetGenreIdByName(model.AddBookViewModel.Genre);
+                int? idGenre = _bookHelper.GetGenreIdByName(model.AddBookViewModel.Genre);
 
                 if (idGenre == null)
                 {
-                    return RedirectToAction("Error", "Home", new { requestId = "400" }); 
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
+
+                    return RedirectToAction("Error", "Home", new { requestId = "400" });
                 }
 
                 bookDto = new BookDTO
@@ -283,9 +301,11 @@ namespace WebApp.Controllers
 
                 _bookService.Add(bookDto);
 
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
+
                 return RedirectToAction("Index");
             }
-                            
+
             model.Genres = new SelectList(_bookHelper.GetGenres());
 
             return View(model);
@@ -297,6 +317,8 @@ namespace WebApp.Controllers
             BookDTO bookDTO = _bookService.GetBook(id);
             BookViewModel bookViewModel = _bookHelper.GetBookViewModel(bookDTO);
             var genresList = _bookHelper.GetGenres();
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
 
             return View(new EditBookGenreViewModel() { BookViewModel = bookViewModel, Genres = new SelectList(genresList) });
         }
@@ -357,6 +379,18 @@ namespace WebApp.Controllers
             model.Genres = new SelectList(_bookHelper.GetGenres());
 
             return View(model);
+        }
+
+        private string GetCurrentUserId()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

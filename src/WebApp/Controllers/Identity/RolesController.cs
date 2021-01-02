@@ -50,7 +50,7 @@ namespace WebApp.Controllers.Identity
                 };
 
                 string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{userId}", LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
 
                 return View(model);
             }

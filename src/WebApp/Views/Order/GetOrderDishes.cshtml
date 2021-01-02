@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApp.Models.Order.OrderBooksViewModel>
+
+@{
+    ViewBag.Title = "Ordered books";
+}
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Ordered books</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+
+                    @if (Model.Any())
+                    {
+                        <table class="table center">
+                            <tr>
+                                <th>Book</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>Price for one</th>
+                                <th>Number</th>
+                                <th>Price for all books</th>
+                            </tr>
+
+                            @foreach (var cartB in Model)
+                            {
+                                <tr>
+                                    <td> <a asp-action="GetBookInfo" asp-controller="Book" asp-route-id="@cartB.BookId"> <img style="width:60px; height: 60px;" src="@cartB.Path" /> </a> </td>
+                                    <td>@cartB.Code</td>
+                                    <td>@cartB.Name</td>
+                                    <td>@cartB.Author</td>
+                                    <td>@cartB.Price</td>
+                                    <td>@cartB.Count</td>
+                                    <td>@Math.Round(cartB.Count * cartB.Price, 2) $</td>
+                                </tr>
+                            }
+                        </table>
+                        <br />
+
+                        <div class="float-right">
+                            <span class="text-danger" style="font-size: 1.7em; font-weight: 700;">Total price: @ViewData["FullPrice"] $</span>
+                        </div>
+                        <br />
+                    }
+                    else
+                    {
+                        <h2 class="text-center text-danger">
+                            Order is empty
+                        </h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

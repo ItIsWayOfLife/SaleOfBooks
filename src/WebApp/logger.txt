@@ -49,3 +49,239 @@ Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
 [1/2/2021 10:04:57 AM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
 [1/2/2021 10:05:13 AM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
 [1/2/2021 10:05:16 AM]:[cart/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 10:23:24 AM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 10:27:39 AM]:[cart/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 10:59:40 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/2/2021 10:59:59 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 11:00:00 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:02:27 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:02:37 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:02:38 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 11:02:41 PM]:[account/login]:[type:post]:[info:login successful]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:02:55 PM]:[cart/index]:[type:get]:[info:index]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:02:56 PM]:[cart/index]:[type:get]:[info:index]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:02:57 PM]:[book/index]:[type:get]:[info:index]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:03:00 PM]:[users/index]:[type:get]:[info:index]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:03:01 PM]:[account/logout]:[type:post]:[info:logout]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/2/2021 11:03:02 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 11:03:05 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:09 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:16 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:17 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:18 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:18 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:18 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:18 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:21 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:22 PM]:[account/login]:[type:post]:[warning:wrong login or password]:[user:anonymous]
+[1/2/2021 11:03:28 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 11:03:28 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[1/2/2021 11:03:40 PM]:[account/register]:[type:post]:[info:registration successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:03:40 PM]:[account/registrationsuccessful]:[type:get]:[info:registration successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:00 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:07 PM]:[cart/add13]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:07 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:09 PM]:[cart/12&5]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:09 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:15 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:04:17 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:05:55 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:09 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:11 PM]:[cart/add17]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:11 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:13 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:14 PM]:[cart/add20]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:14 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:17 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:18 PM]:[cart/add19]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:18 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:24 PM]:[cart/13&4]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:24 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:25 PM]:[cart/14&1]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:25 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:27 PM]:[cart/14&4]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:27 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:29 PM]:[cart/15&7]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:29 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:45 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:47 PM]:[cart/add18]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:47 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:51 PM]:[cart/16&11]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:06:51 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:07:26 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:07:29 PM]:[cart/add26]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:07:29 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:07:31 PM]:[cart/17&5]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:07:31 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:08:17 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:09:03 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:15 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:18 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:20 PM]:[cart/add33]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:20 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:23 PM]:[cart/18&2]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:09:23 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:10:30 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:12:37 PM]:[book/getbookinfo/33]:[type:get]:[info:get book info]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:12:43 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:04 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:05 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:06 PM]:[cart/add13]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:06 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:09 PM]:[cart/19&4]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:09 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:10 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:12 PM]:[cart/add10]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:12 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:14 PM]:[cart/20&1]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:14 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:13:39 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:15:04 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:19:59 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:21:40 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:51 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:51 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:53 PM]:[cart/add13]:[type:get]:[info:add]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:53 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:56 PM]:[cart/21&12]:[type:post]:[info:update successful]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:21:56 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:22:38 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:23:04 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:17 PM]:[genre/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:19 PM]:[genre/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:19 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:19 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:20 PM]:[cart/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:22 PM]:[book/index]:[type:get]:[info:index]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:23 PM]:[account/logout]:[type:post]:[info:logout]:[user:327e6ecd-a005-4fff-acb6-77fa07c1ecdb]
+[1/2/2021 11:23:23 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/2/2021 11:23:27 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:33 PM]:[cart/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:34 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:37 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:41 PM]:[users/create]:[type:get]:[info:create]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:43 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:45 PM]:[users/edit]:[type:get]:[info:edit user 1a9a8a59-8e57-4d79-972d-c1857c593704]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:47 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:48 PM]:[users/changepassword/1a9a8a59-8e57-4d79-972d-c1857c593704]:[type:get]:[info:change password user 1a9a8a59-8e57-4d79-972d-c1857c593704]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:49 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:50 PM]:[roles/edit/1a9a8a59-8e57-4d79-972d-c1857c593704]:[type:get]:[info:edit roles user 1a9a8a59-8e57-4d79-972d-c1857c593704]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:53 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:55 PM]:[users/changepassword/1a9a8a59-8e57-4d79-972d-c1857c593704]:[type:get]:[info:change password user 1a9a8a59-8e57-4d79-972d-c1857c593704]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:56 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:57 PM]:[users/edit]:[type:get]:[info:edit user 1a9a8a59-8e57-4d79-972d-c1857c593704]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:23:58 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:05 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:08 PM]:[book/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:12 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:20 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:24 PM]:[genre/edit/9]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:29 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:31 PM]:[genre/edit/2]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:32 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:32 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:24:33 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:25:45 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:25:48 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:25:49 PM]:[genre/edit/1]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:25:52 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:25:54 PM]:[genre/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:25:55 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:26:51 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:26:56 PM]:[book/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:27:00 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:27:01 PM]:[book/edit/10]:[type:get]:[info:edit]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:27:05 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:27:05 PM]:[book/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:28:28 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:28:30 PM]:[book/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:28:33 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:28:35 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:28:39 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/2/2021 11:28:45 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/2/2021 11:29:52 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]

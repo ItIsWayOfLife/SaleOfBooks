@@ -13,13 +13,13 @@
     <select name="searchFor" asp-items="Model.ListSearch" asp-for="SearchFor"></select>
     <label asp-for="NameSearch">Search</label>
     <input type="text" name="nameSearch" asp-for="NameSearch" />
-    <input  class="btn btn-sm btn-success" type="submit" value="Apply" />
+    <input  class="btn btn-sm btn-primary" type="submit" value="Apply" />
     <a class="btn btn-sm btn-danger" asp-action="Index">Refresh</a>
     @if (User.IsInRole("admin") || User.IsInRole("employee"))
     {
         <label asp-for="IsActive">Active</label>
         <input type="checkbox" name="isActive" asp-for="IsActive" />
-        <a class="btn btn-sm btn-primary" asp-action="Add">Add book</a>
+        <a class="btn btn-sm btn-success" asp-action="Add">Add book</a>
     }
 </form>
 

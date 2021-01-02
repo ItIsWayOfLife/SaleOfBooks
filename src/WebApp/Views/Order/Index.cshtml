@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApp.Models.Order.BookViewModel>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Orders</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    @if (Model.Any())
+                    {
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["IdSort"]">
+                                        Order number
+                                    </a>
+                                </th>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSort"]">
+                                        Order date
+                                    </a>
+                                </th>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["CountDishSort"]">
+                                        Number
+                                    </a>
+                                </th>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["FullPriceSort"]">
+                                        Price
+                                    </a>
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.Id</td>
+                                    <td>@order.DateOrder</td>
+                                    <td>@order.CountBook</td>
+                                    <td>@order.FullPrice</td>
+                                    <td>
+                                        <a asp-controller="Order" asp-action="GetOrderDishes" asp-route-orderId="@order.Id"
+                                           class="btn btn-sm btn-primary">More details</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else
+                    {
+                        <h2 class="text-center text-danger">
+                            There were no orders
+                        </h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

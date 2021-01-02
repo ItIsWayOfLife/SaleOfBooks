@@ -1,15 +1,11 @@
-﻿using Core.Entities;
-using System.Collections.Generic;
-
+﻿
 namespace Core.Interfaces
 {
     public interface ILikeService
     {
-        Like GetLike(int? id);
-        IEnumerable<Like> GetLikes();
-        void Add(Like like);
-        void Edit(Like like);
-        void Delete(int? id);
+        void Delete(string userId, int reviewId);
+        void Add(string userId, int reviewId);
+        bool CheckLike(string userId, int reviewId);
         void Dispose();
     }
 }

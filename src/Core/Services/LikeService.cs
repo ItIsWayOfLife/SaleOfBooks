@@ -1,44 +1,51 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Core.Services
 {
     public class LikeService : ILikeService
     {
+        private IUnitOfWork Database { get; set; }
 
-
-
-        public void Add(Like like)
+        public LikeService(IUnitOfWork uow)
         {
-            throw new NotImplementedException();
+            Database = uow;
         }
 
-        public void Delete(int? id)
+        public void Add(string userId, int reviewId)
         {
-            throw new NotImplementedException();
+            if (!CheckLike(userId, reviewId))
+            {
+                Database.Like.Create(new Like() { ReviewId = reviewId, UserId = userId });
+                Database.Save();
+            }
+        }
+
+        public void Delete(string userId, int reviewId)
+        {
+            if (CheckLike(userId, reviewId))
+            {
+                var like = Database.Like.GetAll().ToList().Where(p => p.UserId == userId).Where(p => p.ReviewId == reviewId).FirstOrDefault();
+
+                Database.Like.Delete(like.Id);
+                Database.Save();
+            }
+        }
+
+        public bool CheckLike(string userId, int reviewId)
+        {
+            var listLike = Database.Like.GetAll().ToList().Where(p => p.UserId == userId).Where(p => p.ReviewId == reviewId).ToList();
+
+            if (listLike.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Edit(Like like)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Like GetLike(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Like> GetLikes()
-        {
-            throw new NotImplementedException();
+            Database.Dispose();
         }
     }
 }

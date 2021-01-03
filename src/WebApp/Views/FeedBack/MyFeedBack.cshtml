@@ -1,0 +1,45 @@
+﻿@model WebApp.Models.FeedBack.ListFeedBackViewModel
+
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Feedback</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <a class="btn btn-sm btn-primary" asp-action="Add">
+                        Ask a Question
+                    </a>
+                    <br />
+                    <br />
+                    <table class="table">
+                        <tr><th>Active</th><th>User</th><th>Full name</th><th>Date</th><th>Question</th><th>Helper</th><th>Full name</th><th>Date</th><th>Answer</th></tr>
+                        @{
+                            foreach (var user in Model.FeedBackViews)
+                            {
+                                if (!user.IsAnswered)
+                                {
+                                    <tr style="color:red;">
+                                        @await Html.PartialAsync("_FeedBackList", user)
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        @await Html.PartialAsync("_FeedBackList", user)
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

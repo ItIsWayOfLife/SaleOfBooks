@@ -1,0 +1,34 @@
+﻿@model WebApp.Models.FeedBack.FeedBackViewModel
+
+@{
+    ViewBag.Title = "The answer to the question";
+}
+
+<div class="row">
+    <div class="col-6 m-auto">
+        <div class="card m-auto">
+            <div class="card-header">
+                <h3>The answer to the question</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="FeedBack" asp-action="AddAnswer">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group col-12">
+                        <label asp-for="Question">Question</label>
+                        <textarea rows="5" class="form-control" disabled name="question" asp-for="Question"></textarea>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Answer">Answer</label>
+                        <span class="text-danger" asp-validation-for="Answer"></span><br />
+                        <textarea rows="5" class="form-control" required asp-for="Answer"></textarea>
+                    </div><br />
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <a asp-controller="Feedback" asp-action="Index" class="btn btn-warning">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

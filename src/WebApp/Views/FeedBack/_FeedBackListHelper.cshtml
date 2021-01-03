@@ -1,0 +1,27 @@
+﻿@model WebApp.Models.FeedBack.FeedBackViewModel
+
+@if (!@Model.IsAnswered)
+{
+    <td>Yes</td>
+}
+else
+{
+    <td>No</td>
+}
+
+<td> <img src="@Model.UserAskingPath" alt="@Model.UserAskingLFP" title="@Model.UserAskingLFP" style="width:76px; height: 76px;" /> </td>
+<td>@Model.UserAskingLFP</td>
+<td>@Model.DateTimeQuestion</td>
+<td>@Model.Question</td>
+
+<td><img src="@Model.UserAnsweringPath" alt="@Model.UserAnsweringLFP" title="@Model.UserAnsweringLFP" style="width:76px; height: 76px;" /></td>
+<td>@Model.UserAnsweringLFP</td>
+<td>@Model.DateTimeAnswer</td>
+<td>@Model.Answer</td>
+
+<td>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <a class="btn btn-sm btn-primary" asp-action="AddAnswer" asp-route-id="@Model.Id">Reply</a>
+    </form>
+</td>
+

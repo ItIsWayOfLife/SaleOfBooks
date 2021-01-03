@@ -3,6 +3,7 @@ using Core.Entities;
 using Core.Exceptions;
 using Core.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Services
 {
@@ -18,10 +19,51 @@ namespace Core.Services
             Database = uow;
             _converterFeedBack = converterFeedBack;
         }
+      
+        public FeedBackDTO GetFeedBack(int? id)
+        {
+            if (id == null)
+                throw new ValidationException("Id feedBack not found", "");
 
-        public void Add(FeedBackDTO feedBackDTO)
+            var feedBack = Database.FeedBack.Get(id.Value);
+
+            if (feedBack == null)
+                throw new ValidationException($"FeedBack with id {id} not found", "");
+
+            return _converterFeedBack.ConvertModelByDTO(feedBack);
+        }
+
+        public IEnumerable<FeedBackDTO> GetFeedBacks()
+        {
+            var feedBackDTOs = Database.FeedBack.GetAll().OrderByDescending(p=>p.DateTimeAnswer);
+
+            return _converterFeedBack.ConvertModelsByDTOs(feedBackDTOs);
+        }
+
+        public IEnumerable<FeedBackDTO> GetMyFeedBack(string userId)
+        {
+            return GetFeedBacks().ToList().Where(p => p.UserIdAsking == userId).OrderBy(p=>p.DateTimeAnswer);
+        }
+
+        public void AddQuestion(FeedBackDTO feedBackDTO)
         {
             Database.FeedBack.Create(_converterFeedBack.ConvertDTOByModel(feedBackDTO));
+            Database.Save();
+        }
+
+        public void AddAnswer(FeedBackDTO feedBackDTO)
+        {
+            FeedBack feedBack = Database.FeedBack.Get(feedBackDTO.Id);
+
+            if (feedBack == null)
+                throw new ValidationException($"Feedback with id {feedBackDTO.Id} not found", "");
+
+            feedBack.Answer = feedBackDTO.Answer;
+            feedBack.DateTimeAnswer = feedBackDTO.DateTimeAnswer;
+            feedBack.UserIdAnswering = feedBackDTO.UserIdAnswering;
+            feedBack.IsAnswered = feedBackDTO.IsAnswered;
+
+            Database.FeedBack.Update(feedBack);
             Database.Save();
         }
 
@@ -39,34 +81,20 @@ namespace Core.Services
             Database.Save();
         }
 
-        public void Dispose()
-        {
-            Database.Dispose();
-        }
-
         public void Edit(FeedBackDTO feedBackDTO)
         {
             Database.FeedBack.Update(_converterFeedBack.ConvertDTOByModel(feedBackDTO));
             Database.Save();
         }
 
-        public FeedBackDTO GetFeedBack(int? id)
+        public void Dispose()
         {
-            if (id == null)
-                throw new ValidationException("Id feedBack not found", "");
-
-            var feedBack = Database.FeedBack.Get(id.Value);
-
-            if (feedBack == null)
-                throw new ValidationException($"FeedBack with id {id} not found", "");
-
-            return _converterFeedBack.ConvertModelByDTO(feedBack);
+            Database.Dispose();
         }
 
-        public IEnumerable<FeedBackDTO> GetFeedBacks()
+        public int GetCountActive()
         {
-            var feedBackDTOs = Database.FeedBack.GetAll();
-            return _converterFeedBack.ConvertModelsByDTOs(feedBackDTOs);
+            return Database.FeedBack.GetAll().ToList().Where(p => p.IsAnswered == false).Count();
         }
     }
 }

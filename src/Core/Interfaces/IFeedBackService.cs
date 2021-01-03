@@ -7,9 +7,12 @@ namespace Core.Interfaces
     {
         FeedBackDTO GetFeedBack(int? id);
         IEnumerable<FeedBackDTO> GetFeedBacks();
-        void Add(FeedBackDTO feedBackDTO);
-        void Edit(FeedBackDTO feedBackDTO);
+        IEnumerable<FeedBackDTO> GetMyFeedBack(string userId);
+        void AddQuestion(FeedBackDTO feedBackDTO);
+        void AddAnswer(FeedBackDTO feedBackDTO);
         void Delete(int? id);
+        void Edit(FeedBackDTO feedBackDTO);
+        int GetCountActive();
         void Dispose();
     }
 }

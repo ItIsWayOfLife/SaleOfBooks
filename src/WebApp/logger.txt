@@ -1,0 +1,277 @@
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:04:29 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:04:30 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:04:35 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:04:35 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:04:36 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:04:36 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:04:37 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:04:37 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:04:38 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:05:07 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:05:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:05:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:05:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:05:27 PM]:[book/getbookinfo/10]:[type:get]:[info:get book info]:[user:anonymous]
+[1/3/2021 4:05:28 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:05:28 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:05:28 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:05:28 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:07:34 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:07:35 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:07:46 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:07:46 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:07:50 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:07:50 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:07:52 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:07:52 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:07:55 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:07:55 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:08:07 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:08:08 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:08:14 PM]:[book/getbookinfo/72]:[type:get]:[info:get book info]:[user:anonymous]
+[1/3/2021 4:08:18 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:08:18 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:10:05 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:10:05 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:10:06 PM]:[genre/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:10:07 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:10:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:10:09 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/3/2021 4:10:10 PM]:[account/login]:[type:post]:[info:login successful]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/3/2021 4:10:10 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/3/2021 4:10:10 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/3/2021 4:10:12 PM]:[account/logout]:[type:post]:[info:logout]:[user:1a9a8a59-8e57-4d79-972d-c1857c593704]
+[1/3/2021 4:10:12 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:10:12 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:10:13 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/3/2021 4:10:17 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:10:17 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:10:17 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:10:18 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:10:18 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:10:20 PM]:[book/add]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:12:29 PM]:[book/add]:[type:post]:[info:add Eating in the Age of Dieting Paperback book successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:12:29 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:12:29 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:12:41 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:13:00 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:14:05 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:06 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:07 PM]:[book/getbookinfo/10]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:12 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:12 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:16 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:16 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:18 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:18 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:20 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:27 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:14:57 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:14:57 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:00 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:01 PM]:[genre/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:01 PM]:[users/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:01 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:01 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:05 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:09 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:15:09 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:15:09 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:15:11 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:15:11 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:15:15 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:15:19 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:17:48 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:17:48 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:17:50 PM]:[book/getbookinfo/13]:[type:get]:[info:get book info]:[user:anonymous]
+[1/3/2021 4:18:01 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:18:01 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:18:05 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:18:06 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:18:41 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:18:42 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:18:43 PM]:[account/register]:[type:get]:[info:registeration]:[user:anonymous]
+[1/3/2021 4:18:43 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/3/2021 4:18:45 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:45 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:45 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:47 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:47 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:52 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:52 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:18:53 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:19:17 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:17 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:23 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:23 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:26 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:26 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:29 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:19:29 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:21:09 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:21:09 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:01 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:01 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:04 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:05 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:22:25 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:25 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:59 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:22:59 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:23:03 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:23:04 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:23:25 PM]:[cart/add73]:[type:get]:[info:add]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:23:25 PM]:[cart/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:23:30 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:24:48 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:24:48 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:12 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:13 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:17 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:18 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:25:49 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:50 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:52 PM]:[cart/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:53 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:53 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:58 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:25:59 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:36:19 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:36:19 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:37:22 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:37:22 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:37:28 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:37:29 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:38:01 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:02 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:06 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:06 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:09 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:09 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:15 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:38:17 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:39:08 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:39:21 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:39:21 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:39:22 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:39:23 PM]:[account/logout]:[type:post]:[info:logout]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:39:24 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:39:24 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:39:26 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:41:23 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:41:23 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:41:26 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:41:26 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:41:29 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:41:30 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:anonymous]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/3/2021 4:42:47 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:anonymous]
+[1/3/2021 4:42:47 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:42:48 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:42:49 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:anonymous]
+[1/3/2021 4:42:51 PM]:[book/index]:[type:get]:[info:index]:[user:anonymous]
+[1/3/2021 4:42:52 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:anonymous]
+[1/3/2021 4:43:04 PM]:[account/login]:[type:get]:[info:login]:[user:anonymous]
+[1/3/2021 4:43:05 PM]:[account/login]:[type:post]:[info:login successful]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:06 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:06 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:07 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:07 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:11 PM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:11 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:11 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:13 PM]:[home/about]:[type:get]:[info:about]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:15 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:15 PM]:[home/error/404]:[type:get]:[info:error 404]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:19 PM]:[book/index]:[type:get]:[info:index]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]
+[1/3/2021 4:43:20 PM]:[book/getbookinfo/73]:[type:get]:[info:get book info]:[user:6711711e-2c0c-4bc6-8a58-ea0871d839f7]

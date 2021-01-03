@@ -1,26 +1,9 @@
 ﻿@model WebApp.Models.Book.ListBookViewModel
 
 @{
-    ViewData["Title"] = "Популярые книги";
+    ViewBag.Title = "Favorite books";
 }
 
-<h1 class="text-center">Популярые книги</h1>
-@if (Model.Books.Count() >= 3)
-{
-    <br />
-    <div class="my-slider  main-top text-center">
-        <ul>
-            @foreach (WebApp.Models.Book.BookViewModel book in Model.Books)
-            {
-                if (book.Path != null)
-                {
-                    <li><a asp-action="GetBookInfo" asp-controller="Book" asp-route-id="@book.Id"><img class="imgBookSl" src="@book.Path" alt="@book.Name"></a></li>
-                }
-            }
-        </ul>
-    </div>
-}
-<br />
 <div class="row mt-5 mb-2">
     @{
         foreach (WebApp.Models.Book.BookViewModel book in Model.Books)
@@ -29,32 +12,3 @@
         }
     }
 </div>
-
-<script src="~/js/jquery-2.2.2.min.js"></script>
-<script src="~/js/slider.js"></script>
-<script>
-	jQuery(document).ready(function ($) {
-		$('.my-slider').unslider({
-			nav: true,
-			autoplay: true,
-			arrows: false,
-			delay: 3000,
-			speed: 750,
-			animation: 'horizontal',/*'horizontal' 'vertical' */
-		});
-	});
-</script>
-<!-----      Выравнивание колонок         ----->
-<script>
-	function setEqualHeight(columns) {
-		var heightcolumn = 0;
-		columns.each(function () {
-			currentHeight = $(this).height();
-			if (currentHeight > heightcolumn) { heightcolumn = currentHeight; }
-		});
-		columns.height(heightcolumn);
-	}
-
-	$(document).ready(function () { setEqualHeight($(".level-0")); });
-</script>
-<!-----      /Выравнивание колонок        ----->

@@ -1,0 +1,31 @@
+﻿@model WebApp.Models.Review.AddEditReviewViewModel
+
+@{
+    ViewBag.Title = "Edit review";
+}
+
+<div class="row">
+    <div class="col-6 m-auto">
+        <div class="card m-auto">
+            <div class="card-header">
+                <h3>Edit review</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Review" asp-action="Edit">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <input asp-for="Id" type="hidden" />
+                    <div class="form-group col-12">
+                        <label asp-for="Content"></label>
+                        <span class="text-danger" asp-validation-for="Content"></span><br />
+                        <textarea rows="5" class="form-control" required asp-for="Content"></textarea>
+                    </div><br />
+
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <a asp-controller="Review" asp-action="Index" class="btn btn-warning">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

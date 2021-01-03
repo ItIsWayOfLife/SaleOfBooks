@@ -64,6 +64,7 @@ namespace WebApp
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<IFeedBackService, FeedBackService>();
             services.AddTransient<IReviewService, ReviewService>();
+            services.AddTransient<ILikeService, LikeService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IOrderService, OrderService>();
 

@@ -32,18 +32,21 @@ namespace Core.Converters
 
         public ReviewDTO ConvertModelByDTO(Review model)
         {
-            throw new NotImplementedException();
+            ReviewDTO reviewDTO = new ReviewDTO()
+            {
+                Id = model.Id,
+                ApplicationUserId = model.ApplicationUserId,
+                Content = model.Content,
+                DateTime = model.DateTime
+            };
+
+            return reviewDTO;
         }
 
         public IEnumerable<ReviewDTO> ConvertModelsByDTOs(IEnumerable<Review> models)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Review, ReviewDTO>()).CreateMapper();
             var reviewDTOs = mapper.Map<IEnumerable<Review>, List<ReviewDTO>>(models);
-
-            foreach (var rDTO in reviewDTOs)
-            {
-                rDTO.CountLikes = 0;
-            }
 
             return reviewDTOs;
         }

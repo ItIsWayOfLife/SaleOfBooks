@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using WebApp.Interfaces;
 using WebApp.Models.FeedBack;
 
 namespace WebApp.Controllers
@@ -19,14 +20,22 @@ namespace WebApp.Controllers
     {
         private readonly IFeedBackService _feedBackService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILoggerService _loggerService;
 
-        public FeedBackController(IFeedBackService feedBackService, UserManager<ApplicationUser> userManager)
+        private const string CONTROLLER_NAME = "feedback";
+
+
+        public FeedBackController(IFeedBackService feedBackService,
+            UserManager<ApplicationUser> userManager,
+            ILoggerService loggerService)
         {
             _feedBackService = feedBackService;
             _userManager = userManager;
+            _loggerService = loggerService;
         }
 
         [Authorize(Roles = "admin, helper")]
+        [HttpGet]
         public IActionResult Index(string active)
         {
             var listFeedBacks = _feedBackService.GetFeedBacks();
@@ -89,10 +98,12 @@ namespace WebApp.Controllers
 
             feedBackViewModels = feedBackViewModels.OrderByDescending(p => p.DateTimeQuestion).ToList();
 
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
             return View(new ListFeedBackViewModel() { FeedBackViews = feedBackViewModels, Active = active, ListActive = new SelectList(listActive) });
         }
 
-
+        [HttpGet]
         public IActionResult MyFeedBack()
         {
             string currentUserId = GetCurrentUserId();
@@ -139,12 +150,16 @@ namespace WebApp.Controllers
                 }
             }
 
+            _loggerService.LogInformation(CONTROLLER_NAME + "/myfeedback", LoggerConstants.TYPE_GET, "my feed back", currentUserId);
+
             return View(new ListFeedBackViewModel() { FeedBackViews = feedBackViewModels });
         }
 
         [HttpGet]
         public IActionResult Add()
         {
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+
             return View();
         }
 
@@ -162,6 +177,8 @@ namespace WebApp.Controllers
             };
 
             _feedBackService.AddQuestion(feedBack);
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add question: {question}", currentUserId);
 
             return Redirect("MyFeedBack");
         }
@@ -182,7 +199,6 @@ namespace WebApp.Controllers
 
             if (userAnswering != null)
             {
-
                 feedBackView = new FeedBackViewModel()
                 {
                     Id = fb.Id,
@@ -198,6 +214,8 @@ namespace WebApp.Controllers
                     Question = fb?.Question,
                 };
             }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer/{id}", LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
 
             return View(feedBackView);
         }
@@ -216,6 +234,8 @@ namespace WebApp.Controllers
             fb.UserIdAnswering = currentUserId;
 
             _feedBackService.AddAnswer(fb);
+
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer", LoggerConstants.TYPE_POST, $"add answer {model.Answer}", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }

@@ -5,10 +5,10 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using WebApp.Interfaces;
 using WebApp.Models.Review;
 
 namespace WebApp.Controllers
@@ -19,14 +19,19 @@ namespace WebApp.Controllers
         private readonly IReviewService _reviewService;
         private readonly ILikeService _likeService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILoggerService _loggerService;
+
+        private const string CONTROLLER_NAME = "review";
 
         public ReviewController(IReviewService reviewService,
             ILikeService likeService,
-             UserManager<ApplicationUser> userManager)
+             UserManager<ApplicationUser> userManager,
+             ILoggerService loggerService)
         {
             _reviewService = reviewService;
             _userManager = userManager;
             _likeService = likeService;
+            _loggerService = loggerService;
         }
 
         [AllowAnonymous]
@@ -66,6 +71,8 @@ namespace WebApp.Controllers
                 reviewViewModels = reviewViewModels.OrderByDescending(p => p.DateTime).ToList();
             }
 
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+
             return View(new ListReviewViewModel() { ReviewViewModels = reviewViewModels });
         }
 
@@ -88,12 +95,16 @@ namespace WebApp.Controllers
                 _likeService.Add(currentUserId, idReview);
             }
 
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, "add like", GetCurrentUserId());
+
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Add()
         {
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+
             return View();
         }
 
@@ -108,6 +119,8 @@ namespace WebApp.Controllers
                 Content = model.Content
             });
 
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, "add", GetCurrentUserId());
+
             return RedirectToAction("Index");
         }
 
@@ -117,14 +130,18 @@ namespace WebApp.Controllers
         {
             var reviewDTO = _reviewService.GetReview(id);
 
-            return View(new AddEditReviewViewModel() {  Id = reviewDTO.Id, Content = reviewDTO.Content});
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
+
+            return View(new AddEditReviewViewModel() { Id = reviewDTO.Id, Content = reviewDTO.Content });
         }
 
         [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Edit(AddEditReviewViewModel model)
         {
-            _reviewService.Edit(new ReviewDTO() {  Id = model.Id, Content = model.Content});
+            _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, "edit", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -134,6 +151,8 @@ namespace WebApp.Controllers
         public IActionResult Delete(int id)
         {
             _reviewService.Delete(id);
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace WebApp.Interfaces
 {
-    interface IFeedBackHelper
+    public interface IFeedBackHelper
     {
         public int GetCount();
     }

@@ -17,7 +17,7 @@
                 <br />
                 <div class="ml-5 mr-5" style="float:left;">
 
-                    <h2>Name: <span class="font-weight-normal">@Model.Name</span> </h2><br/>
+                    <h2>Name: <span class="font-weight-normal">@Model.Name</span> </h2>
                     @if (User.IsInRole("admin") || User.IsInRole("employee"))
                     {
                         <h5>Id: <span class="font-weight-normal">@Model.Id</span></h5>

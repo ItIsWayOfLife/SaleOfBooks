@@ -75,6 +75,8 @@ namespace WebApp
 
             services.AddTransient<IUserHelper, UserHelper>();
             services.AddTransient<IBookHelper, BookHelper>();
+            services.AddTransient<ICartHelper, CartHelper>();
+            services.AddTransient<IFeedBackHelper, FeedBackHelper>();
 
             services.AddTransient<ILoggerService, LoggerService>();
 

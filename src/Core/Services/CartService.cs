@@ -206,5 +206,19 @@ namespace Core.Services
 
             return fullPrice;
         }
+
+        public int GetCount(string applicationUserId)
+        {
+            int count = 0;
+
+            var cartBooks = GetCartBooks(applicationUserId);
+
+            foreach (var cartB in cartBooks)
+            {
+                count += cartB.Count;
+            }
+
+            return count;
+        }
     }
 }

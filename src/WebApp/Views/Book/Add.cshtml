@@ -4,7 +4,7 @@
     ViewBag.Title = "Add book";
 }
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-6 m-auto">
         <div class="card m-auto">
             <div class="card-header">
@@ -28,7 +28,7 @@
                     <div class="form-group col-12">
                         <label asp-for="AddBookViewModel.Info"></label>
                         <span class="text-danger" asp-validation-for="AddBookViewModel.Info"></span><br />
-                        <input class="form-control" asp-for="AddBookViewModel.Info" />
+                        <textarea rows="5" class="form-control" asp-for="AddBookViewModel.Info"></textarea>
                     </div>
 
                     <div class="form-group col-12">

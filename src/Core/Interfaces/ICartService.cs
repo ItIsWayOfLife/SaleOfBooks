@@ -21,5 +21,7 @@ namespace Core.Interfaces
         void UpdateCountBookInCart(string applicationUserId, int? bookCartId, int count);
 
         decimal FullPriceCart(string applicationUserId);
+
+        int GetCount(string applicationUserId);
     }
 }

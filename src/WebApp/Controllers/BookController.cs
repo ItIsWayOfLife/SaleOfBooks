@@ -196,7 +196,7 @@ namespace WebApp.Controllers
 
             #region Pagination
 
-            int pageSize = 12;
+            int pageSize = 6;
 
             var count = books.Count;
             var items = books.Skip((page - 1) * pageSize).Take(pageSize).ToList();

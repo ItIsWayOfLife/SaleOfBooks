@@ -17,7 +17,6 @@ namespace Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
@@ -25,9 +24,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("Author")
                         .HasColumnType("nvarchar(max)");
 
@@ -78,9 +75,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(max)");
 
@@ -93,9 +88,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
@@ -118,9 +111,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("Answer")
                         .HasColumnType("nvarchar(max)");
 
@@ -151,9 +142,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -166,9 +155,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<int>("ReviewId")
                         .HasColumnType("int");
 
@@ -186,9 +173,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(max)");
 
@@ -204,8 +189,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -229,9 +213,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(max)");
 

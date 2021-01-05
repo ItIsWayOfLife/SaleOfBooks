@@ -17,7 +17,6 @@ namespace Infrastructure.Identity.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
@@ -126,9 +125,7 @@ namespace Infrastructure.Identity.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
 
@@ -150,9 +147,7 @@ namespace Infrastructure.Identity.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
+                        .HasColumnType("int");
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
 

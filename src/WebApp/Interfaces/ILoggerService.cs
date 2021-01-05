@@ -56,6 +56,5 @@ namespace WebApp.Interfaces
         /// <param name="info">Log information</param>
         /// <param name="currentUserId">Current user id</param>
         void LogCritical(string path, string type, string info, string currentUserId);
-
     }
 }

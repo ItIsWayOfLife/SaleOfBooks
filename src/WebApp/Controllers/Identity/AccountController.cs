@@ -164,10 +164,7 @@ namespace WebApp.Controllers.Identity
         {
             if (User.Identity.IsAuthenticated)
             {
-                ApplicationUser user = null;
-
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                user = _userManager.Users.FirstOrDefault(p => p.Id == currentUserId);
+                ApplicationUser user = _userManager.Users.FirstOrDefault(p => p.Id == GetCurrentUserId());
 
                 if (user == null)
                 {
@@ -188,7 +185,7 @@ namespace WebApp.Controllers.Identity
                 _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGOUT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
                 return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not authenticated" });
-                }    
+            }
         }
 
         [HttpGet]
@@ -196,16 +193,13 @@ namespace WebApp.Controllers.Identity
         {
             if (User.Identity.IsAuthenticated)
             {
-                ApplicationUser user = null;
-
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                user = _userManager.Users.FirstOrDefault(p => p.Id == currentUserId);
+                ApplicationUser user = _userManager.Users.FirstOrDefault(p => p.Id == GetCurrentUserId());
 
                 if (user == null)
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_PROFILE, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found"  });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                 }
 
                 if (user.Path == "" || user.Path == null)
@@ -241,10 +235,7 @@ namespace WebApp.Controllers.Identity
         {
             if (User.Identity.IsAuthenticated)
             {
-                ApplicationUser user = null;
-
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == currentUserId);
+                ApplicationUser user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == GetCurrentUserId());
 
                 if (user == null)
                 {
@@ -338,8 +329,7 @@ namespace WebApp.Controllers.Identity
             {
                 ApplicationUser user = null;
 
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == currentUserId);
+                user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == GetCurrentUserId());
 
                 if (user == null)
                 {
@@ -405,10 +395,7 @@ namespace WebApp.Controllers.Identity
         {
             if (User.Identity.IsAuthenticated)
             {
-                ApplicationUser user = null;
-
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == currentUserId);
+                ApplicationUser user = _userManager.Users.ToList().FirstOrDefault(p => p.Id == GetCurrentUserId());
 
                 if (user == null)
                 {
@@ -457,8 +444,7 @@ namespace WebApp.Controllers.Identity
         [HttpGet]
         public IActionResult RegistrationSuccessful()
         {
-            string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            ApplicationUser user = _userHelper.GetUserById(currentUserId);
+            ApplicationUser user = _userHelper.GetUserById(GetCurrentUserId());
 
             if (user == null)
             {
@@ -472,6 +458,18 @@ namespace WebApp.Controllers.Identity
             ViewBag.Name = user.UserName;
 
             return View();
+        }
+
+        private string GetCurrentUserId()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

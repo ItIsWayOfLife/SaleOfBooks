@@ -116,7 +116,7 @@ namespace Web.Controllers.Identity
 
                 if (result.Succeeded)
                 {
-                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create user {_userHelper.GetIdUserByEmail(model.Email)} successful", GetCurrentUserId());
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create user email: {_userHelper.GetIdUserByEmail(model.Email)} successful", GetCurrentUserId());
 
                     return RedirectToAction("Index", new { searchSelectionString, seacrhString });
                 }
@@ -160,7 +160,7 @@ namespace Web.Controllers.Identity
                 Postcode = user.Postcode
             };
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, $"edit user {id}", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, $"edit user id: {id}", GetCurrentUserId());
 
             return View(model);
         }
@@ -189,7 +189,7 @@ namespace Web.Controllers.Identity
 
                     if (result.Succeeded)
                     {
-                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit user {model.Id} successful", GetCurrentUserId());
+                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit  id: {model.Id} successful", GetCurrentUserId());
 
                         return RedirectToAction("Index", new { searchSelectionString, seacrhString });
                     }
@@ -225,7 +225,7 @@ namespace Web.Controllers.Identity
 
                 if (result.Succeeded)
                 {
-                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete user {id} successful", GetCurrentUserId());
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete user id: {id} successful", GetCurrentUserId());
 
                     return RedirectToAction("Index", new { searchSelectionString, seacrhString });
                 }
@@ -263,7 +263,7 @@ namespace Web.Controllers.Identity
 
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD +$"/{id}", LoggerConstants.TYPE_GET, $"change password user {user.Id}", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD +$"/{id}", LoggerConstants.TYPE_GET, $"change password user id: {user.Id}", GetCurrentUserId());
 
             return View(model);
         }
@@ -284,7 +284,7 @@ namespace Web.Controllers.Identity
 
                     if (result.Succeeded)
                     {
-                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_POST, $"change password user {user.Id}", GetCurrentUserId());
+                        _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_POST, $"change password user id: {user.Id} ", GetCurrentUserId());
 
                         return RedirectToAction("Index", new { searchSelectionString, seacrhString });
                     }

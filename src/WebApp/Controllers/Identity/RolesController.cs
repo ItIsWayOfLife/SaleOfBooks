@@ -49,9 +49,7 @@ namespace WebApp.Controllers.Identity
                     AllRoles = allRoles
                 };
 
-                string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{userId}", LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{userId}", LoggerConstants.TYPE_GET, $"edit roles user id: {user.Id}", GetCurrentUserId());
 
                 ViewBag.SearchSelectionString = searchSelectionString;
                 ViewBag.SeacrhString = seacrhString;
@@ -86,9 +84,7 @@ namespace WebApp.Controllers.Identity
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-                string currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user {user.Id}", currentUserId);
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user id: {user.Id}", GetCurrentUserId());
 
                 return RedirectToAction("Index", "Users", new { searchSelectionString, seacrhString });
             }
@@ -96,6 +92,18 @@ namespace WebApp.Controllers.Identity
             _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
             return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found"});
+        }
+
+        private string GetCurrentUserId()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

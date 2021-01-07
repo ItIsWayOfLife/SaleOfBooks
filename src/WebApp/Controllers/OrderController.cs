@@ -76,7 +76,7 @@ namespace WebApp.Controllers
                 _orderService.Create(currentUserId);
                 _cartService.AllDeleteBooksToCart(currentUserId);
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, "create order", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order", GetCurrentUserId());
 
                 return RedirectToAction($"Index");
             }
@@ -104,7 +104,7 @@ namespace WebApp.Controllers
 
                 ViewData["FullPrice"] = _orderService.GetOrders(currentUserId).Where(p => p.Id == orderId).FirstOrDefault().FullPrice;
 
-                _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"get order books", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"get order id: {orderId}", GetCurrentUserId());
 
                 return View(orderDishes);
             }

@@ -95,7 +95,7 @@ namespace WebApp.Controllers
                 _likeService.Add(currentUserId, idReview);
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, "add like", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, $"add like review id: {idReview}", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -119,7 +119,7 @@ namespace WebApp.Controllers
                 Content = model.Content
             });
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, "add", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add review", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -130,7 +130,7 @@ namespace WebApp.Controllers
         {
             var reviewDTO = _reviewService.GetReview(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, $"edit review id {id}", GetCurrentUserId());
 
             return View(new AddEditReviewViewModel() { Id = reviewDTO.Id, Content = reviewDTO.Content });
         }
@@ -152,7 +152,7 @@ namespace WebApp.Controllers
         {
             _reviewService.Delete(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete review id {id}", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }

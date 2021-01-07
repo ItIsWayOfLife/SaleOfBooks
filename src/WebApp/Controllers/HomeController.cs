@@ -53,7 +53,7 @@ namespace WebApp.Controllers
         {
             _loggerService.LogInformation(CONTROLLER_NAME + $"/error/{requestId}", LoggerConstants.TYPE_GET, $"error {requestId}", GetCurrentUserId());
 
-            return View(new ErrorViewModel() {  RequestId = requestId });
+            return View(new ErrorViewModel() {  RequestId = requestId, ErrorInfo = errorInfo });
         }
 
         private string GetCurrentUserId()

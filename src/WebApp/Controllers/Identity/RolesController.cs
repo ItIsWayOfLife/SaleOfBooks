@@ -84,7 +84,7 @@ namespace WebApp.Controllers.Identity
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user id: {user.Id}", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user id: {user.Id} successful", GetCurrentUserId());
 
                 return RedirectToAction("Index", "Users", new { searchSelectionString, seacrhString });
             }

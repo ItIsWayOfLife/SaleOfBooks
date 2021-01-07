@@ -81,7 +81,7 @@ namespace WebApp.Controllers
             {
                 _cartService.AddBookToCart(bookId, GetCurrentUserId());
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD +$"{bookId}", LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD +$"{bookId}", LoggerConstants.TYPE_GET, $"add book id: {bookId} to cart successful", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }
@@ -98,7 +98,7 @@ namespace WebApp.Controllers
             {
                 _cartService.AllDeleteBooksToCart(GetCurrentUserId());
 
-                _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "delete all books in cart successful", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }
@@ -115,7 +115,7 @@ namespace WebApp.Controllers
             {
                 _cartService.UpdateCountBookInCart(GetCurrentUserId(), bookCartId, count);
 
-              _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, "update successful", GetCurrentUserId());
+              _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, $"update book id: {bookCartId} on count: {count} successful", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }

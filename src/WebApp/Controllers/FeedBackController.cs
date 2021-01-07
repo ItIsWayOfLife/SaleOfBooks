@@ -215,7 +215,7 @@ namespace WebApp.Controllers
                 };
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer/{id}", LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer/{id}", LoggerConstants.TYPE_GET, $"add answer question id: {id}", GetCurrentUserId());
 
             return View(feedBackView);
         }
@@ -235,7 +235,7 @@ namespace WebApp.Controllers
 
             _feedBackService.AddAnswer(fb);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer", LoggerConstants.TYPE_POST, $"add answer {model.Answer}", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer", LoggerConstants.TYPE_POST, $"add answer {model.Answer} successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }

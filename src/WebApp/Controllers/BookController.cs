@@ -251,10 +251,10 @@ namespace WebApp.Controllers
             {
                 _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete book id: {id} exception: {ex.Message}", GetCurrentUserId());
 
-                 return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex });
+                 return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete successful book id {id} successful", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete book id {id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
         }
@@ -343,7 +343,7 @@ namespace WebApp.Controllers
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add successful {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
 
                 return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
@@ -443,7 +443,7 @@ namespace WebApp.Controllers
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit successful book id:{model.BookViewModel.Id}", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit book id:{model.BookViewModel.Id} successful", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }

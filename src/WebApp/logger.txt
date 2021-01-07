@@ -1,0 +1,30 @@
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/8/2021 12:30:58 AM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:30:58 AM]:[home/error/404]:[type:get]:[info:error 404]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:01 AM]:[book/index]:[type:get]:[info:index]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:04 AM]:[book/delete/11]:[type:post]:[info:delete book id 11 successful]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:05 AM]:[book/index]:[type:get]:[info:index]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/8/2021 12:31:44 AM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:44 AM]:[home/error/404]:[type:get]:[info:error 404]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:46 AM]:[book/index]:[type:get]:[info:index]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:49 AM]:[book/delete/18]:[type:post]:[warning:delete book id: 18 exception: Id book not found]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:31:49 AM]:[home/error/400]:[type:get]:[info:error 400]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: C:\Users\asus\Desktop\Work\SaleOfBooks\src\WebApp
+[1/8/2021 12:32:34 AM]:[book/listfavoritebook]:[type:get]:[info:list favorite book]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:32:36 AM]:[home/error/404]:[type:get]:[info:error 404]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:32:37 AM]:[book/index]:[type:get]:[info:index]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:32:41 AM]:[book/delete/16]:[type:post]:[warning:delete book id: 16 exception: Id book not found]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]
+[1/8/2021 12:32:42 AM]:[home/error/400]:[type:get]:[info:error 400]:[user:12698bdf-1a52-4341-a068-1c0cf7238727]

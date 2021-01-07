@@ -49,7 +49,7 @@ namespace WebApp.Controllers
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet]
-        public IActionResult Error(string requestId)
+        public IActionResult Error(string requestId, string errorInfo)
         {
             _loggerService.LogInformation(CONTROLLER_NAME + $"/error/{requestId}", LoggerConstants.TYPE_GET, $"error {requestId}", GetCurrentUserId());
 

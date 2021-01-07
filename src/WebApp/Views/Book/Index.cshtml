@@ -17,8 +17,8 @@
     <a class="btn btn-sm btn-danger" asp-action="Index">Refresh</a>
     @if (User.IsInRole("admin") || User.IsInRole("employee"))
     {
-        <label asp-for="IsActive">Active</label>
-        <input type="checkbox" name="isActive" asp-for="IsActive" />
+        <label asp-for="IsDisplay">IsDisplay</label>
+        <input type="checkbox" name="isDisplay" asp-for="IsDisplay" />
         <a class="btn btn-sm btn-success" asp-action="Add">Add book</a>
     }
 </form>
@@ -27,9 +27,13 @@
     @{
         foreach (WebApp.Models.Book.BookViewModel book in Model.Books)
         {
-            @await Html.PartialAsync("_BooksList", book)
-        }
-    }
+            @await Html.PartialAsync("_BooksList", book, new ViewDataDictionary(this.ViewData) {
+           { "SortString", Model.SortString },
+           { "StringGenre", Model.StringGenre },
+           { "SearchFor", Model.SearchFor },
+           { "NameSearch", Model.NameSearch },
+           { "isDisplay", Model.IsDisplay }
+        }) } }
 </div>
 
 <div class="mt-5 mb-5" style="margin-left: 45%;">
@@ -42,7 +46,7 @@
            asp-route-stringGenre="@Model.StringGenre"
            asp-route-searchFor="@Model.SearchFor"
            asp-route-nameSearch="@Model.NameSearch"
-           asp-route-isActive="@Model.IsActive"
+           asp-route-isDisplay="@Model.IsDisplay"
            class="btn btn-outline-dark">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Back
@@ -56,7 +60,7 @@
            asp-route-stringGenre="@Model.StringGenre"
            asp-route-searchFor="@Model.SearchFor"
            asp-route-nameSearch="@Model.NameSearch"
-           asp-route-isActive="@Model.IsActive"
+           asp-route-isDisplay="@Model.IsDisplay"
            class="btn btn-outline-dark">
             Next
             <i class="glyphicon glyphicon-chevron-right"></i>

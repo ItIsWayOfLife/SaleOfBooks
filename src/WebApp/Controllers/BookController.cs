@@ -51,7 +51,7 @@ namespace WebApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Index(string sortString, string stringGenre, string searchFor, string nameSearch, bool isActive = false, int page = 1)
+        public IActionResult Index(string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay = false, int page = 1)
         {
             IEnumerable<BookDTO> booksDtos = new List<BookDTO>();
 
@@ -61,7 +61,7 @@ namespace WebApp.Controllers
             {
                 booksDtos = _bookService.GetBooks();
 
-                if (isActive)
+                if (isDisplay)
                 {
                     booksDtos = _bookService.GetBooks().ToList().Where(p => p.IsDisplay == true).ToList();
                 }
@@ -217,7 +217,8 @@ namespace WebApp.Controllers
                 ListSearch = new SelectList(listSearch),
                 SearchFor = searchFor,
                 NameSearch = nameSearch,
-                PageViewModel = pageViewModel
+                PageViewModel = pageViewModel,
+                 IsDisplay = isDisplay
             });
         }
 
@@ -233,13 +234,13 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
             _bookService.Delete(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
         }
 
         [HttpGet]
@@ -372,6 +373,8 @@ namespace WebApp.Controllers
                 };
 
                 _bookService.Edit(bookDto);
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit {model.BookViewModel.Id}", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }

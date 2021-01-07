@@ -68,7 +68,7 @@ namespace WebApp.TagHelpers
                     stringGenre = ListBookViewModel.StringGenre,
                     searchFor = ListBookViewModel.SearchFor,
                     nameSearch = ListBookViewModel.NameSearch,
-                    isActive = ListBookViewModel.IsActive
+                    isDisplay = ListBookViewModel.IsDisplay
                 });
             }
 

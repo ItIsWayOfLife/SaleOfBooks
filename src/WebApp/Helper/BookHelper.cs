@@ -27,7 +27,7 @@ namespace WebApp.Helper
         {
             var genres = _genreService.GetGenres();
 
-            List<string> listGenres = new List<string>();
+            List<string> listGenres = new List<string>() { "Genres"};
 
             foreach (var genre in genres)
             {

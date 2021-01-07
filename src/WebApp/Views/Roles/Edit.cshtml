@@ -2,17 +2,19 @@
 @model WebApp.Models.Roles.ChangeRoleViewModel
 
 @{
-    ViewData["Title"] = "change of rights";
+    ViewBag.Title = "Change of rights";
 }
 
 <div class="row mb-5">
     <div class="col-6 m-auto">
         <div class="card m-auto">
             <div class="card-header">
-                <h3>CChange of rights @Model.UserEmail</h3>
+                <h3>Change of rights @Model.UserEmail</h3>
             </div>
             <div class="card-body">
-                <form method="post" autocomplete="off" asp-action="Edit" asp-controller="Roles">
+                <form method="post" autocomplete="off" asp-action="Edit" asp-controller="Roles"
+                        asp-route-searchSelectionString="@ViewBag.SearchSelectionString"
+                       asp-route-seacrhString="@ViewBag.SeacrhString">
                     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                     <input type="hidden" name="userId" value="@Model.UserId" />
 
@@ -27,10 +29,13 @@
                             }
                     </div><br />
 
-                    <div class="form-group col-12">
-                        <button type="submit" class="btn btn-primary">Change</button>
-                        <a asp-controller="Users" asp-action="Index" class="btn btn-warning">Back</a>
-                    </div>
+                          <div class="form-group col-12">
+                              <button type="submit" class="btn btn-primary">Change</button>
+                              <a asp-controller="Users" asp-action="Index"
+                                 asp-route-searchSelectionString="@ViewBag.SearchSelectionString"
+                                 asp-route-seacrhString="@ViewBag.SeacrhString"
+                                 class="btn btn-warning">Back</a>
+                          </div>
 
                 </form>
             </div>

@@ -132,7 +132,7 @@ namespace WebApp.Controllers.Identity
                     {
                         _loggerService.LogWarning(CONTROLLER_NAME+LoggerConstants.ACTIN_LOGIN, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                        return RedirectToAction("Error", "Home", new { requestId = "400" });
+                        return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                     }
 
                     _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGIN, LoggerConstants.TYPE_POST, "login successful", user.Id);
@@ -173,7 +173,7 @@ namespace WebApp.Controllers.Identity
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGOUT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                 }
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGOUT, LoggerConstants.TYPE_POST, "logout", user.Id);
@@ -187,8 +187,8 @@ namespace WebApp.Controllers.Identity
             {
                 _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGOUT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
-                return RedirectToAction("Error", "Home", new { requestId = "400" });
-            }    
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not authenticated" });
+                }    
         }
 
         [HttpGet]
@@ -205,7 +205,7 @@ namespace WebApp.Controllers.Identity
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_PROFILE, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found"  });
                 }
 
                 if (user.Path == "" || user.Path == null)
@@ -250,7 +250,7 @@ namespace WebApp.Controllers.Identity
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found"  });
                 }
 
                 ProfileViewModel userView = new ProfileViewModel()
@@ -317,7 +317,7 @@ namespace WebApp.Controllers.Identity
                     {
                         _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                        return RedirectToAction("Error", "Home", new { requestId = "400" });
+                        return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                     }
                 }
 
@@ -345,7 +345,7 @@ namespace WebApp.Controllers.Identity
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPASSWORD, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, null);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                 }
 
                 ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
@@ -414,7 +414,7 @@ namespace WebApp.Controllers.Identity
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CHANGEPATH, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, user.Id);
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                 }
 
                 string path;
@@ -464,7 +464,7 @@ namespace WebApp.Controllers.Identity
             {
                 _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_REGISTRATIONSUCCESSFUL, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_FOUND, user.Id);
 
-                return RedirectToAction("Error", "Home", new { requestId = "400" });
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
             }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_REGISTRATIONSUCCESSFUL, LoggerConstants.TYPE_GET, "registration successful", user.Id);

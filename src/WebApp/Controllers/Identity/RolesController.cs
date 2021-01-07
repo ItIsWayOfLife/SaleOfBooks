@@ -31,7 +31,7 @@ namespace WebApp.Controllers.Identity
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(string userId)
+        public async Task<IActionResult> Edit(string userId, string searchSelectionString, string seacrhString)
         {
             // get users
             var user = await _userManager.FindByIdAsync(userId);
@@ -50,19 +50,26 @@ namespace WebApp.Controllers.Identity
                 };
 
                 string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{userId}", LoggerConstants.TYPE_GET, $"edit roles user {user.Id}", currentUserId);
+
+                ViewBag.SearchSelectionString = searchSelectionString;
+                ViewBag.SeacrhString = seacrhString;
 
                 return View(model);
             }
 
-            return RedirectToAction("Error", "Home", new { requestId = "400" });
+            return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string userId, List<string> roles)
+        public async Task<IActionResult> Edit(string userId, List<string> roles, string searchSelectionString, string seacrhString)
         {
             // get users
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
+
+            ViewBag.SearchSelectionString = searchSelectionString;
+            ViewBag.SeacrhString = seacrhString;
 
             if (user != null)
             {
@@ -83,14 +90,12 @@ namespace WebApp.Controllers.Identity
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit roles user {user.Id}", currentUserId);
 
-                return RedirectToAction("Index", "Users");
-            }
-            else
-            {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
+                return RedirectToAction("Index", "Users", new { searchSelectionString, seacrhString });
             }
 
-            return RedirectToAction("Error", "Home", new { requestId = "400" });
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_FOUND, null);
+
+            return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found"});
         }
     }
 }

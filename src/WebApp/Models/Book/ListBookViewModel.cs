@@ -13,7 +13,7 @@ namespace WebApp.Models.Book
         public SelectList ListSearch { get; set; }
         public string SearchFor { get; set; }
         public string NameSearch { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsDisplay { get; set; }
 
         public PageViewModel PageViewModel { get; set; }
     }

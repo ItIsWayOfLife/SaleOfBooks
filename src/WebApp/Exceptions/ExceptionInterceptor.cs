@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace WebApp.Exceptions
@@ -32,18 +30,6 @@ namespace WebApp.Exceptions
 
                 await _next.Invoke(context);
             }
-        }
-
-        private Task HandleException(HttpContext context, Exception ex)
-        {
-            HttpStatusCode code = HttpStatusCode.InternalServerError;
-
-            string result = JsonConvert.SerializeObject(new { error = ex.Message });
-
-            context.Response.ContentType = "aplication/json";
-            context.Response.StatusCode = (int)code;
-
-            return context.Response.WriteAsync(result);
         }
     }
 }

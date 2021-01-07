@@ -21,7 +21,7 @@ else
 
 <td>
     <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
-        <a class="btn btn-sm btn-primary" asp-action="AddAnswer" asp-route-id="@Model.Id">Reply</a>
+        <a class="btn btn-sm btn-primary" asp-action="AddAnswer" asp-route-id="@Model.Id" asp-route-active="@ViewData["Active"]">Reply</a>
     </form>
 </td>
 

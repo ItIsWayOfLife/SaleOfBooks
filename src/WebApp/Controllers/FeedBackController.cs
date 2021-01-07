@@ -185,8 +185,10 @@ namespace WebApp.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin, helper")]
-        public IActionResult AddAnswer(int id)
+        public IActionResult AddAnswer(int id, string active)
         {
+            ViewBag.Active = active;
+
             var fb = _feedBackService.GetFeedBack(id);
 
             FeedBackViewModel feedBackView = null;
@@ -222,8 +224,10 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Authorize(Roles = "admin, helper")]
-        public IActionResult AddAnswer(FeedBackViewModel model)
+        public IActionResult AddAnswer(FeedBackViewModel model, string active)
         {
+            ViewBag.Actice = active;
+
             var fb = _feedBackService.GetFeedBack(model.Id);
 
             string currentUserId = GetCurrentUserId();
@@ -237,7 +241,7 @@ namespace WebApp.Controllers
 
             _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer", LoggerConstants.TYPE_POST, $"add answer {model.Answer} successful", GetCurrentUserId());
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { active});
         }
 
         private string GetCurrentUserId()

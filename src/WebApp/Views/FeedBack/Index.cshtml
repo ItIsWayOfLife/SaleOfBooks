@@ -28,13 +28,16 @@
                                 if (!user.IsAnswered)
                                 {
                                     <tr style="color:red;">
-                                        @await Html.PartialAsync("_FeedBackListHelper", user)
+                                        @await Html.PartialAsync("_FeedBackListHelper", user, new ViewDataDictionary(this.ViewData) {
+                                                { "Active", Model.Active } } )
                                     </tr>
                                 }
                                 else
                                 {
                                     <tr>
-                                        @await Html.PartialAsync("_FeedBackListHelper", user)
+                                        @await Html.PartialAsync("_FeedBackListHelper", user, new ViewDataDictionary(this.ViewData) {
+                                            { "Active", Model.Active }
+                                        } )
                                     </tr>
                                 }
                             }

@@ -235,7 +235,7 @@ namespace WebApp.Controllers
 
             var bookDto = _bookService.GetBook(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, "get book info", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, $"get book id {id} info", GetCurrentUserId());
 
             return View(_bookHelper.GetBookViewModel(bookDto));
         }
@@ -254,7 +254,7 @@ namespace WebApp.Controllers
                  return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex });
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete successful book id {id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
         }
@@ -309,7 +309,8 @@ namespace WebApp.Controllers
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
 
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    ModelState.AddModelError("", "Choose a genre");
+                    return View(model);
                 }
 
                 bookDto = new BookDTO
@@ -342,7 +343,7 @@ namespace WebApp.Controllers
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add successful {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
 
                 return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
@@ -404,7 +405,11 @@ namespace WebApp.Controllers
 
                 if (idGenre == null)
                 {
-                    return RedirectToAction("Error", "Home", new { requestId = "400" });
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
+
+                    ModelState.AddModelError("", "Choose a genre");
+
+                    return View(model);
                 }
 
                 bookDto = new BookDTO()
@@ -424,20 +429,21 @@ namespace WebApp.Controllers
                     Path = path,
                     GenreId = idGenre.Value
                 };
+
                 try
                 {
                     _bookService.Edit(bookDto);
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit {model.BookViewModel.Id}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit book id:{model.BookViewModel.Id} error: {ex.Message}", GetCurrentUserId());
 
                     ModelState.AddModelError(ex.Property, ex.Message);
 
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit {model.BookViewModel.Id}", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit successful book id:{model.BookViewModel.Id}", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }

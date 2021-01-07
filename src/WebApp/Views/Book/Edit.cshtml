@@ -11,28 +11,28 @@
                 <h3>Edit book</h3>
             </div>
             <div class="card-body">
-                <form method="post" asp-controller="Book" asp-action="Edit" 
-                       asp-route-sortString="@ViewBag.SortString"
-                         asp-route-stringGenre="@ViewBag.StringGenre"
-                        asp-route-searchFor="@ViewBag.SearchFor" 
-                        asp-route-nameSearch="@ViewBag.NameSearch" 
-                        asp-route-isDisplay="@ViewBag.IsDisplay" enctype="multipart/form-data">
+                <form method="post" asp-controller="Book" asp-action="Edit"
+                      asp-route-sortString="@ViewBag.SortString"
+                      asp-route-stringGenre="@ViewBag.StringGenre"
+                      asp-route-searchFor="@ViewBag.SearchFor"
+                      asp-route-nameSearch="@ViewBag.NameSearch"
+                      asp-route-isDisplay="@ViewBag.IsDisplay" enctype="multipart/form-data">
 
                     <input type="hidden" asp-for="BookViewModel.Path" />
                     <input type="hidden" asp-for="BookViewModel.Id" />
 
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
                     @if (Model.BookViewModel.Path != null)
                     {
                         <div class="form-group col-12">
-                          <br/>  <img class="pl-3" style="width:15em; height:12em;" src="@Model.BookViewModel.Path" alt="@Model.BookViewModel.Name" /><br /><br />
+                            <br />  <img class="pl-3" style="width:15em; height:12em;" src="@Model.BookViewModel.Path" alt="@Model.BookViewModel.Name" /><br /><br />
                         </div>
                     }
 
-                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-
                     <div class="form-group col-12">
                         <label for="file">Image</label>
-                        <input type="file" name="uploadedFile" id="file" /><br/>
+                        <input type="file" name="uploadedFile" id="file" /><br />
                     </div>
 
                     <div class="form-group col-12">
@@ -109,11 +109,11 @@
 
                     <div class="form-group col-12">
                         <button type="submit" class="btn btn-primary">Edit</button>
-                        <a asp-controller="Book" asp-action="Index"  asp-route-sortString="@ViewBag.SortString"
-                        asp-route-stringGenre="@ViewBag.StringGenre"
-                        asp-route-searchFor="@ViewBag.SearchFor" 
-                        asp-route-nameSearch="@ViewBag.NameSearch" 
-                        asp-route-isDisplay="@ViewBag.IsDisplay" class="btn btn-warning">Back</a>
+                        <a asp-controller="Book" asp-action="Index" asp-route-sortString="@ViewBag.SortString"
+                           asp-route-stringGenre="@ViewBag.StringGenre"
+                           asp-route-searchFor="@ViewBag.SearchFor"
+                           asp-route-nameSearch="@ViewBag.NameSearch"
+                           asp-route-isDisplay="@ViewBag.IsDisplay" class="btn btn-warning">Back</a>
                     </div><br />
 
                 </form>

@@ -47,6 +47,11 @@ namespace Core.Services
 
         public void Add(BookDTO bookDTO)
         {
+            Genre genre = Database.Genre.Get(bookDTO.Id);
+
+            if (genre == null)
+                throw new ValidationException("Genre not found", "");
+
             Database.Book.Create(_converterBook.ConvertDTOByModel(bookDTO));
             Database.Save();
         }

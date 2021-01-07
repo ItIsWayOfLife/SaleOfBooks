@@ -19,7 +19,12 @@
     {
         <label asp-for="IsDisplay">IsDisplay</label>
         <input type="checkbox" name="isDisplay" asp-for="IsDisplay" />
-        <a class="btn btn-sm btn-success" asp-action="Add">Add book</a>
+        <a class="btn btn-sm btn-success" asp-action="Add"  
+           asp-route-sortString="@Model.SortString"
+           asp-route-stringGenre="@Model.StringGenre"
+           asp-route-searchFor="@Model.SearchFor"
+           asp-route-nameSearch="@Model.NameSearch"
+           asp-route-isDisplay="@Model.IsDisplay">Add book</a>
     }
 </form>
 
@@ -32,7 +37,7 @@
            { "StringGenre", Model.StringGenre },
            { "SearchFor", Model.SearchFor },
            { "NameSearch", Model.NameSearch },
-           { "isDisplay", Model.IsDisplay }
+           { "IsDisplay", Model.IsDisplay }
         }) } }
 </div>
 

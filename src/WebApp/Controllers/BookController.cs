@@ -13,6 +13,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApp.Interfaces;
 using WebApp.Models.Book;
+using Core.Exceptions;
 
 namespace WebApp.Controllers
 {
@@ -224,8 +225,14 @@ namespace WebApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult GetBookInfo(int id)
+        public IActionResult GetBookInfo(int id, string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
+            ViewBag.SortString = sortString;
+            ViewBag.StringGenre = stringGenre;
+            ViewBag.SearchFor = searchFor;
+            ViewBag.NameSearch = nameSearch;
+            ViewBag.IsDisplay = isDisplay;
+
             var bookDto = _bookService.GetBook(id);
 
             _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, "get book info", GetCurrentUserId());
@@ -236,7 +243,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Delete(int id, string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
-            _bookService.Delete(id);
+            try
+            {
+                _bookService.Delete(id);
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete book id: {id} exception: {ex.Message}", GetCurrentUserId());
+
+                 return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex });
+            }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, "delete successful", GetCurrentUserId());
 
@@ -244,16 +260,29 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Add(string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
+            ViewBag.SortString = sortString;
+            ViewBag.StringGenre = stringGenre;
+            ViewBag.SearchFor = searchFor;
+            ViewBag.NameSearch = nameSearch;
+            ViewBag.IsDisplay = isDisplay;
+
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_GET, "add", GetCurrentUserId());
 
             return View(new AddBookGenreViewModel { Genres = new SelectList(_bookHelper.GetGenres()) });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(IFormFile uploadedFile, [FromForm] AddBookGenreViewModel model)
+        public async Task<IActionResult> Add(IFormFile uploadedFile, [FromForm] AddBookGenreViewModel model,
+            string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
+            ViewBag.SortString = sortString;
+            ViewBag.StringGenre = stringGenre;
+            ViewBag.SearchFor = searchFor;
+            ViewBag.NameSearch = nameSearch;
+            ViewBag.IsDisplay = isDisplay;
+
             if (ModelState.IsValid)
             {
                 BookDTO bookDto = null;
@@ -300,11 +329,22 @@ namespace WebApp.Controllers
                     IsNew = model.AddBookViewModel.IsNew
                 };
 
-                _bookService.Add(bookDto);
+                try
+                {
+                    _bookService.Add(bookDto);
+                }
+                catch(ValidationException ex)
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add book name: {model.AddBookViewModel.Name} error: {ex}", GetCurrentUserId());
+
+                    ModelState.AddModelError(ex.Property, ex.Message);
+
+                    return View(model);
+                }
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
 
             model.Genres = new SelectList(_bookHelper.GetGenres());
@@ -313,8 +353,14 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id, string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
+            ViewBag.SortString = sortString;
+            ViewBag.StringGenre = stringGenre;
+            ViewBag.SearchFor = searchFor;
+            ViewBag.NameSearch = nameSearch;
+            ViewBag.IsDisplay = isDisplay;
+
             BookDTO bookDTO = _bookService.GetBook(id);
             BookViewModel bookViewModel = _bookHelper.GetBookViewModel(bookDTO);
             var genresList = _bookHelper.GetGenres();
@@ -325,8 +371,15 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(IFormFile uploadedFile, [FromForm] EditBookGenreViewModel model)
+        public async Task<IActionResult> Edit(IFormFile uploadedFile, [FromForm] EditBookGenreViewModel model,
+            string sortString, string stringGenre, string searchFor, string nameSearch, bool isDisplay)
         {
+            ViewBag.SortString = sortString;
+            ViewBag.StringGenre = stringGenre;
+            ViewBag.SearchFor = searchFor;
+            ViewBag.NameSearch = nameSearch;
+            ViewBag.IsDisplay = isDisplay;
+
             if (ModelState.IsValid)
             {
                 BookDTO bookDto = null;
@@ -371,8 +424,18 @@ namespace WebApp.Controllers
                     Path = path,
                     GenreId = idGenre.Value
                 };
+                try
+                {
+                    _bookService.Edit(bookDto);
+                }
+                catch (ValidationException ex)
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit {model.BookViewModel.Id}", GetCurrentUserId());
 
-                _bookService.Edit(bookDto);
+                    ModelState.AddModelError(ex.Property, ex.Message);
+
+                    return View(model);
+                }
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit {model.BookViewModel.Id}", GetCurrentUserId());
 

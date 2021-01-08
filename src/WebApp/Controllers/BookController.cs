@@ -283,6 +283,8 @@ namespace WebApp.Controllers
             ViewBag.NameSearch = nameSearch;
             ViewBag.IsDisplay = isDisplay;
 
+            model.Genres = new SelectList(_bookHelper.GetGenres());
+
             if (ModelState.IsValid)
             {
                 BookDTO bookDto = null;
@@ -349,8 +351,6 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
 
-            model.Genres = new SelectList(_bookHelper.GetGenres());
-
             return View(model);
         }
 
@@ -381,6 +381,8 @@ namespace WebApp.Controllers
             ViewBag.SearchFor = searchFor;
             ViewBag.NameSearch = nameSearch;
             ViewBag.IsDisplay = isDisplay;
+
+            model.Genres = new SelectList(_bookHelper.GetGenres());
 
             if (ModelState.IsValid)
             {
@@ -448,8 +450,6 @@ namespace WebApp.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            model.Genres = new SelectList(_bookHelper.GetGenres());
 
             return View(model);
         }

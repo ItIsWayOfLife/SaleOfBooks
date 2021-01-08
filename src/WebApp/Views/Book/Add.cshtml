@@ -11,7 +11,6 @@
                 <h3>Add book</h3>
             </div>
             <div class="card-body">
-                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
                 <form method="post" asp-controller="Book" asp-action="Add"
                       asp-route-sortString="@ViewBag.SortString"
@@ -19,6 +18,8 @@
                       asp-route-searchFor="@ViewBag.SearchFor"
                       asp-route-nameSearch="@ViewBag.NameSearch"
                       asp-route-isDisplay="@ViewBag.IsDisplay" enctype="multipart/form-data">
+
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
                     <div class="form-group col-12">
                         <label for="file">Image</label>

@@ -235,7 +235,7 @@ namespace WebApp.Controllers
 
             var bookDto = _bookService.GetBook(id);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, $"get book id {id} info", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/getbookinfo/{id}", LoggerConstants.TYPE_GET, $"get book id: {id} info", GetCurrentUserId());
 
             return View(_bookHelper.GetBookViewModel(bookDto));
         }
@@ -249,12 +249,12 @@ namespace WebApp.Controllers
             }
             catch (ValidationException ex)
             {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete book id: {id} exception: {ex.Message}", GetCurrentUserId());
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete book id: {id} error: {ex.Message}", GetCurrentUserId());
 
                  return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete book id {id} successful", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete book id: {id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
         }
@@ -343,7 +343,7 @@ namespace WebApp.Controllers
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add {model.AddBookViewModel.Name} book successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add book name: {model.AddBookViewModel.Name} successful", GetCurrentUserId());
 
                 return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
@@ -366,7 +366,7 @@ namespace WebApp.Controllers
             BookViewModel bookViewModel = _bookHelper.GetBookViewModel(bookDTO);
             var genresList = _bookHelper.GetGenres();
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, "edit", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, $"edit book id {id}", GetCurrentUserId());
 
             return View(new EditBookGenreViewModel() { BookViewModel = bookViewModel, Genres = new SelectList(genresList) });
         }
@@ -436,14 +436,14 @@ namespace WebApp.Controllers
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit book id:{model.BookViewModel.Id} error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} error: {ex.Message}", GetCurrentUserId());
 
                     ModelState.AddModelError(ex.Property, ex.Message);
 
                     return View(model);
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit book id:{model.BookViewModel.Id} successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} successful", GetCurrentUserId());
 
                 return RedirectToAction("Index");
             }

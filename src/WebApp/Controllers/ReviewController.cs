@@ -1,5 +1,6 @@
 ﻿using Core.Constants;
 using Core.DTO;
+using Core.Exceptions;
 using Core.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -84,18 +85,28 @@ namespace WebApp.Controllers
 
             string currentUserId = GetCurrentUserId();
 
+
             bool like = _likeService.CheckLike(currentUserId, idReview);
 
-            if (like == true)
+            try
             {
-                _likeService.Delete(currentUserId, idReview);
+                if (like == true)
+                {
+                    _likeService.Delete(currentUserId, idReview);
+                }
+                else
+                {
+                    _likeService.Add(currentUserId, idReview);
+                }
             }
-            else
+            catch (ValidationException ex)
             {
-                _likeService.Add(currentUserId, idReview);
+                _loggerService.LogWarning(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, $"add like review id: {idReview} error {ex.Message}", GetCurrentUserId());
+
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, $"add like review id: {idReview}", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/addlike/{idReview}", LoggerConstants.TYPE_POST, $"add like review id: {idReview} successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -119,7 +130,7 @@ namespace WebApp.Controllers
                 Content = model.Content
             });
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add review", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add review id {model.Id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -128,9 +139,20 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var reviewDTO = _reviewService.GetReview(id);
+            ReviewDTO reviewDTO = null;
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, $"edit review id {id}", GetCurrentUserId());
+            try
+            {
+                 reviewDTO = _reviewService.GetReview(id);
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT + $"/{id}", LoggerConstants.TYPE_GET, $"edit review id: {id} error: {ex.Message}", GetCurrentUserId());
+
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
+            }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, $"edit review id: {id}", GetCurrentUserId());
 
             return View(new AddEditReviewViewModel() { Id = reviewDTO.Id, Content = reviewDTO.Content });
         }
@@ -139,9 +161,18 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Edit(AddEditReviewViewModel model)
         {
-            _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+            try
+            {
+                _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(ex.Property, ex.Message);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, "edit", GetCurrentUserId());
+                return View(model);
+            }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit review id: {model.Id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }
@@ -150,9 +181,18 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            _reviewService.Delete(id);
+            try
+            {
+                _reviewService.Delete(id);
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete review id: {id} error: {ex.Message}", GetCurrentUserId());
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete review id {id}", GetCurrentUserId());
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
+            }
+
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete review id: {id} successful", GetCurrentUserId());
 
             return RedirectToAction("Index");
         }

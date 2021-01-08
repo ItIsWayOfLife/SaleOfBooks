@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using WebApp.Models.Order;
 using WebApp.Interfaces;
+using Core.Exceptions;
 
 namespace WebApp.Controllers
 {
@@ -61,7 +62,7 @@ namespace WebApp.Controllers
                 return View(orders);               
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "not authenticated", GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -73,15 +74,24 @@ namespace WebApp.Controllers
             {
                 string currentUserId = GetCurrentUserId();
 
-                _orderService.Create(currentUserId);
-                _cartService.AllDeleteBooksToCart(currentUserId);
+                try
+                {
+                    _orderService.Create(currentUserId);
+                    _cartService.AllDeleteBooksToCart(currentUserId);
+                }
+                catch (ValidationException ex)
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order error: {ex.Message}", GetCurrentUserId());
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order", GetCurrentUserId());
+                    return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
+                }
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order successful", GetCurrentUserId());
 
                 return RedirectToAction($"Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, "not authenticated", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }
@@ -109,7 +119,7 @@ namespace WebApp.Controllers
                 return View(orderDishes);
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"not authenticated", GetCurrentUserId());
+            _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
 
             return RedirectToAction("Login", "Account");
         }

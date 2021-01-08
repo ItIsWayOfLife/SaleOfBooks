@@ -1,5 +1,6 @@
 ﻿using Core.Constants;
 using Core.DTO;
+using Core.Exceptions;
 using Core.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -150,7 +151,7 @@ namespace WebApp.Controllers
                 }
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + "/myfeedback", LoggerConstants.TYPE_GET, "my feed back", currentUserId);
+            _loggerService.LogInformation(CONTROLLER_NAME + "/myfeedback", LoggerConstants.TYPE_GET, "get my feed back", currentUserId);
 
             return View(new ListFeedBackViewModel() { FeedBackViews = feedBackViewModels });
         }
@@ -178,7 +179,7 @@ namespace WebApp.Controllers
 
             _feedBackService.AddQuestion(feedBack);
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add question: {question}", currentUserId);
+            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add question: {question} successful", currentUserId);
 
             return Redirect("MyFeedBack");
         }
@@ -237,7 +238,16 @@ namespace WebApp.Controllers
             fb.IsAnswered = true;
             fb.UserIdAnswering = currentUserId;
 
-            _feedBackService.AddAnswer(fb);
+            try
+            {
+                _feedBackService.AddAnswer(fb);
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(ex.Property, ex.Message);
+
+                return View(model);
+            }
 
             _loggerService.LogInformation(CONTROLLER_NAME + $"/addanswer", LoggerConstants.TYPE_POST, $"add answer {model.Answer} successful", GetCurrentUserId());
 

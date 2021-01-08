@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Constants;
 using Core.DTO;
+using Core.Exceptions;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +51,18 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Add(AddGenreViewModel model)
         {
-            _genreService.Add(new GenreDTO() { Name = model.Name});
+            try
+            {
+                _genreService.Add(new GenreDTO() { Name = model.Name });
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} error: {ex.Message}", GetCurrentUserId());
+
+                ModelState.AddModelError(ex.Property, ex.Message);
+
+                return View(model);
+            }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} successful", GetCurrentUserId());
 
@@ -60,7 +72,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            _genreService.Delete(id);
+            try
+            {
+                _genreService.Delete(id);
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{id}", LoggerConstants.TYPE_POST, $"delete genre id: {id} error: {ex.Message}", GetCurrentUserId());
+
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
+            }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{id}", LoggerConstants.TYPE_POST, $"delete genre id: {id} successful", GetCurrentUserId());
 
@@ -85,7 +106,18 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Edit(EditGenreViewModel model)
         {
-            _genreService.Edit(new GenreDTO() { Id = model.Id, Name = model.Name });
+            try
+            {
+                _genreService.Edit(new GenreDTO() { Id = model.Id, Name = model.Name });
+            }
+            catch (ValidationException ex)
+            {
+                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} error: {ex.Message}", GetCurrentUserId());
+
+                ModelState.AddModelError(ex.Property, ex.Message);
+
+                return View(model);
+            }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} successful", GetCurrentUserId());
 

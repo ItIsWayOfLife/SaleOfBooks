@@ -95,7 +95,7 @@ namespace WebApp.Controllers
 
             if (genreDTO == null)
             {
-                return RedirectToAction("Error", "Home", new { requestId = "400" });
+                return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "Genre not found" });
             }
 
             _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT +$"/{id}", LoggerConstants.TYPE_GET, $"edit genre id {id}", GetCurrentUserId());

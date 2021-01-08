@@ -51,22 +51,28 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Add(AddGenreViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _genreService.Add(new GenreDTO() { Name = model.Name });
+
+                try
+                {
+                    _genreService.Add(new GenreDTO() { Name = model.Name });
+                }
+                catch (ValidationException ex)
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} error: {ex.Message}", GetCurrentUserId());
+
+                    ModelState.AddModelError(ex.Property, ex.Message);
+
+                    return View(model);
+                }
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} successful", GetCurrentUserId());
+
+                return RedirectToAction("Index");
             }
-            catch (ValidationException ex)
-            {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} error: {ex.Message}", GetCurrentUserId());
 
-                ModelState.AddModelError(ex.Property, ex.Message);
-
-                return View(model);
-            }
-
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add genre name: {model.Name} successful", GetCurrentUserId());
-
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         [HttpPost]
@@ -106,22 +112,27 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Edit(EditGenreViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _genreService.Edit(new GenreDTO() { Id = model.Id, Name = model.Name });
+                try
+                {
+                    _genreService.Edit(new GenreDTO() { Id = model.Id, Name = model.Name });
+                }
+                catch (ValidationException ex)
+                {
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} error: {ex.Message}", GetCurrentUserId());
+
+                    ModelState.AddModelError(ex.Property, ex.Message);
+
+                    return View(model);
+                }
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} successful", GetCurrentUserId());
+
+                return RedirectToAction("Index");
             }
-            catch (ValidationException ex)
-            {
-                _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} error: {ex.Message}", GetCurrentUserId());
 
-                ModelState.AddModelError(ex.Property, ex.Message);
-
-                return View(model);
-            }
-
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit genre id: {model.Id} successful", GetCurrentUserId());
-
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         private string GetCurrentUserId()

@@ -310,6 +310,7 @@ namespace WebApp.Controllers
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
 
                     ModelState.AddModelError("", "Choose a genre");
+
                     return View(model);
                 }
 

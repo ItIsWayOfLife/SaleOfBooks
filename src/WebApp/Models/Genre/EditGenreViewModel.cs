@@ -6,7 +6,7 @@ namespace WebApp.Models.Genre
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Enter name")]
         [Display(Name = "Name")]
         public string Name { get; set; }
     }

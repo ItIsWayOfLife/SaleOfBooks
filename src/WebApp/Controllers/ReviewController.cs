@@ -85,7 +85,6 @@ namespace WebApp.Controllers
 
             string currentUserId = GetCurrentUserId();
 
-
             bool like = _likeService.CheckLike(currentUserId, idReview);
 
             try
@@ -122,19 +121,23 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Add(AddEditReviewViewModel model)
         {
-            string currentUserId = GetCurrentUserId();
-
-            _reviewService.Add(new ReviewDTO()
+            if (ModelState.IsValid)
             {
-                ApplicationUserId = currentUserId,
-                Content = model.Content
-            });
+                string currentUserId = GetCurrentUserId();
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add review id {model.Id} successful", GetCurrentUserId());
+                _reviewService.Add(new ReviewDTO()
+                {
+                    ApplicationUserId = currentUserId,
+                    Content = model.Content
+                });
 
-            return RedirectToAction("Index");
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add review id {model.Id} successful", GetCurrentUserId());
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
-
         [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Edit(int id)
@@ -161,20 +164,25 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Edit(AddEditReviewViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+                try
+                {
+                    _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+                }
+                catch (ValidationException ex)
+                {
+                    ModelState.AddModelError(ex.Property, ex.Message);
+
+                    return View(model);
+                }
+
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit review id: {model.Id} successful", GetCurrentUserId());
+
+                return RedirectToAction("Index");
             }
-            catch (ValidationException ex)
-            {
-                ModelState.AddModelError(ex.Property, ex.Message);
 
-                return View(model);
-            }
-
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit review id: {model.Id} successful", GetCurrentUserId());
-
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         [Authorize(Roles = "admin")]

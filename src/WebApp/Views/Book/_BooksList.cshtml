@@ -49,7 +49,7 @@
             <h6>Code: @Model.Code</h6>
             <h6>Author: @Model.Author </h6>
             <h6>Genre: @Model.Genre</h6>
-            <h6>Price: @Model.Price $</h6>
+            <h6>Price: <span class="text-danger">@Model.Price</span> $</h6>
         </div>
             <a class="btn btn-sm btn-success" asp-action="Add" asp-controller="Cart" asp-route-bookId="@Model.Id">
                 Add to cart

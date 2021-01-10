@@ -6,9 +6,16 @@ namespace Core.Entities
     public class Book 
     {
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Info { get; set; }
+
+        [Required]
         public string Code { get; set; }
+
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }

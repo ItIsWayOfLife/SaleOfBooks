@@ -150,13 +150,15 @@ namespace WebApp.Controllers
                 "Code",
                 "Price",
                 "Author",
-                "Publisher",
+                "Publishing house",
                 "Year of writing",
                 "Year publishing"
             };
 
-            if (searchFor != "" && searchFor != null && searchFor != "Search"
-                && nameSearch != "" && nameSearch != null)
+            if (nameSearch == null)
+                nameSearch = "";
+
+            if (searchFor != "" && searchFor != null && searchFor != "Search" && nameSearch != null)
             {
                 if (searchFor.ToLower() == listSearch[1].ToLower())
                 {
@@ -174,21 +176,37 @@ namespace WebApp.Controllers
                 {
                     books = books.Where(p => p.Price.ToString() == nameSearch).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[5].ToLower())
+                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch != "")
                 {
-                    books = books.Where(p => p.Author.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p => p.Author!=null &&  p.Author.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[6].ToLower())
+                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch == "")
                 {
-                    books = books.Where(p => p.PublishingHouse.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p=>p.Author==null || p.Author == "").ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[7].ToLower())
+                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch != "")
                 {
-                    books = books.Where(p => p.YearOfWriting == nameSearch).ToList();
+                    books = books.Where(p => p.PublishingHouse != null && p.PublishingHouse.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[8].ToLower())
+                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch == "")
                 {
-                    books = books.Where(p => p.YearPublishing == nameSearch).ToList();
+                    books = books.Where(p => p.PublishingHouse == null || p.PublishingHouse == "").ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch != "")
+                {
+                    books = books.Where(p => p.YearOfWriting != null && p.YearOfWriting == nameSearch).ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch == "")
+                {
+                    books = books.Where(p => p.YearOfWriting == null || p.YearOfWriting == "").ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch != "")
+                {
+                    books = books.Where(p => p.YearPublishing != null && p.YearPublishing == nameSearch).ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch == "")
+                {
+                    books = books.Where(p => p.YearPublishing == null || p.YearPublishing == "").ToList();
                 }
             }
 
@@ -448,7 +466,7 @@ namespace WebApp.Controllers
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} successful", GetCurrentUserId());
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
 
             return View(model);

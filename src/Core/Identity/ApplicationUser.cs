@@ -13,9 +13,9 @@ namespace Core.Identity
 
         public string LFP()
         {
-            string lastname = " ";
-            string firstname = " ";
-            string patronomic = " ";
+            string lastname = "";
+            string firstname = "";
+            string patronomic = "";
 
             if (Lastname != null)
                 lastname = Lastname;

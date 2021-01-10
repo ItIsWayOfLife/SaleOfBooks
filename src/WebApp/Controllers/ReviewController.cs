@@ -169,17 +169,15 @@ namespace WebApp.Controllers
                 try
                 {
                     _reviewService.Edit(new ReviewDTO() { Id = model.Id, Content = model.Content });
+
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit review id: {model.Id} successful", GetCurrentUserId());
+
+                    return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
                 {
                     ModelState.AddModelError(ex.Property, ex.Message);
-
-                    return View(model);
-                }
-
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit review id: {model.Id} successful", GetCurrentUserId());
-
-                return RedirectToAction("Index");
+                }          
             }
 
             return View(model);

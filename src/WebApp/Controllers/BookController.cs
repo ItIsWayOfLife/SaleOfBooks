@@ -354,19 +354,17 @@ namespace WebApp.Controllers
                 try
                 {
                     _bookService.Add(bookDto);
+
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add book name: {model.AddBookViewModel.Name} successful", GetCurrentUserId());
+
+                    return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
                 }
                 catch(ValidationException ex)
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add book name: {model.AddBookViewModel.Name} error: {ex}", GetCurrentUserId());
 
                     ModelState.AddModelError(ex.Property, ex.Message);
-
-                    return View(model);
                 }
-
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"add book name: {model.AddBookViewModel.Name} successful", GetCurrentUserId());
-
-                return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
 
             return View(model);
@@ -454,19 +452,17 @@ namespace WebApp.Controllers
                 try
                 {
                     _bookService.Edit(bookDto);
+
+                    _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} successful", GetCurrentUserId());
+
+                    return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
                 }
                 catch (ValidationException ex)
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT, LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} error: {ex.Message}", GetCurrentUserId());
 
                     ModelState.AddModelError(ex.Property, ex.Message);
-
-                    return View(model);
                 }
-
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_EDIT , LoggerConstants.TYPE_POST, $"edit book id: {model.BookViewModel.Id} successful", GetCurrentUserId());
-
-                return RedirectToAction("Index", new { sortString, stringGenre, searchFor, nameSearch, isDisplay });
             }
 
             return View(model);

@@ -19,9 +19,16 @@ namespace WebApp.Helper
 
         public int GetCount(string name)
         {
-            var user = _userManager.Users.Where(p => p.Email == name).FirstOrDefault();
+            var user = _userManager.Users.Where(p => p.UserName == name).FirstOrDefault();
 
-            return _cartService.GetCount(user.Id);
+            if (user == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return _cartService.GetCount(user.Id);
+            }
         }
     }
 }

@@ -160,21 +160,37 @@ namespace WebApp.Controllers
 
             if (searchFor != "" && searchFor != null && searchFor != "Search" && nameSearch != null)
             {
-                if (searchFor.ToLower() == listSearch[1].ToLower())
+                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch != "")
                 {
-                    books = books.Where(p => p.Name.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p => p.Name != null && p.Name.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[2].ToLower())
+                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch == "")
                 {
-                    books = books.Where(p => p.Info.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p => p.Name == null || p.Name == "").ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[3].ToLower())
+                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch != "")
                 {
-                    books = books.Where(p => p.Code.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p => p.Info != null && p.Info.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[4].ToLower())
+                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch == "")
                 {
-                    books = books.Where(p => p.Price.ToString() == nameSearch).ToList();
+                    books = books.Where(p => p.Info == null || p.Info == "").ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch != "")
+                {
+                    books = books.Where(p => p.Code != null && p.Code.ToLower().Contains(nameSearch.ToLower())).ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch == "")
+                {
+                    books = books.Where(p => p.Code == null || p.Code == "").ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch != "")
+                {
+                    books = books.Where(p => p.Price.ToString().Contains(nameSearch)).ToList();
+                }
+                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch == "")
+                {
+                    books = books.Where(p => p.Price == 0).ToList();
                 }
                 else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch != "")
                 {

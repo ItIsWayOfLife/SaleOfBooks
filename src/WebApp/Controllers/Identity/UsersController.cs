@@ -60,9 +60,13 @@ namespace Web.Controllers.Identity
 
             if (searchSelectionString != "" && searchSelectionString != null && searchSelectionString != "Search" && seacrhString != null)
             {
-                if (searchSelectionString.ToLower() == searchSelection[1].ToLower())
+                if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString != "")
                 {
-                    listViewUsers = listViewUsers.Where(p => p.Id.ToLower().Contains(seacrhString.ToLower())).ToList();
+                    listViewUsers = listViewUsers.Where(p => p.Id != null && p.Id.ToLower().Contains(seacrhString.ToLower())).ToList();
+                }
+                else if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString == "")
+                {
+                    listViewUsers = listViewUsers.Where(p => p.Id == null || p.Id == "").ToList();
                 }
                 else if (searchSelectionString.ToLower() == searchSelection[2].ToLower() && seacrhString != "")
                 {

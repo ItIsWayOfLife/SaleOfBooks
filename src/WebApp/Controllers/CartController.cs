@@ -48,12 +48,12 @@ namespace WebApp.Controllers
 
                 ViewData["FullPrice"] = _cartService.FullPriceCart(currentUserId);
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", currentUserId);
 
                 return View(cartDishes);
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -63,23 +63,25 @@ namespace WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                string currentUserId = GetCurrentUserId();
+
                 try
                 {
                     _cartService.DeleteCartBook(cartBookId, GetCurrentUserId());
                 }
                 catch(ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, $"delete cartBookId: {cartBookId} error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, $"delete cartBookId: {cartBookId} error: {ex.Message}", currentUserId);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{cartBookId}", LoggerConstants.TYPE_POST, $"delete cartBookId: {cartBookId} successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE +$"/{cartBookId}", LoggerConstants.TYPE_POST, $"delete cartBookId: {cartBookId} successful", currentUserId);
 
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_DELETE + $"/{cartBookId}", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -89,23 +91,25 @@ namespace WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                string currentUserId = GetCurrentUserId();
+
                 try
                 {
                     _cartService.AddBookToCart(bookId, GetCurrentUserId());
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, $"add book id: {bookId} to cart error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, $"add book id: {bookId} to cart error: {ex.Message}", currentUserId);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD +$"{bookId}", LoggerConstants.TYPE_GET, $"add book id: {bookId} to cart", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_ADD +$"{bookId}", LoggerConstants.TYPE_GET, $"add book id: {bookId} to cart", currentUserId);
 
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD + $"{bookId}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -115,23 +119,25 @@ namespace WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                string currentUserId = GetCurrentUserId();
+
                 try
                 {
                     _cartService.AllDeleteBooksToCart(GetCurrentUserId());
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, $"delete all books in cart error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, $"delete all books in cart error: {ex.Message}", currentUserId);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "delete all books in cart successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, "delete all books in cart successful", currentUserId);
 
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + $"/deleteall", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -141,23 +147,25 @@ namespace WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                string currentUserId = GetCurrentUserId();
+
                 try
                 {
-                    _cartService.UpdateCountBookInCart(GetCurrentUserId(), bookCartId, count);
+                    _cartService.UpdateCountBookInCart(currentUserId, bookCartId, count);
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, $"update book id: {bookCartId} on count: {count} error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, $"update book id: {bookCartId} on count: {count} error: {ex.Message}", currentUserId);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, $"update book id: {bookCartId} on count: {count} successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, $"update book id: {bookCartId} on count: {count} successful", currentUserId);
 
                 return RedirectToAction("Index");
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + $"/{bookCartId}&{count}", LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }

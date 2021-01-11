@@ -35,8 +35,10 @@ namespace WebApp.Controllers
         public IActionResult Index(SortState sortOrder = SortState.DateOrderDesc)
         {
             if (User.Identity.IsAuthenticated)
-            {           
-                    IEnumerable<OrderDTO> orderDTOs = _orderService.GetOrders(GetCurrentUserId());
+            {
+                string currentUserId = GetCurrentUserId();
+
+                IEnumerable<OrderDTO> orderDTOs = _orderService.GetOrders(currentUserId);
                     var mapper = new MapperConfiguration(cfg => cfg.CreateMap<OrderDTO, BookViewModel>()).CreateMapper();
                     var orders = mapper.Map<IEnumerable<OrderDTO>, List<BookViewModel>>(orderDTOs);
 
@@ -57,12 +59,12 @@ namespace WebApp.Controllers
                         _ => orders.OrderBy(s => s.Id).ToList(),
                     };
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", currentUserId);
 
                 return View(orders);               
             }
 
-            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -81,17 +83,17 @@ namespace WebApp.Controllers
                 }
                 catch (ValidationException ex)
                 {
-                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order error: {ex.Message}", GetCurrentUserId());
+                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order error: {ex.Message}", currentUserId);
 
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = ex.Message });
                 }
 
-                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order successful", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, $"create order successful", currentUserId);
 
                 return RedirectToAction($"Index");
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_CREATE, LoggerConstants.TYPE_POST, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }
@@ -114,12 +116,12 @@ namespace WebApp.Controllers
 
                 ViewData["FullPrice"] = _orderService.GetOrders(currentUserId).Where(p => p.Id == orderId).FirstOrDefault().FullPrice;
 
-                _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"get order id: {orderId}", GetCurrentUserId());
+                _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, $"get order id: {orderId}", currentUserId);
 
                 return View(orderDishes);
             }
 
-            _loggerService.LogInformation(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, GetCurrentUserId());
+            _loggerService.LogWarning(CONTROLLER_NAME + $"/getorderbooks/{orderId}", LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);
 
             return RedirectToAction("Login", "Account");
         }

@@ -194,11 +194,11 @@ namespace WebApp.Controllers
                 }
                 else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch != "")
                 {
-                    books = books.Where(p => p.Author!=null &&  p.Author.ToLower().Contains(nameSearch.ToLower())).ToList();
+                    books = books.Where(p => p.Author != null && p.Author.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
                 else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch == "")
                 {
-                    books = books.Where(p=>p.Author==null || p.Author == "").ToList();
+                    books = books.Where(p => p.Author == null || p.Author == "").ToList();
                 }
                 else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch != "")
                 {

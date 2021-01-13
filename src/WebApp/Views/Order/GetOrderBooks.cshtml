@@ -30,7 +30,7 @@
                             @foreach (var cartB in Model)
                             {
                                 <tr>
-                                    <td> <a asp-action="GetBookInfo" asp-controller="Book" asp-route-id="@cartB.BookId"> <img style="width:60px; height: 60px;" src="@cartB.Path" /> </a> </td>
+                                    <td> <a asp-action="GetBookInfo" asp-controller="Book" asp-route-id="@cartB.BookId"> <img style="width:60px; height: 60px;" src="@cartB.Path" alt="@cartB.Name" /> </a> </td>
                                     <td>@cartB.Code</td>
                                     <td>@cartB.Name</td>
                                     <td>@cartB.Author</td>

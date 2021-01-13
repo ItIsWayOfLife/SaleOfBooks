@@ -39,29 +39,29 @@ namespace WebApp.Controllers
                 string currentUserId = GetCurrentUserId();
 
                 IEnumerable<OrderDTO> orderDTOs = _orderService.GetOrders(currentUserId);
-                    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<OrderDTO, BookViewModel>()).CreateMapper();
-                    var orders = mapper.Map<IEnumerable<OrderDTO>, List<BookViewModel>>(orderDTOs);
+                var mapper = new MapperConfiguration(cfg => cfg.CreateMap<OrderDTO, BookViewModel>()).CreateMapper();
+                var orders = mapper.Map<IEnumerable<OrderDTO>, List<BookViewModel>>(orderDTOs);
 
-                    ViewData["IdSort"] = sortOrder == SortState.IdAsc ? SortState.IdDesc : SortState.IdAsc;
-                    ViewData["DateSort"] = sortOrder == SortState.DateOrderAsc ? SortState.DateOrderDesc : SortState.DateOrderAsc;
-                    ViewData["FullPriceSort"] = sortOrder == SortState.FullPriceAsc ? SortState.FullPriceDesc : SortState.FullPriceAsc;
-                    ViewData["CountDishSort"] = sortOrder == SortState.CountBookAsc ? SortState.CountBookDesc : SortState.CountBookAsc;
+                ViewData["IdSort"] = sortOrder == SortState.IdAsc ? SortState.IdDesc : SortState.IdAsc;
+                ViewData["DateSort"] = sortOrder == SortState.DateOrderAsc ? SortState.DateOrderDesc : SortState.DateOrderAsc;
+                ViewData["FullPriceSort"] = sortOrder == SortState.FullPriceAsc ? SortState.FullPriceDesc : SortState.FullPriceAsc;
+                ViewData["CountDishSort"] = sortOrder == SortState.CountBookAsc ? SortState.CountBookDesc : SortState.CountBookAsc;
 
-                    orders = sortOrder switch
-                    {
-                        SortState.IdDesc => orders.OrderByDescending(s => s.Id).ToList(),
-                        SortState.DateOrderAsc => orders.OrderBy(s => s.DateOrder).ToList(),
-                        SortState.DateOrderDesc => orders.OrderByDescending(s => s.DateOrder).ToList(),
-                        SortState.FullPriceAsc => orders.OrderBy(s => s.FullPrice).ToList(),
-                        SortState.FullPriceDesc => orders.OrderByDescending(s => s.FullPrice).ToList(),
-                        SortState.CountBookAsc => orders.OrderBy(s => s.CountBook).ToList(),
-                        SortState.CountBookDesc => orders.OrderByDescending(s => s.CountBook).ToList(),
-                        _ => orders.OrderBy(s => s.Id).ToList(),
-                    };
+                orders = sortOrder switch
+                {
+                    SortState.IdDesc => orders.OrderByDescending(s => s.Id).ToList(),
+                    SortState.DateOrderAsc => orders.OrderBy(s => s.DateOrder).ToList(),
+                    SortState.DateOrderDesc => orders.OrderByDescending(s => s.DateOrder).ToList(),
+                    SortState.FullPriceAsc => orders.OrderBy(s => s.FullPrice).ToList(),
+                    SortState.FullPriceDesc => orders.OrderByDescending(s => s.FullPrice).ToList(),
+                    SortState.CountBookAsc => orders.OrderBy(s => s.CountBook).ToList(),
+                    SortState.CountBookDesc => orders.OrderByDescending(s => s.CountBook).ToList(),
+                    _ => orders.OrderBy(s => s.Id).ToList(),
+                };
 
                 _loggerService.LogInformation(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, "index", currentUserId);
 
-                return View(orders);               
+                return View(orders);
             }
 
             _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_INDEX, LoggerConstants.TYPE_GET, LoggerConstants.ERROR_USER_NOT_AUTHENTICATED, null);

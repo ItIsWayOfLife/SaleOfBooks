@@ -5,7 +5,7 @@ using Core.Identity;
 using Core.Interfaces;
 using Core.Services;
 //using Infrastructure.Data;
-//using Infrastructure.Identity;
+using InfrastructureADO.Identity;
 //using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,19 +44,19 @@ namespace WebApp
             //services.AddDbContext<ApplicationContext>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
-            //services.AddDbContext<IdentityContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
-            //services.AddIdentity<ApplicationUser, IdentityRole>(
-            //    opts =>
-            //    {
-            //        opts.Password.RequiredLength = 6;   
-            //        opts.Password.RequireNonAlphanumeric = false;   
-            //        opts.Password.RequireLowercase = false; 
-            //        opts.Password.RequireUppercase = false; 
-            //        opts.Password.RequireDigit = false; 
-            //    })
-            //    .AddEntityFrameworkStores<IdentityContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(
+                opts =>
+                {
+                    opts.Password.RequiredLength = 6;
+                    opts.Password.RequireNonAlphanumeric = false;
+                    opts.Password.RequireLowercase = false;
+                    opts.Password.RequireUppercase = false;
+                    opts.Password.RequireDigit = false;
+                })
+                .AddEntityFrameworkStores<IdentityContext>();
 
             //services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 

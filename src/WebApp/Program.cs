@@ -1,6 +1,6 @@
 using Core.Identity;
-using Infrastructure.Data;
-using Infrastructure.Identity;
+//using Infrastructure.Data;
+using InfrastructureADO.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,8 +26,8 @@ namespace WebApp
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await UserAndRoleInitializer.InitializeAsync(userManager, rolesManager);
 
-                    var context = services.GetRequiredService<ApplicationContext>();
-                    EntitiesInitializer.Initialize(context);
+                    //var context = services.GetRequiredService<ApplicationContext>();
+                    //EntitiesInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

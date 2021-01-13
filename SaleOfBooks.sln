@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\WebApp\WebApp.csproj", "{A1BAA5FE-E4C1-46C1-92BB-62F6C230AA67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{4AE0AC8C-15EE-4673-8766-96E40799D3E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{4AE0AC8C-15EE-4673-8766-96E40799D3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{1A3BA6A3-CC34-42D2-8340-0A51A0771923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{1A3BA6A3-CC34-42D2-8340-0A51A0771923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureADO", "src\InfrastructureADO\InfrastructureADO.csproj", "{F222EBD0-04D9-420B-B8D6-DEC0627ACBAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1A3BA6A3-CC34-42D2-8340-0A51A0771923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3BA6A3-CC34-42D2-8340-0A51A0771923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3BA6A3-CC34-42D2-8340-0A51A0771923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F222EBD0-04D9-420B-B8D6-DEC0627ACBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F222EBD0-04D9-420B-B8D6-DEC0627ACBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F222EBD0-04D9-420B-B8D6-DEC0627ACBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F222EBD0-04D9-420B-B8D6-DEC0627ACBAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

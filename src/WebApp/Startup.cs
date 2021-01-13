@@ -4,9 +4,9 @@ using Core.Entities;
 using Core.Identity;
 using Core.Interfaces;
 using Core.Services;
-using Infrastructure.Data;
-using Infrastructure.Identity;
-using Infrastructure.Repositories;
+//using Infrastructure.Data;
+//using Infrastructure.Identity;
+//using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,24 +41,24 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options =>
-                 options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
+            //services.AddDbContext<ApplicationContext>(options =>
+            //     options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
-            services.AddDbContext<IdentityContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            //services.AddDbContext<IdentityContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(
-                opts =>
-                {
-                    opts.Password.RequiredLength = 6;   
-                    opts.Password.RequireNonAlphanumeric = false;   
-                    opts.Password.RequireLowercase = false; 
-                    opts.Password.RequireUppercase = false; 
-                    opts.Password.RequireDigit = false; 
-                })
-                .AddEntityFrameworkStores<IdentityContext>();
+            //services.AddIdentity<ApplicationUser, IdentityRole>(
+            //    opts =>
+            //    {
+            //        opts.Password.RequiredLength = 6;   
+            //        opts.Password.RequireNonAlphanumeric = false;   
+            //        opts.Password.RequireLowercase = false; 
+            //        opts.Password.RequireUppercase = false; 
+            //        opts.Password.RequireDigit = false; 
+            //    })
+            //    .AddEntityFrameworkStores<IdentityContext>();
 
-            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+            //services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IBookService, BookService>();

@@ -24,12 +24,12 @@ namespace Core.Services
         public BookDTO GetBook(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id book not found", "");
+                throw new ValidationException("Id book not found", string.Empty);
 
             var book = Database.Book.Get(id.Value);
 
             if (book == null)
-                throw new ValidationException($"Book with id {id} not found", "");
+                throw new ValidationException($"Book with id {id} not found", string.Empty);
 
             return _converterBook.ConvertModelByDTO(book);
         }
@@ -58,14 +58,14 @@ namespace Core.Services
             Book book = Database.Book.Get(bookDTO.Id);
 
             if (book == null)
-                throw new ValidationException("Book not found", "");
+                throw new ValidationException("Book not found", string.Empty);
 
             book.Info = bookDTO.Info;
             book.IsDisplay = bookDTO.IsDisplay;
             book.IsFavorite = bookDTO.IsFavorite;
             book.IsNew = bookDTO.IsNew;
             book.Name = bookDTO.Name;
-            book.Path = (bookDTO.Path).Replace(PathConstants.PAPH_BOOKS, "");
+            book.Path = (bookDTO.Path).Replace(PathConstants.PAPH_BOOKS, string.Empty);
             book.Price = bookDTO.Price;
             book.PublishingHouse = bookDTO.PublishingHouse;
             book.YearOfWriting = bookDTO.YearOfWriting;
@@ -81,12 +81,12 @@ namespace Core.Services
         public void Delete(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id book not found", "");
+                throw new ValidationException("Id book not found", string.Empty);
 
             var book = Database.Book.Get(id.Value);
 
             if (book == null)
-                throw new ValidationException($"Book with id {id} not found", "");
+                throw new ValidationException($"Book with id {id} not found", string.Empty);
 
             Database.Book.Delete(id.Value);
             Database.Save();

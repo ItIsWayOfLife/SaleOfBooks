@@ -23,12 +23,12 @@ namespace Core.Services
         public FeedBackDTO GetFeedBack(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id feedBack not found", "");
+                throw new ValidationException("Id feedBack not found", string.Empty);
 
             var feedBack = Database.FeedBack.Get(id.Value);
 
             if (feedBack == null)
-                throw new ValidationException($"FeedBack with id {id} not found", "");
+                throw new ValidationException($"FeedBack with id {id} not found", string.Empty);
 
             return _converterFeedBack.ConvertModelByDTO(feedBack);
         }
@@ -56,7 +56,7 @@ namespace Core.Services
             FeedBack feedBack = Database.FeedBack.Get(feedBackDTO.Id);
 
             if (feedBack == null)
-                throw new ValidationException($"Feedback with id {feedBackDTO.Id} not found", "");
+                throw new ValidationException($"Feedback with id {feedBackDTO.Id} not found", string.Empty);
 
             feedBack.Answer = feedBackDTO.Answer;
             feedBack.DateTimeAnswer = feedBackDTO.DateTimeAnswer;
@@ -70,12 +70,12 @@ namespace Core.Services
         public void Delete(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id feedBack not found", "");
+                throw new ValidationException("Id feedBack not found", string.Empty);
 
             var feedBack = Database.FeedBack.Get(id.Value);
 
             if (feedBack == null)
-                throw new ValidationException($"FeedBack with id {id} not found", "");
+                throw new ValidationException($"FeedBack with id {id} not found", string.Empty);
 
             Database.FeedBack.Delete(id.Value);
             Database.Save();

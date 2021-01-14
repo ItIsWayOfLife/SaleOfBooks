@@ -19,7 +19,7 @@ namespace Core.Services
         public Cart Create(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             Database.Cart.Create(new Cart() { ApplicationUserId = applicationUserId });
             Database.Save();
@@ -30,14 +30,11 @@ namespace Core.Services
         public CartDTO GetCart(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = Database.Cart.Find(p => p.ApplicationUserId == applicationUserId).FirstOrDefault();
 
-            if (cart == null)
-            {
-                cart = Create(applicationUserId);
-            }
+            cart = cart ?? Create(applicationUserId);
 
             CartDTO cartDTO = new CartDTO()
             {
@@ -51,12 +48,12 @@ namespace Core.Services
         public IEnumerable<CartBooksDTO> GetCartBooks(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = GetCart(applicationUserId);
 
             if (cart == null)
-                throw new ValidationException("Cart not found", "");
+                throw new ValidationException("Cart not found", string.Empty);
 
             var cartBooks = Database.CartBooks.Find(p => p.CartId == cart.Id);
 
@@ -83,20 +80,20 @@ namespace Core.Services
         public void DeleteCartBook(int? id, string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = GetCart(applicationUserId);
 
             if (cart == null)
-                throw new ValidationException("Cart not found", "");
+                throw new ValidationException("Cart not found", string.Empty);
 
             if (id == null)
-                throw new ValidationException("The id of the book to be deleted from the basket is not set", "");
+                throw new ValidationException("The id of the book to be deleted from the basket is not set", string.Empty);
 
             var cartBook = Database.CartBooks.Get(id.Value);
 
             if (cartBook.CartId != cart.Id)
-                throw new ValidationException("Книга не найдена в корзине", "");
+                throw new ValidationException("Книга не найдена в корзине", string.Empty);
 
             Database.CartBooks.Delete(id.Value);
             Database.Save();
@@ -105,15 +102,15 @@ namespace Core.Services
         public void AddBookToCart(int? bookId, string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = GetCart(applicationUserId);
 
             if (cart == null)
-                throw new ValidationException("Cart not found", "");
+                throw new ValidationException("Cart not found", string.Empty);
 
             if (bookId == null)
-                throw new ValidationException("The id of the added book in the cart is not set", "");
+                throw new ValidationException("The id of the added book in the cart is not set", string.Empty);
 
             // if it already exists in the basket, then it is increased by 1 (if not, then created with the number of 1)
             if (GetCartBooks(applicationUserId).Where(p => p.BookId == bookId.Value).Count() > 0)
@@ -128,7 +125,7 @@ namespace Core.Services
                 Book book = Database.Book.Get(bookId.Value);
 
                 if (book == null)
-                    throw new ValidationException("Book not found", "");
+                    throw new ValidationException("Book not found", string.Empty);
 
                 Database.CartBooks.Create(new CartBooks()
                 {
@@ -144,17 +141,17 @@ namespace Core.Services
         public void AllDeleteBooksToCart(string applicationUserId)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = GetCart(applicationUserId);
 
             if (cart == null)
-                throw new ValidationException("Cart not found", "");
+                throw new ValidationException("Cart not found", string.Empty);
 
             var cartBook = GetCartBooks(applicationUserId);
 
             if (cartBook.Count() < 1)
-                throw new ValidationException("Cart is empty", "");
+                throw new ValidationException("Cart is empty", string.Empty);
 
             foreach (var cartD in cartBook)
             {
@@ -167,25 +164,25 @@ namespace Core.Services
         public void UpdateCountBookInCart(string applicationUserId, int? bookCartId, int count)
         {
             if (applicationUserId == null)
-                throw new ValidationException("User id not set", "");
+                throw new ValidationException("User id not set", string.Empty);
 
             var cart = GetCart(applicationUserId);
 
             if (cart == null)
-                throw new ValidationException("Cart not found", "");
+                throw new ValidationException("Cart not found", string.Empty);
 
             var cartDishes = GetCartBooks(applicationUserId);
 
             if (cartDishes.Count() < 1)
-                throw new ValidationException("Cart is empty", "");
+                throw new ValidationException("Cart is empty", string.Empty);
 
             if (cartDishes.Where(p => p.Id == bookCartId).Count() < 1)
-                throw new ValidationException("The specified book is not in the basket", "");
+                throw new ValidationException("The specified book is not in the basket", string.Empty);
 
             CartBooks cartBooks = Database.CartBooks.Find(p => p.Id == bookCartId).FirstOrDefault();
 
             if (count <= 0)
-                throw new ValidationException("Quantity must be a positive integer", "");
+                throw new ValidationException("Quantity must be a positive integer", string.Empty);
 
             cartBooks.Count = count;
 

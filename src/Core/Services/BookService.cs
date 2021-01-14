@@ -47,7 +47,7 @@ namespace Core.Services
 
         public void Add(BookDTO bookDTO)
         {
-            Genre genre = Database.Genre.Get(bookDTO.Id);
+            Genre genre = Database.Genre.Get(bookDTO.GenreId);
 
             Database.Book.Create(_converterBook.ConvertDTOByModel(bookDTO));
             Database.Save();

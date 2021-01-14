@@ -43,7 +43,7 @@ namespace WebApp.Controllers
 
             List<ReviewViewModel> reviewViewModels = new List<ReviewViewModel>();
 
-            string currentUserId = "";
+            string currentUserId = string.Empty;
 
             if (User.Identity.IsAuthenticated)
             {

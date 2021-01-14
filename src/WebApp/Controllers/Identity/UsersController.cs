@@ -33,7 +33,7 @@ namespace Web.Controllers.Identity
         }
 
         [HttpGet]
-        public IActionResult Index(string searchSelectionString, string seacrhString = "")
+        public IActionResult Index(string searchSelectionString, string seacrhString)
         {
             var listUsers = _userManager.Users;
             var listViewUsers = new List<UserViewModel>();
@@ -53,52 +53,50 @@ namespace Web.Controllers.Identity
 
             List<string> searchSelection = new List<string>() { "Search by", "Id", "Email", "Full name", "Address", "Postcode" };
 
-            if (seacrhString == null)
-            {
-                seacrhString = "";
-            }
+             seacrhString = seacrhString ?? string.Empty;
+ 
 
-            if (searchSelectionString != "" && searchSelectionString != null && searchSelectionString != "Search" && seacrhString != null)
+            if (searchSelectionString != string.Empty && searchSelectionString != null && searchSelectionString != "Search" && seacrhString != null)
             {
-                if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString != "")
+                if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString != string.Empty)
                 {
                     listViewUsers = listViewUsers.Where(p => p.Id != null && p.Id.ToLower().Contains(seacrhString.ToLower())).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString == "")
+                else if (searchSelectionString.ToLower() == searchSelection[1].ToLower() && seacrhString == string.Empty)
                 {
-                    listViewUsers = listViewUsers.Where(p => p.Id == null || p.Id == "").ToList();
+                    listViewUsers = listViewUsers.Where(p => p.Id == null || p.Id == string.Empty).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[2].ToLower() && seacrhString != "")
+                else if (searchSelectionString.ToLower() == searchSelection[2].ToLower() && seacrhString != string.Empty)
                 {
                     listViewUsers = listViewUsers.Where(p => p.Email != null && p.Email.ToLower().Contains(seacrhString.ToLower())).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[2].ToLower() && seacrhString == "")
+                else if (searchSelectionString.ToLower() == searchSelection[2].ToLower() && seacrhString == string.Empty)
                 {
-                    listViewUsers = listViewUsers.Where(p => p.Email == null || p.Email == "").ToList();
+                    listViewUsers = listViewUsers.Where(p => p.Email == null || p.Email == string.Empty).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[3].ToLower() && seacrhString != "")
+                else if (searchSelectionString.ToLower() == searchSelection[3].ToLower() && seacrhString != string.Empty)
                 {
                     listViewUsers = listViewUsers.Where(p => p.FLP != null && p.FLP.ToLower().Contains(seacrhString.ToLower())).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[3].ToLower() && seacrhString == "")
+                else if (searchSelectionString.ToLower() == searchSelection[3].ToLower() && seacrhString == string.Empty)
                 {
-                    listViewUsers = listViewUsers.Where(p => p.FLP == null || p.FLP == "" || p.FLP == "  ").ToList();
+                    listViewUsers = listViewUsers.Where(p => p.FLP == null || p.FLP == string.Empty || p.FLP == "  ").ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[4].ToLower() && seacrhString != "")
+                else if (searchSelectionString.ToLower() == searchSelection[4].ToLower() && seacrhString != string.Empty)
                 {
                     listViewUsers = listViewUsers.Where(p => p.Address != null && p.Address.ToLower().Contains(seacrhString.ToLower())).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[4].ToLower() && seacrhString == "")
+                else if (searchSelectionString.ToLower() == searchSelection[4].ToLower() && seacrhString == string.Empty)
                 {
-                    listViewUsers = listViewUsers.Where(p => p.Address == null || p.Address == "").ToList();
+                    listViewUsers = listViewUsers.Where(p => p.Address == null || p.Address == string.Empty).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[5].ToLower() && seacrhString != "")
+                else if (searchSelectionString.ToLower() == searchSelection[5].ToLower() && seacrhString != string.Empty)
                 {
                     listViewUsers = listViewUsers.Where(p => p.Postcode != null && p.Postcode.ToLower().Contains(seacrhString.ToLower())).ToList();
                 }
-                else if (searchSelectionString.ToLower() == searchSelection[5].ToLower() && seacrhString == "")
+                else if (searchSelectionString.ToLower() == searchSelection[5].ToLower() && seacrhString == string.Empty)
                 {
-                    listViewUsers = listViewUsers.Where(p => p.Postcode == null || p.Postcode == "").ToList();
+                    listViewUsers = listViewUsers.Where(p => p.Postcode == null || p.Postcode == string.Empty).ToList();
                 }
             }
 

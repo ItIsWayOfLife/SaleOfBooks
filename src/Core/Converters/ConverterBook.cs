@@ -29,7 +29,7 @@ namespace Core.Converters
                 IsDisplay = modelDTO.IsDisplay,
                 IsFavorite = modelDTO.IsFavorite,
                 IsNew = modelDTO.IsNew,
-                Path = (modelDTO.Path).Replace(PathConstants.PAPH_BOOKS, ""),
+                Path = (modelDTO.Path).Replace(PathConstants.PAPH_BOOKS, string.Empty),
                 Price = modelDTO.Price,
                 PublishingHouse = modelDTO.PublishingHouse,
                 YearPublishing = modelDTO.YearPublishing,

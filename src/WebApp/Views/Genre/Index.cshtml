@@ -1,40 +1,38 @@
 ﻿@model WebApp.Models.Genre.ListGenresViewModel
 
 @{
-    ViewBag.Title = "Genres";
-}
+        ViewBag.Title = "Genres";
+    }
 
-<div class="row mb-5">
-    <div class="shadow-lg p-0 bg-white">
-        <div class="card">
-            <div class="card-header">
-                <h3>
-                    Genres
-                    </h3>
-
-            </div>
-            <div class="card-body">
-                @if (User.IsInRole("admin") || User.IsInRole("employee"))
-                {
-                    <a class="btn btn-sm btn-success" asp-action="Add">Add genre</a>
-
+    <div class="row mb-5">
+        <div class="shadow-lg p-0 bg-white">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Genres
+                        </h3>
+                </div>
+                <div class="card-body">
                     @if (User.IsInRole("admin") || User.IsInRole("employee"))
                     {
-                        <h6 class="mt-2">
-                            (Number of display books)
-                        </h6>
-                    }
-                }
-                <div class="row mb-2">
-                    @{
-                        foreach (var genre in Model.Genres)
+                        <a class="btn btn-sm btn-success" asp-action="Add">Add genre</a>
+
+                        @if (User.IsInRole("admin") || User.IsInRole("employee"))
                         {
-                            @await Html.PartialAsync("_GenresList", genre)
+                            <h6 class="mt-2">
+                                (Number of display books)
+                            </h6>
                         }
                     }
+                    <div class="row mb-2">
+                        @{
+                            foreach (var genre in Model.Genres)
+                            {
+                                @await Html.PartialAsync("_GenresList", genre)
+                            }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-

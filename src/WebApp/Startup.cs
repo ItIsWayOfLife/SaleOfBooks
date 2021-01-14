@@ -4,9 +4,7 @@ using Core.Entities;
 using Core.Identity;
 using Core.Interfaces;
 using Core.Services;
-//using Infrastructure.Data;
 using InfrastructureADO.Identity;
-//using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +24,7 @@ using WebApp.Helper;
 using WebApp.Interfaces;
 using WebApp.Logger;
 using WebApp.Services;
+using InfrastructureADO.Repositories;
 
 namespace WebApp
 {
@@ -58,7 +57,7 @@ namespace WebApp
                 })
                 .AddEntityFrameworkStores<IdentityContext>();
 
-            //services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWorkSqlServer>();
 
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IBookService, BookService>();
@@ -118,7 +117,7 @@ namespace WebApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Book}/{action=ListFavoriteBook}/{id?}");
+                    pattern: "{controller=Book}/{action=Index}/{id?}");
             });
         }
     }

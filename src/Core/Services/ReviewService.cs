@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Core.Services
 {
-    public class ReviewService: IReviewService
+    public class ReviewService : IReviewService
     {
         private IUnitOfWork Database { get; set; }
 
@@ -86,6 +86,13 @@ namespace Core.Services
 
             if (review == null)
                 throw new ValidationException("Review not fuund", "");
+
+            var likes = Database.Like.Find(p=>p.ReviewId == id);
+
+            foreach (var like in likes)
+            {
+                Database.Like.Delete(like.Id);
+            }
 
             Database.Review.Delete(review.Id);
             Database.Save();

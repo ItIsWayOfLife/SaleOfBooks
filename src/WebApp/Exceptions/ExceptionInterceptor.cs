@@ -24,8 +24,7 @@ namespace WebApp.Exceptions
                 await _next.Invoke(context);
             }
             catch(Exception ex)
-            {
-              
+            {           
                 _logger.LogError($"{DateTime.Now}: Something went wrong: {ex}");
 
                 await _next.Invoke(context);

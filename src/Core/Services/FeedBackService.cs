@@ -19,7 +19,7 @@ namespace Core.Services
             Database = uow;
             _converterFeedBack = converterFeedBack;
         }
-      
+
         public FeedBackDTO GetFeedBack(int? id)
         {
             if (id == null)
@@ -35,14 +35,14 @@ namespace Core.Services
 
         public IEnumerable<FeedBackDTO> GetFeedBacks()
         {
-            var feedBackDTOs = Database.FeedBack.GetAll().OrderByDescending(p=>p.DateTimeAnswer);
+            var feedBackDTOs = Database.FeedBack.GetAll().OrderByDescending(p => p.DateTimeAnswer);
 
             return _converterFeedBack.ConvertModelsByDTOs(feedBackDTOs);
         }
 
         public IEnumerable<FeedBackDTO> GetMyFeedBack(string userId)
         {
-            return GetFeedBacks().ToList().Where(p => p.UserIdAsking == userId).OrderBy(p=>p.DateTimeAnswer);
+            return GetFeedBacks().ToList().Where(p => p.UserIdAsking == userId).OrderBy(p => p.DateTimeAnswer);
         }
 
         public void AddQuestion(FeedBackDTO feedBackDTO)

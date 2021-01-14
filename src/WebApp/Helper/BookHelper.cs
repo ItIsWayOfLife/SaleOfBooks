@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using Core.Constants;
 using Core.DTO;
 using Core.Interfaces;
-using Microsoft.AspNetCore.Hosting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebApp.Interfaces;
 using WebApp.Models.Book;
 

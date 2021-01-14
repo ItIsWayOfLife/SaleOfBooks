@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.DTO;
 using Core.Entities;
+using Core.Exceptions;
 using Core.Interfaces;
 using System.Collections.Generic;
 using System.Linq;

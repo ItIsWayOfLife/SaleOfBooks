@@ -23,6 +23,7 @@ namespace Core.Services
 
             Database.Cart.Create(new Cart() { ApplicationUserId = applicationUserId });
             Database.Save();
+            
 
             return Database.Cart.Find(p => p.ApplicationUserId == applicationUserId).FirstOrDefault();
         }
@@ -64,16 +65,18 @@ namespace Core.Services
 
             foreach (var cartB in cartBooks)
             {
+                Book book = Database.Book.Get(cartB.BookId);
+
                 cartBooksDTO.Add(new CartBooksDTO()
                 {
                     CartId = cart.Id,
                     Id = cartB.Id,
                     BookId = cartB.BookId,
-                    Code = cartB.Book.Code,
+                    Code = book.Code,
                     Count = cartB.Count,
-                    Name = cartB.Book.Name,
-                    Path = cartB.Book.Path,
-                    Price = cartB.Book.Price
+                    Name = book.Name,
+                    Path = book.Path,
+                    Price = book.Price
                 });
             }
 

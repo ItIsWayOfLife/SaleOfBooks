@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Core.Services
 {
-    public class BookService: IBookService
+    public class BookService : IBookService
     {
         private IUnitOfWork Database { get; set; }
 
@@ -47,8 +47,6 @@ namespace Core.Services
 
         public void Add(BookDTO bookDTO)
         {
-            Genre genre = Database.Genre.Get(bookDTO.Id);
-
             Database.Book.Create(_converterBook.ConvertDTOByModel(bookDTO));
             Database.Save();
         }
@@ -73,7 +71,7 @@ namespace Core.Services
             book.Author = bookDTO.Author;
             book.Code = bookDTO.Code;
             book.GenreId = bookDTO.GenreId;
-            
+
             Database.Book.Update(book);
             Database.Save();
         }

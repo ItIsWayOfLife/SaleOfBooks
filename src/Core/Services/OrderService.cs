@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Core.Services
 {
-    public class OrderService:IOrderService
+    public class OrderService : IOrderService
     {
         private IUnitOfWork Database { get; set; }
 
@@ -16,7 +16,7 @@ namespace Core.Services
         {
             Database = uow;
         }
-    
+
         public OrderDTO Create(string applicationUserId)
         {
             if (applicationUserId == null)
@@ -33,10 +33,10 @@ namespace Core.Services
                 throw new ValidationException("Cart is empty", "");
 
             // create order
-            Order order = new Order() { ApplicationUserId = applicationUserId, DateOrder = DateTime.Now };
+            DateTime dateTimeOrder = DateTime.Now;
+            Order order = new Order() { ApplicationUserId = applicationUserId, DateOrder = dateTimeOrder };
 
             Database.Order.Create(order);
-            Database.Save();
 
             foreach (var cartBook in cartBooks)
             {
@@ -45,7 +45,7 @@ namespace Core.Services
                     Count = cartBook.Count,
                     BookId = cartBook.BookId,
                     OrderId = order.Id
-                });
+                });               
             }
 
             Database.Save();
@@ -92,12 +92,17 @@ namespace Core.Services
             if (orderId == null)
                 throw new ValidationException("Order not selected", "");
 
-            var orderBooks = Database.OrderBooks.Find(p => p.OrderId == orderId).Where(p => p.Order.ApplicationUserId == applicationUserId);
+            var orderBooks = Database.OrderBooks.Find(p => p.OrderId == orderId);
 
             var orderBooksDTOs = new List<OrderBooksDTO>();
 
             foreach (var orderBook in orderBooks)
             {
+                if (Database.Order.Get(orderBook.OrderId).ApplicationUserId != applicationUserId)
+                    break;
+
+                Book book = Database.Book.Get(orderBook.BookId);
+
                 orderBooksDTOs.Add(new OrderBooksDTO()
                 {
                     Count = orderBook.Count,
@@ -105,10 +110,10 @@ namespace Core.Services
                     BookId = orderBook.BookId,
                     Id = orderBook.Id,
                     OrderId = orderBook.OrderId,
-                    Path = orderBook.Book.Path,
-                    Price = orderBook.Book.Price,
-                    Code = orderBook.Book.Code,
-                    Name = orderBook.Book.Name,
+                    Path = book.Path,
+                    Price = book.Price,
+                    Code = book.Code,
+                    Name = book.Name,
                 });
             }
 
@@ -121,7 +126,9 @@ namespace Core.Services
 
             foreach (var cartBook in orderBooks)
             {
-                fullPrice += cartBook.Count * cartBook.Book.Price;
+                Book book = Database.Book.Get(cartBook.BookId);
+
+                fullPrice += cartBook.Count * book.Price;
             }
 
             return fullPrice;

@@ -25,6 +25,7 @@ namespace Infrastructure.Repositories
         public void Delete(int id)
         {
             Genre genre = _applicationContext.Genres.Find(id);
+
             if (genre != null)
             {
                 _applicationContext.Genres.Remove(genre);

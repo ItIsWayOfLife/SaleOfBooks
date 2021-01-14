@@ -80,7 +80,7 @@ namespace WebApp.Controllers
 
             var listGenres = _bookHelper.GetGenres();
 
-            if (stringGenre != null && stringGenre != ""
+            if (stringGenre != null && stringGenre != string.Empty
                  && stringGenre != listGenres[0])
             {
                 books = books.Where(p => p.Genre == stringGenre).ToList();
@@ -155,74 +155,73 @@ namespace WebApp.Controllers
                 "Year publishing"
             };
 
-            if (nameSearch == null)
-                nameSearch = "";
+            nameSearch = nameSearch ?? string.Empty;
 
-            if (searchFor != "" && searchFor != null && searchFor != "Search" && nameSearch != null)
+            if (searchFor != string.Empty && searchFor != null && searchFor != "Search" && nameSearch != null)
             {
-                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch != "")
+                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.Name != null && p.Name.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch == "")
+                if (searchFor.ToLower() == listSearch[1].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.Name == null || p.Name == "").ToList();
+                    books = books.Where(p => p.Name == null || p.Name == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.Info != null && p.Info.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[2].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.Info == null || p.Info == "").ToList();
+                    books = books.Where(p => p.Info == null || p.Info == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.Code != null && p.Code.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[3].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.Code == null || p.Code == "").ToList();
+                    books = books.Where(p => p.Code == null || p.Code == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.Price.ToString().Contains(nameSearch)).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[4].ToLower() && nameSearch == string.Empty)
                 {
                     books = books.Where(p => p.Price == 0).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.Author != null && p.Author.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[5].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.Author == null || p.Author == "").ToList();
+                    books = books.Where(p => p.Author == null || p.Author == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.PublishingHouse != null && p.PublishingHouse.ToLower().Contains(nameSearch.ToLower())).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[6].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.PublishingHouse == null || p.PublishingHouse == "").ToList();
+                    books = books.Where(p => p.PublishingHouse == null || p.PublishingHouse == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.YearOfWriting != null && p.YearOfWriting == nameSearch).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[7].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.YearOfWriting == null || p.YearOfWriting == "").ToList();
+                    books = books.Where(p => p.YearOfWriting == null || p.YearOfWriting == string.Empty).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch != "")
+                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch != string.Empty)
                 {
                     books = books.Where(p => p.YearPublishing != null && p.YearPublishing == nameSearch).ToList();
                 }
-                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch == "")
+                else if (searchFor.ToLower() == listSearch[8].ToLower() && nameSearch == string.Empty)
                 {
-                    books = books.Where(p => p.YearPublishing == null || p.YearPublishing == "").ToList();
+                    books = books.Where(p => p.YearPublishing == null || p.YearPublishing == string.Empty).ToList();
                 }
             }
 
@@ -336,7 +335,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    path = "";
+                    path = string.Empty;
                 }
 
                 int? idGenre = _bookHelper.GetGenreIdByName(model.AddBookViewModel.Genre);
@@ -345,7 +344,7 @@ namespace WebApp.Controllers
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
 
-                    ModelState.AddModelError("", "Choose a genre");
+                    ModelState.AddModelError(string.Empty, "Choose a genre");
 
                     return View(model);
                 }
@@ -442,7 +441,7 @@ namespace WebApp.Controllers
                 {
                     _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTION_ADD, LoggerConstants.TYPE_POST, $"genre not found", GetCurrentUserId());
 
-                    ModelState.AddModelError("", "Choose a genre");
+                    ModelState.AddModelError(string.Empty, "Choose a genre");
 
                     return View(model);
                 }

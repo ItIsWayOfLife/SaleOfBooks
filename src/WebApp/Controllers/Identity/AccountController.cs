@@ -151,7 +151,7 @@ namespace WebApp.Controllers.Identity
                 {
                    _loggerService.LogWarning(CONTROLLER_NAME + LoggerConstants.ACTIN_LOGIN, LoggerConstants.TYPE_POST, "wrong login or password", null);
 
-                    ModelState.AddModelError("", "Wrong login or password");
+                    ModelState.AddModelError(string.Empty, "Wrong login or password");
                 }
             }
 
@@ -202,7 +202,7 @@ namespace WebApp.Controllers.Identity
                     return RedirectToAction("Error", "Home", new { requestId = "400", errorInfo = "User not found" });
                 }
 
-                if (user.Path == "" || user.Path == null)
+                if (user.Path == string.Empty || user.Path == null)
                 {
                     user.Path = PathConstants.PAPH_DEFAULT_PROFILE;
                 }
@@ -418,7 +418,7 @@ namespace WebApp.Controllers.Identity
                 }
                 else
                 {
-                    path = "";
+                    path = string.Empty;
                 }
 
                 user.Path = path;

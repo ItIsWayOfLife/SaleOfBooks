@@ -29,12 +29,12 @@ namespace Core.Services
         public GenreDTO GetGenre(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id genre not found", "");
+                throw new ValidationException("Id genre not found", string.Empty);
 
             var genre = Database.Genre.Get(id.Value);
 
             if (genre == null)
-                throw new ValidationException($"Genre with id {id} not found", "");
+                throw new ValidationException($"Genre with id {id} not found", string.Empty);
 
             return _converterGenre.ConvertModelByDTO(genre);
         }
@@ -54,12 +54,12 @@ namespace Core.Services
         public void Delete(int? id)
         {
             if (id == null)
-                throw new ValidationException("Id genre not found", "");
+                throw new ValidationException("Id genre not found", string.Empty);
 
             var genre = Database.Genre.Get(id.Value);
 
             if (genre == null)
-                throw new ValidationException($"Genre with id {id} not found", "");
+                throw new ValidationException($"Genre with id {id} not found", string.Empty);
 
             Database.Genre.Delete(id.Value);
             Database.Save();

@@ -23,12 +23,12 @@ namespace Core.Services
         public ReviewDTO GetReview(int? id)
         {
             if (id == null)
-                throw new ValidationException("Review id not set", "");
+                throw new ValidationException("Review id not set", string.Empty);
 
             var review = Database.Review.Get(id.Value);
 
             if (review == null)
-                throw new ValidationException("Review not fuund", "");
+                throw new ValidationException("Review not fuund", string.Empty);
 
             var reviewDTO = _convertReview.ConvertModelByDTO(review);
 
@@ -69,7 +69,7 @@ namespace Core.Services
             Review review = Database.Review.Get(reviewDTO.Id);
 
             if (review == null)
-                throw new ValidationException("Review not fuund", "");
+                throw new ValidationException("Review not fuund", string.Empty);
 
             review.Content = reviewDTO.Content;
 
@@ -80,12 +80,12 @@ namespace Core.Services
         public void Delete(int? id)
         {
             if (id == null)
-                throw new ValidationException("Review id not set", "");
+                throw new ValidationException("Review id not set", string.Empty);
 
             var review = Database.Review.Get(id.Value);
 
             if (review == null)
-                throw new ValidationException("Review not fuund", "");
+                throw new ValidationException("Review not fuund", string.Empty);
 
             var likes = Database.Like.Find(p=>p.ReviewId == id);
 

@@ -1,6 +1,6 @@
 # SaleOfBooks
 
-## SaleOfBooks it's application for buying (ordering) books
+## It's application for buying (ordering) books
 
 ***
 
